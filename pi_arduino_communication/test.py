@@ -9,7 +9,7 @@
 # Infinite loop
 import numpy as np
 import random
-
+a = 0
 send_binary =  ''
 while (1):
 
