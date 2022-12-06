@@ -27,14 +27,15 @@ while (1):
          random.randint(-100, 100)])
 
     for data in send_float:
-        data = "{:08b}".format(data, 'b')
+        data = str("{:08b}".format(data, 'b'))
 
-        if data[0] == 0:
-            pass
+        if data[0] == '-':
+            data = '1' + data[1:]
+            print(data[0])
         else:
-            data[0] = "{:1b}".format( '1', 'b')
+            pass
 
-        print(data)
+
         send_binary += str(data)
 
     # Send the string. Make sure you encode it before you send it to the Arduino.
