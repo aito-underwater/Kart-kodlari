@@ -59,16 +59,16 @@ void loop(){
 
       for(i = 7; i >=0 ; i--)
       {
-        // if(i == 7 && buf[index]  == '-')
-        // {
-        //  scale = -1;
-        // }
-        // else {
+        if(i == 7 && buf[index]  == '1 ')
+        {
+         scale = -1;
+        }
+        else {
           value = value+ pow(2,i) * (buf[index] - '0');
           index++;
-        // }
+        }
       }
-      // value *= scale;
+      value *= scale;
       enginesPower[engineIndex] = value;
       value = 0;
       engineIndex++;
