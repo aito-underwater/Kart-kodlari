@@ -21,7 +21,7 @@ while (1):
 
         send_binary += str(data)
 
-    print(send_binary)
+
 
 
 # Send the string. Make sure you encode it before you send it to the Arduino.
