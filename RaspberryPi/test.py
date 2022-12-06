@@ -34,5 +34,6 @@ while (1):
     receive_string = ser.readline().decode('utf-8').rstrip()
 
  # Print the data received from Arduino to the terminal
-    print("12");
+    print("------------")
+    print(send_binary)
     print(receive_string)
