@@ -31,12 +31,12 @@ int enginesPower[6];
 
 void setup(){
 
-  engines[0].attach(MOTOR_PIN1);
-  engines[1].attach(MOTOR_PIN1);
-  engines[2].attach(MOTOR_PIN2);
-  engines[3].attach(MOTOR_PIN3);  
-  engines[4].attach(MOTOR_PIN4);
-  engines[5].attach(MOTOR_PIN5);
+  // engines[0].attach(MOTOR_PIN1);
+  // engines[1].attach(MOTOR_PIN1);
+  // engines[2].attach(MOTOR_PIN2);
+  // engines[3].attach(MOTOR_PIN3);  
+  // engines[4].attach(MOTOR_PIN4);
+  // engines[5].attach(MOTOR_PIN5);
 
 
 
@@ -44,11 +44,11 @@ void setup(){
 }
  
 void loop(){
-  
+   Serial.print("Hi Raspberry Pi! You sent me: ");
+    
 
   if(Serial.available() > 0) {
     int rlen = Serial.readBytes(buf, BUFFER_SIZE);
- 
     int value = 0;
     int engineIndex = 0;
     int i,index;
@@ -77,7 +77,8 @@ void loop(){
     {
       ChangeEngineSpeed(&engines[i],enginesPower[i]);
     }
-   // Serial.println("1 : %d, 2 : %d, 3 : %d, 4 : %d, 5 : %d",enginesPower[0],enginesPower[1],enginesPower[2],enginesPower[3],enginesPower[4],enginesPower[5]);
+
+   Serial.print("Hi Raspberry Pi! You sent me: ");
     Serial.print("1 : ");
   Serial.print(enginesPower[0]);
     Serial.print("2 : ");
@@ -91,7 +92,7 @@ void loop(){
     Serial.print("6 : ");
   Serial.print(enginesPower[5]);
   Serial.println("");
-  
+
   }
   
 
