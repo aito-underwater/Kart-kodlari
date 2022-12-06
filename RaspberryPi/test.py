@@ -6,7 +6,7 @@ ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
 
 ser.flush()
 
-Infinite loop
+# Infinite loop
 import numpy as np
 import random
 a = 0
