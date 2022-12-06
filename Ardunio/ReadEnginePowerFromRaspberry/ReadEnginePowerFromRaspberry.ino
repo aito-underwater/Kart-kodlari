@@ -77,7 +77,22 @@ void loop(){
     {
       ChangeEngineSpeed(&engines[i],enginesPower[i]);
     }
+   // Serial.println("1 : %d, 2 : %d, 3 : %d, 4 : %d, 5 : %d",enginesPower[0],enginesPower[1],enginesPower[2],enginesPower[3],enginesPower[4],enginesPower[5]);
+    Serial.print("1 : ");
+  Serial.print(enginesPower[0]);
+    Serial.print("2 : ");
+  Serial.print(enginesPower[1]);
+    Serial.print("3 : ");
+  Serial.print(enginesPower[2]);
+    Serial.print("4 : ");
+  Serial.print(enginesPower[3]);
+    Serial.print("5 : ");
+  Serial.print(enginesPower[4]);
+    Serial.print("6 : ");
+  Serial.print(enginesPower[5]);
+Serial.println("");
   }
+  
 
 }
 

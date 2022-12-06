@@ -13,7 +13,7 @@ a = 0
 send_binary =  ''
 while (1):
 
-    send_float = np.array([random.randint(-100,100),random.randint(-100,100),random.randint(-100,100),random.randint(-100,100),random.randint(-100,100), random.randint(-100,100)])
+    send_float = np.array([random.randint(0,100),random.randint(0,100),random.randint(0,100),random.randint(0,100),random.randint(0,100), random.randint(0,100)])
 
     for data in send_float:
         if data > 0:
