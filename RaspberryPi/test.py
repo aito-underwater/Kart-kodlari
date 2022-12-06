@@ -31,7 +31,7 @@ while (1):
 
         if data[0] == '-':
             data = '1' + data[1:]
-            print(data[0])
+            print(data)
         else:
             pass
 
