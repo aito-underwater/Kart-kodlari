@@ -41,4 +41,4 @@ while (1):
     print(send_float)
     count = count + 1
     print(receive_string)
-    print("----" + count + "----")
+    print("----" + str(count) + "----")
