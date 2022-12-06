@@ -8,6 +8,7 @@ Date: July 5, 2020
 */
 #include <Servo.h>
 
+// <------------ Engines params ------------> //
 #define MAX_SIGNAL 2000
 #define MIN_SIGNAL 1000
 #define MOTOR_PIN1 3
@@ -17,17 +18,21 @@ Date: July 5, 2020
 #define MOTOR_PIN5 10
 #define MOTOR_PIN6 11
 
+// <------------ Functions ------------> //
 void ChangeEngineSpeed( Servo* engine);
 int PIDAlgoritmForEngines( Servo* engine, int power);
 
-int DELAY = 1000;
-
+// <------------ Communication param ------------> //
 const int BUFFER_SIZE = 48;
 char buf[BUFFER_SIZE]; 
 
+// <------------ Engine param ------------> //
 Servo engines[6];
 int enginesPower[6];
 
+// <------------ Loop params ------------> //
+int value, engineIndex, i, index, scale;
+    
 
 void setup(){
 
@@ -49,30 +54,30 @@ void loop(){
 
   if(Serial.available() > 0) {
     int rlen = Serial.readBytes(buf, BUFFER_SIZE);
-    int value = 0;
-    int engineIndex = 0;
-    int i,index;
-    int scale ;
+  
+    value = 0;
+    engineIndex = 0;
     for(index = 0; index < BUFFER_SIZE;)
     {    
       scale = 1;
 
       for(i = 7; i >=0 ; i--)
       {
-        if(i == 7 && buf[index]  == '1 ')
+        if(i == 7 && buf[index]  == '1')
         {
-         scale = -1;
+          scale = -1;
         }
-        else {
+        else 
+        {
           value = value+ pow(2,i) * (buf[index] - '0');
-          index++;
         }
+        index++;
       }
       value *= scale;
       enginesPower[engineIndex] = value;
       value = 0;
       engineIndex++;
-    }
+    } 
     for(i = 0; i < 6; i++)
     {
       ChangeEngineSpeed(&engines[i],enginesPower[i]);
