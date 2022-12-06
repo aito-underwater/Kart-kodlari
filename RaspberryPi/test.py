@@ -3,7 +3,7 @@ import time  # Module needed to add delays in the code
 
 import serial  # Module needed for serial communication
 
-ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1.0)
 
 ser.flush()
 
