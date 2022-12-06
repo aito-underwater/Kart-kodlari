@@ -26,7 +26,7 @@ while (1):
 
 # Send the string. Make sure you encode it before you send it to the Arduino.
     ser.write(send_binary.encode('utf-8'))
-    print(send_binary)
+
     send_binary = ''
  # Do nothing for 500 milliseconds (0.5 seconds)
     time.sleep(0.5)
@@ -36,5 +36,5 @@ while (1):
 
  # Print the data received from Arduino to the terminal
     print("------------")
-
+    print(send_float)
     print(receive_string)
