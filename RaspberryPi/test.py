@@ -16,13 +16,20 @@ count = 0
 send_binary = ''
 while (1):
 
+    # send_float = np.array(
+    #     [random.randint(-100, 100),
+    #      random.randint(-100, 100),
+    #      random.randint(-100, 100),
+    #      random.randint(-100, 100),
+    #      random.randint(-100, 100),
+    #      random.randint(-100, 100)])
     send_float = np.array(
-        [random.randint(-100, 100),
-         random.randint(-100, 100),
-         random.randint(-100, 100),
-         random.randint(-100, 100),
-         random.randint(-100, 100),
-         random.randint(-100, 100)])
+        [random.randint(9, 10),
+         random.randint(9, 10),
+         random.randint(9, 10),
+         random.randint(9, 10),
+         random.randint(9, 10),
+         random.randint(9, 10)])
 
     for data in send_float:
         data = str("{:08b}".format(data, 'b'))
