@@ -50,7 +50,7 @@ while (1):
 
     # Receive data from the Arduino
     receive_string = ser.readline().decode('utf-8').rstrip()
-
+ 
     # Print the data received from Arduino to the terminal
     print("------------")
     print(send_float)

@@ -105,7 +105,8 @@ void loop(){
 
 void ChangeEngineSpeed( Servo* engine, int power)
 {
-  engine->writeMicroseconds(power);
+  // engine->writeMicroseconds(power /* *parameters*/);
+  engine->writeMicroseconds(1400);
 
 }
 
