@@ -348,6 +348,7 @@ def startSensors():
 
             if proc.name() == "pigpiod.py":
                 proc.kill()
+
     except:
         pi_right.bb_serial_read_close(rightLidarPin)
         pi_right.stop()
