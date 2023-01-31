@@ -11,7 +11,7 @@ if __name__ == '__main__':
   try:
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
         t1 = threading.Thread(target=Test)
-        t2 = threading.Thread(target=Sensor.getTFminiData2)
+        t2 = threading.Thread(target=Sensor.getTFminiData2())
         t22 = threading.Thread(target=Sensor.getTFminiData22)
         tWPS = threading.Thread(target=Sensor.WPSData)
 
