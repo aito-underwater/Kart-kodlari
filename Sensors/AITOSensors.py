@@ -111,7 +111,7 @@ def getFrontLidarData():
                     if checksum == recv[i + 8]:
                         distance = recv[i + 2] + recv[i + 3] * 256
                         strength = recv[i + 4] + recv[i + 5] * 256
-
+                        print("e32we")
                         return distance
 
 
