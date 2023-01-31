@@ -325,7 +325,7 @@ def BMEData():
         myTable.add_row(["Pressure hPa", pressure])
         myTable.add_row(["Humidity %", humidity])
         print(myTable)
-
+      print("Hiii")
       if __name__=="__main__":
          main()
 
@@ -349,7 +349,6 @@ if __name__ == '__main__':
         t22.join()
         tWPS.join()
         tMPU.join()
-
         tBME.join()
         print("sdasdasd")
   except KeyboardInterrupt:
