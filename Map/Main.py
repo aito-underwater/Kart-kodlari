@@ -33,35 +33,35 @@ if __name__ == '__main__':
         tMPU.join()
         tBME.join()
 
-        (chip_id, chip_version) = Sensor.BMEData().readBME280ID()
-
-        temperature, pressure, humidity = Sensor.BMEData().readBME280All()
-        Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
-        MOVE_CURSOR_UP = "\033[1A"
-        ERASE = "\x1b[2K"
-
-        myTable = PrettyTable(["Sensor Name:", "Value"])
-        myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
-        myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
-        myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
-        myTable.add_row(["Gyro Gx", Gx])
-        myTable.add_row(["Gyro Gy", Gy])
-        myTable.add_row(["Gyro Gz", Gz])
-        myTable.add_row(["Gyro Ax", Ax])
-        myTable.add_row(["Gyro Ay", Ay])
-        myTable.add_row(["Gyro Az", Az])
-        myTable.add_row(["Bar", Sensor.WPSData()])
-        myTable.add_row(["Temperature C", temperature])
-        myTable.add_row(["Pressure hPa", pressure])
-        myTable.add_row(["Humidity %", humidity])
-        print(myTable)
-
     except KeyboardInterrupt:
-    for proc in psutil.process_iter():
+        for proc in psutil.process_iter():
 
-        if proc.name() == "pigpiod.py":
-            proc.kill()
-except:
-print("-------------------------------------------------")
-print(">>>>>>>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<")
-print("-------------------------------------------------")
+            if proc.name() == "pigpiod.py":
+                proc.kill()
+    except:
+        print("-------------------------------------------------")
+        print(">>>>>>>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<")
+        print("-------------------------------------------------")
+
+(chip_id, chip_version) = Sensor.BMEData().readBME280ID()
+
+temperature, pressure, humidity = Sensor.BMEData().readBME280All()
+Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
+MOVE_CURSOR_UP = "\033[1A"
+ERASE = "\x1b[2K"
+
+myTable = PrettyTable(["Sensor Name:", "Value"])
+myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
+myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
+myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
+myTable.add_row(["Gyro Gx", Gx])
+myTable.add_row(["Gyro Gy", Gy])
+myTable.add_row(["Gyro Gz", Gz])
+myTable.add_row(["Gyro Ax", Ax])
+myTable.add_row(["Gyro Ay", Ay])
+myTable.add_row(["Gyro Az", Az])
+myTable.add_row(["Bar", Sensor.WPSData()])
+myTable.add_row(["Temperature C", temperature])
+myTable.add_row(["Pressure hPa", pressure])
+myTable.add_row(["Humidity %", humidity])
+print(myTable)
