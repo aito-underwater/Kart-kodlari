@@ -4,6 +4,7 @@ import threading
 import psutil
 
 
+print("asdsadad")
 if __name__ == '__main__':
   try:
         t1 = threading.Thread(target=Sensor.getTFminiData1)
@@ -39,3 +40,5 @@ if __name__ == '__main__':
     print("-------------------------------------------------")
     print(">>>>>>>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<")
     print("-------------------------------------------------")
+
+print("2345")
