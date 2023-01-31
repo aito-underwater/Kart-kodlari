@@ -349,6 +349,7 @@ if __name__ == '__main__':
         t22.join()
         tWPS.join()
         tMPU.join()
+        print("sdasdasd")
         tBME.join()
 
   except KeyboardInterrupt:
