@@ -324,7 +324,7 @@ def BMEData():
 
 
 
-def startSensors():
+if __name__ == '__main__':
     try:
         t1 = threading.Thread(target=getRightLidarData)
         print("1")
