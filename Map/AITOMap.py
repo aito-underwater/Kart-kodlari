@@ -1,6 +1,7 @@
 import sys
 import pigpio
 import psutil
+import threading
 
 sys.path.append('../../Kart-kodlari')
 import Sensors.AITOSensors as sensors
@@ -97,12 +98,12 @@ mapper.transform.rotation.X = 1
 
 if __name__ == '__main__':
   try:
-        t1 = threading.Thread(target=getTFminiData1)
-        t2 = threading.Thread(target=getTFminiData2)
-        t22 = threading.Thread(target=getTFminiData22)
-        tWPS = threading.Thread(target=WPSData)
-        tMPU = threading.Thread(target=MPUData)
-        tBME = threading.Thread(target=BMEData)
+        t1 = threading.Thread(target=sensors.getTFminiData1)
+        t2 = threading.Thread(target=sensors.getTFminiData2)
+        t22 = threading.Thread(target=sensors.getTFminiData22)
+        tWPS = threading.Thread(target=sensors.WPSData)
+        tMPU = threading.Thread(target=sensors.MPUData)
+        tBME = threading.Thread(target=sensors.BMEData)
         t1.start()
         t2.start()
         t22.start()
