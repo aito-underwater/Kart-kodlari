@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 ## -*- coding: utf-8 -*
+
 import threading
 import time
 from ctypes import c_short
@@ -10,17 +11,33 @@ import psutil
 import smbus
 from prettytable import PrettyTable
 
+pigpio.exceptions = False
+
 adc = Adafruit_ADS1x15.ADS1115(address=0x48, busnum=1)
 
 DEVICE = 0x76  # Default device I2C address
 
 bus = smbus.SMBus(1)
 
-RX = 23
-pigpio.exceptions = False
-pi = pigpio.pi()
-pi.set_mode(RX, pigpio.INPUT)
-pi.bb_serial_read_open(RX, 115200)
+# Set up lidars Setting
+
+rightLidarPin = 23
+
+pi_right = pigpio.pi()
+pi_right.set_mode(rightLidarPin, pigpio.INPUT)
+pi_right.bb_serial_read_open(rightLidarPin, 115200)
+
+leftLidarPin = 24
+
+pi_left = pigpio.pi()
+pi_left.set_mode(leftLidarPin, pigpio.INPUT)
+pi_left.bb_serial_read_open(leftLidarPin, 115200)
+
+forwardLidarPin = 22
+
+pi_forward = pigpio.pi()
+pi_forward.set_mode(forwardLidarPin, pigpio.INPUT)
+pi_forward.bb_serial_read_open(forwardLidarPin, 115200)
 
 PWR_MGMT_1 = 0x6B
 SMPLRT_DIV = 0x19
@@ -35,11 +52,12 @@ GYRO_YOUT_H = 0x45
 GYRO_ZOUT_H = 0x47
 
 
-def getTFminiData1():
+# Get TFmini Data on right
+def getRightLidarData():
     while True:
 
         time.sleep(0.1)  # change the value if needed
-        (count, recv) = pi.bb_serial_read(RX)
+        (count, recv) = pi_right.bb_serial_read(rightLidarPin)
 
         if count > 8:
             for i in range(0, count - 9):
@@ -55,18 +73,12 @@ def getTFminiData1():
                         return distance
 
 
-RX2 = 24
-pigpio.exceptions = False
-pi2 = pigpio.pi()
-pi2.set_mode(RX2, pigpio.INPUT)
-pi2.bb_serial_read_open(RX2, 115200)
-
-
-def getTFminiData2():
+# Get TFmini Data on left
+def getLeftLidarData():
     while True:
 
         time.sleep(0.1)
-        (count, recv) = pi2.bb_serial_read(RX2)
+        (count, recv) = pi_left.bb_serial_read(leftLidarPin)
 
         if count > 8:
             for i in range(0, count - 9):
@@ -82,18 +94,12 @@ def getTFminiData2():
                         return distance
 
 
-RX22 = 22
-pigpio.exceptions = False
-pi22 = pigpio.pi()
-pi22.set_mode(RX22, pigpio.INPUT)
-pi22.bb_serial_read_open(RX22, 115200)
-
-
-def getTFminiData22():
+# get MegaLidar Data on front
+def getFrontLidarData():
     while True:
 
         time.sleep(0.1)
-        (count, recv) = pi22.bb_serial_read(RX22)
+        (count, recv) = pi_forward.bb_serial_read(forwardLidarPin)
 
         if count > 8:
             for i in range(0, count - 9):
@@ -249,7 +255,7 @@ def BMEData():
             dig_H6 = getChar(cal3, 6)
 
             wait_time = 1.25 + (2.3 * OVERSAMPLE_TEMP) + ((2.3 * OVERSAMPLE_PRES) + 0.575) + (
-                        (2.3 * OVERSAMPLE_HUM) + 0.575)
+                    (2.3 * OVERSAMPLE_HUM) + 0.575)
             time.sleep(wait_time / 1000)
 
             data = bus.read_i2c_block_data(addr, REG_DATA, 8)
@@ -279,7 +285,7 @@ def BMEData():
 
             humidity = t_fine - 76800.0
             humidity = (hum_raw - (dig_H4 * 64.0 + dig_H5 / 16384.0 * humidity)) * (dig_H2 / 65536.0 * (
-                        1.0 + dig_H6 / 67108864.0 * humidity * (1.0 + dig_H3 / 67108864.0 * humidity)))
+                    1.0 + dig_H6 / 67108864.0 * humidity * (1.0 + dig_H3 / 67108864.0 * humidity)))
             humidity = humidity * (1.0 - dig_H1 * humidity / 524288.0)
             if humidity > 100:
                 humidity = 100
@@ -298,9 +304,9 @@ def BMEData():
             ERASE = "\x1b[2K"
 
             myTable = PrettyTable(["Sensor Name:", "Value"])
-            myTable.add_row(["Lidar1 cm", getTFminiData2()])
-            myTable.add_row(["Lidar2 cm", getTFminiData1()])
-            myTable.add_row(["Lidar3 cm", getTFminiData22()])
+            myTable.add_row(["Lidar1 cm", getLeftLidarData()])
+            myTable.add_row(["Lidar2 cm", getRightLidarData()])
+            myTable.add_row(["Lidar3 cm", getFrontLidarData()])
             myTable.add_row(["Gyro Gx", Gx])
             myTable.add_row(["Gyro Gy", Gy])
             myTable.add_row(["Gyro Gz", Gz])
@@ -312,36 +318,60 @@ def BMEData():
             myTable.add_row(["Pressure hPa", pressure])
             myTable.add_row(["Humidity %", humidity])
             print(myTable)
+            if __name__ == '__main__':
+                main()
 
-        if __name__ == "__main__":
-            main()
 
 
-try:
-    t1 = threading.Thread(target=getTFminiData1)
-    t2 = threading.Thread(target=getTFminiData2)
-    t22 = threading.Thread(target=getTFminiData22)
-    tWPS = threading.Thread(target=WPSData)
-    tMPU = threading.Thread(target=MPUData)
-    tBME = threading.Thread(target=BMEData)
-    t1.start()
-    t2.start()
-    t22.start()
-    tWPS.start()
-    tMPU.start()
-    tBME.start()
-    t1.join()
-    t2.join()
-    t22.join()
-    tWPS.join()
-    tMPU.join()
-    tBME.join()
 
-except KeyboardInterrupt:
-    for proc in psutil.process_iter():
+if __name__ == '__main__':
+    try:
+        t1 = threading.Thread(target=getRightLidarData)
+        print("1")
+        t2 = threading.Thread(target=getLeftLidarData)
+        print("2")
+        t22 = threading.Thread(target=getFrontLidarData)
+        print("3")
+        tWPS = threading.Thread(target=WPSData)
+        print("4")
+        tMPU = threading.Thread(target=MPUData)
+        print("5")
+        tBME = threading.Thread(target=BMEData)
+        print("6")
+        t1.start()
+        print("7")
+        t2.start()
+        print("8")
+        t22.start()
+        print("9")
+        tWPS.start()
 
-        if proc.name() == "pigpiod.py":
-            proc.kill()
-except:
-    pi.bb_serial_read_close(RX)
-    pi.stop()
+        print("10")
+        tMPU.start()
+        print("11")
+        tBME.start()
+        print("12")
+        t1.join()
+        print("13")
+        t2.join()
+        print("14")
+        t22.join4()
+        print("15")
+        tWPS.join()
+        print("16")
+        tMPU.join()
+        print("17")
+        tBME.join()
+        print("18")
+
+
+    except KeyboardInterrupt:
+        for proc in psutil.process_iter():
+
+            if proc.name() == "pigpiod.py":
+                proc.kill()
+
+    except:
+        pi_right.bb_serial_read_close(rightLidarPin)
+        pi_right.stop()
+
