@@ -86,7 +86,9 @@ mapper = AITOMap()
 
 mapper.transform.rotation.X = 1
 
+
 # run sensors
+print("Initial Sensors...")
 sensors.startSensors()
 
 while True:
