@@ -317,7 +317,7 @@ def BMEData():
 def getAllSensorData():
     (chip_id, chip_version) = BMEData.readBME280ID()
 
-    temperature, pressure, humidity = BMEData.readBME280All()
+    temperature, pressure, humidity = BMEData().readBME280All()
     Gx, Gy, Gz, Ax, Ay, Az = MPUData()
     MOVE_CURSOR_UP = "\033[1A"
     ERASE = "\x1b[2K"
