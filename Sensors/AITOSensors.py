@@ -330,7 +330,7 @@ def BMEData():
          main()
 
 
-def startSensors():
+if __name__ == '__main__':
   try:
         t1 = threading.Thread(target=getTFminiData1)
         t2 = threading.Thread(target=getTFminiData2)
