@@ -329,7 +329,7 @@ def BMEData():
 
 if __name__ == '__main__':
   try:
-        t1 = threading.Thread(target=Sensor.getTFminiData1)
+        t1 = threading.Thread(target=getTFminiData1)
         # t1 = threading.Thread(target=Test)
         t2 = threading.Thread(target=getTFminiData2)
         t22 = threading.Thread(target=getTFminiData22)
@@ -365,5 +365,3 @@ if __name__ == '__main__':
     print("-------------------------------------------------")
     print(">>>>>>>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<")
     print("-------------------------------------------------")
-
-print("2345")
