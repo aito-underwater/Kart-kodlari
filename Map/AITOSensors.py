@@ -381,7 +381,7 @@ from prettytable import PrettyTable
 
 pigpio.exceptions = False
 
-print("asdasd")
+
 adc = Adafruit_ADS1x15.ADS1115(address=0x48, busnum=1)
 
 DEVICE = 0x76  # Default device I2C address
@@ -692,7 +692,7 @@ def BMEData():
             main()
 
 
-def startSensors():
+if __name__ == "__main__":
     try:
         t1 = threading.Thread(target=getRightLidarData)
         t2 = threading.Thread(target=getLeftLidarData)
