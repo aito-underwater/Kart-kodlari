@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 ## -*- coding: utf-8 -*
-import psutil
+
 import pigpio
 import time
 from time import sleep
-import threading
+
 import smbus
 from ctypes import c_short
 from ctypes import c_byte
@@ -330,32 +330,3 @@ def BMEData():
          main()
 
 
-if __name__ == '__main__':
-  try:
-        t1 = threading.Thread(target=getTFminiData1)
-        t2 = threading.Thread(target=getTFminiData2)
-        t22 = threading.Thread(target=getTFminiData22)
-        tWPS = threading.Thread(target=WPSData)
-        tMPU = threading.Thread(target=MPUData)
-        tBME = threading.Thread(target=BMEData)
-        t1.start()
-        t2.start()
-        t22.start()
-        tWPS.start()
-        tMPU.start()
-        tBME.start()
-        t1.join()
-        t2.join()
-        t22.join()
-        tWPS.join()
-        tMPU.join()
-        tBME.join()
-
-  except KeyboardInterrupt:
-    for proc in psutil.process_iter():
-
-      if proc.name() == "pigpiod.py":
-         proc.kill()
-  except:
-    pi.bb_serial_read_close(RX)
-    pi.stop()
