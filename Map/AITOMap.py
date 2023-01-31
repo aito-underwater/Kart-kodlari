@@ -1,3 +1,8 @@
+import sys
+
+sys.path.append('../../Kart-kodlari')
+import Sensors.AITOSensors as sensors
+
 import math
 
 
@@ -11,6 +16,7 @@ class Vector3:
 class Device:
     def __init__(self):
         self.position = Vector3()
+
         self.rotation = Vector3()
 
 
@@ -32,14 +38,18 @@ class AITOMap:
         pass
 
     def GetSensorsData(self):  # Read Sensor Data
+
         # Getting Lidar Sensors Data
-        self.lidarRight = 1
-        self.lidarLeft = 1
-        self.lidarForward = 1
+        self.lidarRight = sensors.getRightLidarData()
+        self.lidarLeft = sensors.getLeftLidarData()
+        self.lidarForward = sensors.getFrontLidarData()
+
         # Getting rotation of device
-        self.transform.rotationX = 90
-        self.transform.rotationY = 90
-        self.transform.rotationZ = 0
+        Gx, Gy, Gz, Ax, Ay, Az = sensors.MPUData()
+        self.transform.rotation.X += Gx
+        self.transform.rotation.Y += Gy
+        self.transform.rotation.Z += Gz
+
         # Getting target coordinate on camera
         cameraX = 30
         cameraY = 30
@@ -52,9 +62,7 @@ class AITOMap:
 
     def CalculateCurrentPosition(self):
 
-        # self.map[self.mapW]
-
-        if (self.transform.rotationY > 0 and self.transform.rotationY < 90):
+        if self.transform.rotation.Y > 0 and self.transform.rotation.Y < 90:
             # Calculate for Y axis
             self.transform.position.Y = math.cos(self.transform.rotation.Y) * self.lidarForward
             # Calculate for X axis
@@ -64,27 +72,26 @@ class AITOMap:
                         self.transform.rotation.Y) * self.lidarRight < 0.01:
                     self.transform.position.X = math.cos(self.transform.rotation.Y) * self.lidarLeft
 
-
-        elif (self.transform.rotationY > 90 and self.transform.rotationY < 180):
+        elif (self.transform.rotation.Y > 90 and self.transform.rotation.Y < 180):
             pass
-        elif (self.transform.rotationY > 180 and self.transform.rotationY < 270):
+        elif (self.transform.rotation.Y > 180 and self.transform.rotation.Y < 270):
             pass
-        elif (self.transform.rotationY > 270 and self.transform.rotationY < 360):
-            self.transform.transform.position.X = math.cos(self.transform.rotation.X) * self.lidarForward
-
+        elif (self.transform.rotation.Y > 270 and self.transform.rotation.Y < 360):
+            self.transform.position.X = math.cos(self.transform.rotation.X) * self.lidarForward
             pass
 
 
-mapper1 = AITOMap()
+mapper = AITOMap()
 
-mapper2 = AITOMap()
 
-mapper1.transform.rotation.X = 1
-mapper2.transform.rotation.X = 2
+mapper.transform.rotation.X = 1
+
+# run sensors
+sensors.startSensors()
 
 while True:
-    # print(mapper1.transform.rotation.X)
-    # print(mapper2.transform.rotation.X)
+    mapper.GetSensorsData()
+    print(mapper.transform.rotation)
 
     pass
 print("I am not gonna die")
