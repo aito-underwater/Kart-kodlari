@@ -325,9 +325,13 @@ def BMEData():
 def startSensors():
     try:
         t1 = threading.Thread(target=getRightLidarData)
+        print("1")
         t2 = threading.Thread(target=getLeftLidarData)
+        print("2")
         t22 = threading.Thread(target=getFrontLidarData)
+        print("3")
         tWPS = threading.Thread(target=WPSData)
+        print("4")
         tMPU = threading.Thread(target=MPUData)
         tBME = threading.Thread(target=BMEData)
         t1.start()
