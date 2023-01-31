@@ -1,5 +1,5 @@
-
-
+import threading
+import psutil
 import pigpio
 import time
 from time import sleep
@@ -325,7 +325,45 @@ def BMEData():
         myTable.add_row(["Humidity %", humidity])
         print(myTable)
 
-      
 
 
-print("Sensor")
+if __name__ == '__main__':
+  try:
+        t1 = threading.Thread(target=Sensor.getTFminiData1)
+        # t1 = threading.Thread(target=Test)
+        t2 = threading.Thread(target=getTFminiData2)
+        t22 = threading.Thread(target=getTFminiData22)
+        tWPS = threading.Thread(target=WPSData)
+
+        tMPU = threading.Thread(target=MPUData)
+        tBME = threading.Thread(target=BMEData)
+        t1.start()
+        t2.start()
+        t22.start()
+        tWPS.start()
+        tMPU.start()
+        tBME.start()
+        print("asdsadad2")
+        t1.join()
+        print("dasdsad")
+        t2.join()
+        print("1")
+        t22.join()
+        print("2")
+        tWPS.join()
+        print("3")
+        tMPU.join()
+        print("4")
+        tBME.join()
+
+  except KeyboardInterrupt:
+    for proc in psutil.process_iter():
+
+      if proc.name() == "pigpiod.py":
+         proc.kill()
+  except:
+    print("-------------------------------------------------")
+    print(">>>>>>>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<")
+    print("-------------------------------------------------")
+
+print("2345")
