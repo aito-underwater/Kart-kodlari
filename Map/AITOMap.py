@@ -38,17 +38,17 @@ class AITOMap:
         pass
 
     def GetSensorsData(self):  # Read Sensor Data
-
-        # Getting Lidar Sensors Data
-        self.lidarRight = sensors.getRightLidarData()
-        self.lidarLeft = sensors.getLeftLidarData()
-        self.lidarForward = sensors.getFrontLidarData()
-
-        # Getting rotation of device
-        Gx, Gy, Gz, Ax, Ay, Az = sensors.MPUData()
-        self.transform.rotation.X += Gx
-        self.transform.rotation.Y += Gy
-        self.transform.rotation.Z += Gz
+        #
+        # # Getting Lidar Sensors Data
+        # self.lidarRight = sensors.getRightLidarData()
+        # self.lidarLeft = sensors.getLeftLidarData()
+        # self.lidarForward = sensors.getFrontLidarData()
+        #
+        # # Getting rotation of device
+        # Gx, Gy, Gz, Ax, Ay, Az = sensors.MPUData()
+        # self.transform.rotation.X += Gx
+        # self.transform.rotation.Y += Gy
+        # self.transform.rotation.Z += Gz
 
         # Getting target coordinate on camera
         cameraX = 30
