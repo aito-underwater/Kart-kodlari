@@ -352,7 +352,7 @@ def startSensors():
         t1.join()
         print("13")
         t2.join()
-        print("1")
+        print("14")
         t22.join4()
         print("15")
         tWPS.join()
@@ -372,3 +372,6 @@ def startSensors():
     except:
         pi_right.bb_serial_read_close(rightLidarPin)
         pi_right.stop()
+
+if __name__ == '__main__':
+    getRightLidarData.main()
