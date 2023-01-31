@@ -325,8 +325,7 @@ def BMEData():
         myTable.add_row(["Humidity %", humidity])
         print(myTable)
 
-      if __name__=="__main__":
-         main()
+      
 
 
 print("Sensor")
