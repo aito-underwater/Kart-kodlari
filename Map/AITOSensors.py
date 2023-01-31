@@ -373,7 +373,6 @@
 import threading
 import time
 from ctypes import c_short
-
 import Adafruit_ADS1x15
 import pigpio
 import psutil
@@ -711,6 +710,7 @@ def startSensors():
         t22.join()
         tWPS.join()
         tMPU.join()
+        print("sadas")
         tBME.join()
 
     except KeyboardInterrupt:
