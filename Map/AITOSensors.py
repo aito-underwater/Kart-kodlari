@@ -349,9 +349,9 @@ if __name__ == '__main__':
         t22.join()
         tWPS.join()
         tMPU.join()
-        print("sdasdasd")
-        tBME.join()
 
+        tBME.join()
+        print("sdasdasd")
   except KeyboardInterrupt:
     for proc in psutil.process_iter():
 
