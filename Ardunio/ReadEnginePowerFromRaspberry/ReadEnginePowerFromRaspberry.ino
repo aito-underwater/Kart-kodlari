@@ -1,11 +1,4 @@
-/*
-Program: Receive Strings From Raspberry Pi
-File: receive_string_from_raspberrypi.ino
-Description: Receive strings from a Raspberry Pi
-Author: Addison Sears-Collins
-Website: https://automaticaddison.com
-Date: July 5, 2020
-*/
+
 #include <Servo.h>
 
 // <------------ Engines params ------------> //
@@ -45,9 +38,6 @@ void setup(){
   engines[4].attach(MOTOR_PIN4);
   engines[5].attach(MOTOR_PIN5);
 
-
-
-   
 }
  
 void loop(){
@@ -107,7 +97,6 @@ void ChangeEngineSpeed( Servo* engine, int power)
 {
   // engine->writeMicroseconds(power /* *parameters*/);
   engine->writeMicroseconds(1400);
-
 }
 
 

@@ -99,15 +99,7 @@ Serial.println(engines[3].attached());
 Serial.println(engines[4].attached());
 Serial.println(engines[5].attached());
 
-  // engines[0].writeMicroseconds(1700);
-  // engines[1].writeMicroseconds(1700);
-  // engines[2].writeMicroseconds(1700);
-  // engines[3].writeMicroseconds(1700);
-  // engines[4].writeMicroseconds(1700);
-  // engines[5].writeMicroseconds(1700);
-
-
-  
+ 
     if (count < 5) {  // 1
       engines[0].writeMicroseconds(1700);
       engines[1].writeMicroseconds(1300);
