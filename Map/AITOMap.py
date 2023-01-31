@@ -1,6 +1,3 @@
-import sys
-
-sys.path.append('../../Kart-kodlari')
 
 import math
 
