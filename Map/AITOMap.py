@@ -1,18 +1,9 @@
 import sys
-import pigpio
-import psutil
-import threading
 
 sys.path.append('../../Kart-kodlari')
-import Sensors.AITOSensors as sensors
 
 import math
 
-RX = 23
-pigpio.exceptions = False
-pi = pigpio.pi()
-pi.set_mode(RX, pigpio.INPUT)
-pi.bb_serial_read_open(RX, 115200)
 
 class Vector3:
     def __init__(self):
@@ -96,40 +87,9 @@ mapper.transform.rotation.X = 1
 
 
 
-if __name__ == '__main__':
-  try:
-        t1 = threading.Thread(target=sensors.getTFminiData1)
-        t2 = threading.Thread(target=sensors.getTFminiData2)
-        t22 = threading.Thread(target=sensors.getTFminiData22)
-        tWPS = threading.Thread(target=sensors.WPSData)
-        tMPU = threading.Thread(target=sensors.MPUData)
-        tBME = threading.Thread(target=sensors.BMEData)
-        t1.start()
-        t2.start()
-        t22.start()
-        tWPS.start()
-        tMPU.start()
-        tBME.start()
-        t1.join()
-        t2.join()
-        t22.join()
-        tWPS.join()
-        tMPU.join()
-        tBME.join()
+while True:
+    mapper.GetSensorsData()
+ #   print(mapper.transform.rotation)
 
-  except KeyboardInterrupt:
-    for proc in psutil.process_iter():
-
-      if proc.name() == "pigpiod.py":
-         proc.kill()
-  except:
-    pi.bb_serial_read_close(RX)
-    pi.stop()
-
-
-# while True:
-#     mapper.GetSensorsData()
-#  #   print(mapper.transform.rotation)
-#
-#     pass
-# print("I am not gonna die")
+    pass
+print("I am not gonna die")
