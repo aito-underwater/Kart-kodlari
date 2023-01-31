@@ -88,9 +88,9 @@ mapper.transform.rotation.X = 1
 
 
 # run sensors
-print("Initial Sensors...")
+print("Initialing Sensors...")
 sensors.startSensors()
-
+print("Initialed Sensors...")
 while True:
     mapper.GetSensorsData()
     print(mapper.transform.rotation)
