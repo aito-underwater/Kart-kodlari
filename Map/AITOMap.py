@@ -87,9 +87,9 @@ mapper.transform.rotation.X = 1
 
 
 
-while True:
-    mapper.GetSensorsData()
- #   print(mapper.transform.rotation)
+# while True:
+#     mapper.GetSensorsData()
+#  #   print(mapper.transform.rotation)
 
-    pass
+
 print("I am not gonna die")
