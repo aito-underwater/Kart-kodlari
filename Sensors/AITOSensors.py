@@ -318,6 +318,8 @@ def BMEData():
             myTable.add_row(["Pressure hPa", pressure])
             myTable.add_row(["Humidity %", humidity])
             print(myTable)
+            if __name__ == '__main__':
+                main()
 
 
 
@@ -373,5 +375,3 @@ def startSensors():
         pi_right.bb_serial_read_close(rightLidarPin)
         pi_right.stop()
 
-if __name__ == '__main__':
-    getRightLidarData.main()
