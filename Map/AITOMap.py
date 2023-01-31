@@ -88,12 +88,14 @@ mapper.transform.rotation.X = 1
 
 
 # run sensors
-print("Initialing Sensors...")
-sensors.startSensors()
-print("Initialed Sensors...")
-while True:
-    mapper.GetSensorsData()
-    print(mapper.transform.rotation)
+if __name__ == "__main__":
+    print("Initialing Sensors...")
 
-    pass
+    sensors.startSensors()
+    print("Initialed Sensors...")
+# while True:
+#     mapper.GetSensorsData()
+#     print(mapper.transform.rotation)
+#     pass
+
 print("I am not gonna die")
