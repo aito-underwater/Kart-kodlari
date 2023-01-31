@@ -381,6 +381,7 @@ from prettytable import PrettyTable
 
 pigpio.exceptions = False
 
+print("asdasd")
 adc = Adafruit_ADS1x15.ADS1115(address=0x48, busnum=1)
 
 DEVICE = 0x76  # Default device I2C address
