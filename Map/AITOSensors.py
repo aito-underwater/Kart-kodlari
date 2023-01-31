@@ -311,7 +311,7 @@ def BMEData():
             myTable.add_row(["Humidity %", humidity])
             print(myTable)
 
-        main()
+
 
 
 def getAllSensorData():
