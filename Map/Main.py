@@ -8,10 +8,11 @@ import psutil
 if __name__ == '__main__':
   try:
         t1 = threading.Thread(target=Sensor.getTFminiData1)
-        print("asdsadad")
+
         t2 = threading.Thread(target=Sensor.getTFminiData2)
         t22 = threading.Thread(target=Sensor.getTFminiData22)
         tWPS = threading.Thread(target=Sensor.WPSData)
+        print("asdsadad")
         tMPU = threading.Thread(target=Sensor.MPUData)
         tBME = threading.Thread(target=Sensor.BMEData)
         t1.start()
