@@ -26,14 +26,13 @@ if __name__ == '__main__':
         tWPS.start()
         tMPU.start()
         tBME.start()
-        # allOfData.start()
         t1.join()
         t2.join()
         t22.join()
         tWPS.join()
         tMPU.join()
         tBME.join()
-        # allOfData.join()
+
 
     except KeyboardInterrupt:
         for proc in psutil.process_iter():
