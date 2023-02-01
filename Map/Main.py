@@ -9,20 +9,23 @@ import AITOSensors as Sensor
 
 def main():
     while True:
+        temperature, pressure, humidity = Sensor.readBME280All()
+        Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
+
         myTable = PrettyTable(["Sensor Name:", "Value"])
         myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
         myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
         myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
-        myTable.add_row(["Gyro Gx", 1])
-        myTable.add_row(["Gyro Gy", 2])
-        myTable.add_row(["Gyro Gz", 3])
-        myTable.add_row(["Gyro Ax", 4])
-        myTable.add_row(["Gyro Ay", 5])
-        myTable.add_row(["Gyro Az", 6])
+        myTable.add_row(["Gyro Gx", Gx])
+        myTable.add_row(["Gyro Gy", Gy])
+        myTable.add_row(["Gyro Gz", Gz])
+        myTable.add_row(["Gyro Ax", Ax])
+        myTable.add_row(["Gyro Ay", Ay])
+        myTable.add_row(["Gyro Az", Az])
         myTable.add_row(["Bar", Sensor.WPSData()])
-        myTable.add_row(["Temperature C", 12])
-        myTable.add_row(["Pressure hPa", 12])
-        myTable.add_row(["Humidity %", 12])
+        myTable.add_row(["Temperature C", temperature])
+        myTable.add_row(["Pressure hPa", pressure])
+        myTable.add_row(["Humidity %", humidity])
         print(myTable)
 
 
