@@ -12,8 +12,7 @@ import AITOSensors as Sensor
 import BigPoolEnginPower
 
 filename = 'test.xlsx'
-wb = load_workbook(filename)
-file = wb.active
+
 
 
 def main():
