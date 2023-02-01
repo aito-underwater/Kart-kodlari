@@ -8,21 +8,22 @@ import AITOSensors as Sensor
 
 
 def main():
-    myTable = PrettyTable(["Sensor Name:", "Value"])
-    myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
-    myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
-    myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
-    myTable.add_row(["Gyro Gx", 1])
-    myTable.add_row(["Gyro Gy", 2])
-    myTable.add_row(["Gyro Gz", 3])
-    myTable.add_row(["Gyro Ax", 4])
-    myTable.add_row(["Gyro Ay", 5])
-    myTable.add_row(["Gyro Az", 6])
-    myTable.add_row(["Bar", Sensor.WPSData()])
-    myTable.add_row(["Temperature C", 12])
-    myTable.add_row(["Pressure hPa", 12])
-    myTable.add_row(["Humidity %", 12])
-    print(myTable)
+    while True:
+        myTable = PrettyTable(["Sensor Name:", "Value"])
+        myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
+        myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
+        myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
+        myTable.add_row(["Gyro Gx", 1])
+        myTable.add_row(["Gyro Gy", 2])
+        myTable.add_row(["Gyro Gz", 3])
+        myTable.add_row(["Gyro Ax", 4])
+        myTable.add_row(["Gyro Ay", 5])
+        myTable.add_row(["Gyro Az", 6])
+        myTable.add_row(["Bar", Sensor.WPSData()])
+        myTable.add_row(["Temperature C", 12])
+        myTable.add_row(["Pressure hPa", 12])
+        myTable.add_row(["Humidity %", 12])
+        print(myTable)
 
 
 if __name__ == '__main__':
