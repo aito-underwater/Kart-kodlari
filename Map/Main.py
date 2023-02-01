@@ -7,7 +7,7 @@ import numpy as np
 import psutil
 import serial  # Module needed for serial communication
 from prettytable import PrettyTable
-
+import pandas as pd
 import AITOSensors as Sensor
 import BigPoolEnginPower
 
@@ -47,14 +47,6 @@ def main():
         # myTable.add_row(["Humidity %", humidity])
 
 
-        # send_float = np.array(
-        #     [random.randint(-100, 100),
-        #      random.randint(-100, 100),
-        #      random.randint(-100, 100),
-        #      random.randint(-100, 100),
-        #      random.randint(-100, 100),
-        #      random.randint(-100, 100)])
-
         runningTime = round(time.time() - timer, 2)
         if(runningTime >60):
             timer = time.time()
@@ -92,7 +84,7 @@ def main():
         count = count + 1
         print(receive_string)
         print("----" + str(count) + "----")
-        file.append(["data"])
+        pd.DataFrame(myTable).to_excel('test.xlsx', sheet_name='HavuzTesti')
 
 
 
