@@ -13,7 +13,7 @@ import AITOSensors as Sensor
 import BigPoolEnginPower
 
 my_file = open("data.csv", "a")
-# my_file.seek(0, os.SEEK_END)
+my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
 def main():
@@ -86,7 +86,9 @@ def main():
         cvs_writer.writerow([Sensor.getTFminiData2(),
                              Sensor.getTFminiData1(),
                              Sensor.getTFminiData22(),
-                             Gx, Gy, Gz, Ax, Ay, Az, send_float[0],
+                             Gx, Gy, Gz,
+                             Ax, Ay, Az,
+                             send_float[0],
                              send_float[1],
                              send_float[2],
                              send_float[3],
