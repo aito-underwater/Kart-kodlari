@@ -85,7 +85,7 @@ def main():
                       send_float[2],
                       send_float[3],
                       send_float[4],
-                      send_float[5]]).to_excel('test.xlsx', index=False)
+                      send_float[5]]).to_excel('test.xlsx', index= runningTime )
 
 
 if __name__ == '__main__':
