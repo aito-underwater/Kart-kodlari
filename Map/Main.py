@@ -11,6 +11,10 @@ from prettytable import PrettyTable
 import AITOSensors as Sensor
 import BigPoolEnginPower
 
+filename = 'test.xlsx'
+wb = load_workbook(filename)
+file = wb.active
+
 
 def main():
     # Set USB Port for serial communication
@@ -21,9 +25,6 @@ def main():
     send_binary = ''
 
     timer = time.time()
-    filename = 'test.xlsx'
-    wb = load_workbook(filename)
-    file = wb.active
 
 
     while True:
@@ -92,7 +93,7 @@ def main():
         print(receive_string)
         print("----" + str(count) + "----")
         file.append(["data"])
-       # wb.save(filename=filename)
+
 
 
 
@@ -129,7 +130,9 @@ if __name__ == '__main__':
 
             if proc.name() == "pigpiod.py":
                 proc.kill()
+                wb.save(filename=filename)
                 sys.exit()
+
     except:
         print("-------------------------------------------------")
         print(">>>>>>>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<")
