@@ -9,7 +9,7 @@ import AITOSensors as Sensor
 
 def main():
     while True:
-        temperature, pressure, humidity = Sensor.readBME280All()
+        temperature, pressure, humidity = Sensor.BMEData().readBME280All()
         Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 
         myTable = PrettyTable(["Sensor Name:", "Value"])
