@@ -43,13 +43,15 @@ if __name__ == '__main__':
         tWPS.start()
         tMPU.start()
         tBME.start()
+        main.start()
         t1.join()
         t2.join()
         t22.join()
+        main.start()
         tWPS.join()
         tMPU.join()
         tBME.join()
-
+        main.join()
 
     except KeyboardInterrupt:
         for proc in psutil.process_iter():
