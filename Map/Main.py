@@ -92,8 +92,9 @@ def main():
         print(receive_string)
         print("----" + str(count) + "----")
         file.append(["data"])
+        wb.save(filename=filename)
 
-    wb.save(filename=filename)
+
 
 if __name__ == '__main__':
     try:
