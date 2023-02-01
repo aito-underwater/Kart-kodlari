@@ -338,3 +338,4 @@ def getAllSensorData():
         myTable.add_row(["Pressure hPa", pressure])
         myTable.add_row(["Humidity %", humidity])
         print(myTable)
+    getAllSensorData
