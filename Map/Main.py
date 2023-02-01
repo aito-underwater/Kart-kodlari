@@ -83,7 +83,7 @@ def main():
         count = count + 1
         print(receive_string)
         print("----" + str(count) + "----")
-        pd.DataFrame(myTable).to_excel('test.xlsx', sheet_name='HavuzTesti')
+        pd.DataFrame(myTable).to_excel('test.xlsx', index=False)
 
 
 
@@ -121,7 +121,6 @@ if __name__ == '__main__':
 
             if proc.name() == "pigpiod.py":
                 proc.kill()
-                wb.save(filename=filename)
                 sys.exit()
 
     except:
