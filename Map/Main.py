@@ -12,9 +12,9 @@ from prettytable import PrettyTable
 import AITOSensors as Sensor
 import BigPoolEnginPower
 
-my_file = open("data.csv", "ab")
-my_file.seek(0, os.SEEK_END)
-
+my_file = open("data.csv", "a")
+# my_file.seek(0, os.SEEK_END)
+cvs_writer = csv.writer(my_file)
 
 def main():
     # Set USB Port for serial communication
@@ -82,7 +82,7 @@ def main():
         count = count + 1
         print(receive_string)
         print("----" + str(count) + "----")
-        cvs_writer = csv.writer(my_file)
+
         cvs_writer.writerow([Sensor.getTFminiData2(),
                              Sensor.getTFminiData1(),
                              Sensor.getTFminiData22(),
