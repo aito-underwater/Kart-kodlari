@@ -1,18 +1,17 @@
-import random
 import sys
 import threading
 import time  # Module needed to add delays in the code
-from openpyxl import load_workbook
+
 import numpy as np
+import pandas as pd
 import psutil
 import serial  # Module needed for serial communication
 from prettytable import PrettyTable
-import pandas as pd
+
 import AITOSensors as Sensor
 import BigPoolEnginPower
 
 filename = 'test.xlsx'
-
 
 
 def main():
@@ -24,7 +23,6 @@ def main():
     send_binary = ''
 
     timer = time.time()
-
 
     while True:
         #   temperature, pressure, humidity = Sensor.readBME280All()
@@ -45,9 +43,8 @@ def main():
         # myTable.add_row(["Pressure hPa", pressure])
         # myTable.add_row(["Humidity %", humidity])
 
-
         runningTime = round(time.time() - timer, 2)
-        if(runningTime >60):
+        if (runningTime > 60):
             timer = time.time()
         send_float = np.array(BigPoolEnginPower.geEnginePower(runningTime))
         myTable.add_row(["Engine 1", send_float[0]])
@@ -83,9 +80,12 @@ def main():
         count = count + 1
         print(receive_string)
         print("----" + str(count) + "----")
-        pd.DataFrame(myTable).to_excel('test.xlsx', index=False)
-
-
+        pd.DataFrame([send_float[0],
+                      send_float[1],
+                      send_float[2],
+                      send_float[3],
+                      send_float[4],
+                      send_float[5]]).to_excel('test.xlsx', index=False)
 
 
 if __name__ == '__main__':
