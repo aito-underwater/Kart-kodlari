@@ -33,7 +33,7 @@ if __name__ == '__main__':
         tWPS = threading.Thread(target=Sensor.WPSData)
         tMPU = threading.Thread(target=Sensor.MPUData)
         tBME = threading.Thread(target=Sensor.BMEData)
-        main = threading.Thread(target=Sensor.BMEData)
+        test = threading.Thread(target=main)
 
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
 
@@ -43,15 +43,15 @@ if __name__ == '__main__':
         tWPS.start()
         tMPU.start()
         tBME.start()
-        main.start()
+        test.start()
         t1.join()
         t2.join()
         t22.join()
-        main.start()
+        test.start()
         tWPS.join()
         tMPU.join()
         tBME.join()
-        main.join()
+        test.join()
 
     except KeyboardInterrupt:
         for proc in psutil.process_iter():
