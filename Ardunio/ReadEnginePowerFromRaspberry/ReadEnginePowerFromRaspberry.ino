@@ -21,7 +21,7 @@ char buf[BUFFER_SIZE];
 
 // <------------ Engine param ------------> //
 Servo engines[6];
-int enginesPower[6];
+int enginesPower[6] = {0,0,0,0,0,0};
 
 // <------------ Loop params ------------> //
 int value, engineIndex, i, index, scale;
@@ -39,7 +39,21 @@ void setup(){
   engines[5].attach(MOTOR_PIN5);
 
 }
- 
+
+void loop() {
+  // check if data is available
+  if (Serial.available() > 0) {
+    // read the incoming string:
+    String incomingString = Serial.readString();
+
+    // prints the received data
+    Serial.print("I received: ");
+    Serial.println(incomingString);
+  }
+}
+
+
+ /*
 void loop(){
 
   if(Serial.available() > 0) {
@@ -95,8 +109,8 @@ void loop(){
 
 void ChangeEngineSpeed( Servo* engine, int power)
 {
-  // engine->writeMicroseconds(power /* *parameters*/);
-  engine->writeMicroseconds(1400);
+  // engine->writeMicroseconds(power /* *parameters);*/
+/*  engine->writeMicroseconds(power);
 }
 
 
@@ -105,3 +119,8 @@ int PIDAlgoritmForEngines( Servo* engine, int power)
 {
   return (engine->read() + (engine->read() - power) * 0.5);
 }
+*/
+
+
+
+

@@ -56,15 +56,15 @@ def main():
         myTable.add_row(["Engine 5", send_float[4]])
         myTable.add_row(["Engine 6", send_float[5]])
         print(myTable)
-        for data in send_float:
-            data = str("{:08b}".format(data, 'b'))
+        # for data in send_float:
+        #     data = str("{:08b}".format(data, 'b'))
+        #
+        #     if data[0] == '-':
+        #         data = '1' + data[1:]
+        #     else:
+        #         pass
 
-            if data[0] == '-':
-                data = '1' + data[1:]
-            else:
-                pass
-
-            send_binary += str(data)
+        send_binary += str(send_float)
 
         # Send the string. Make sure you encode it before you send it to the Arduino.
         ser.write(send_binary.encode('utf-8'))
