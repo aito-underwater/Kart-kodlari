@@ -1,9 +1,10 @@
+import csv
+import os
 import sys
 import threading
 import time  # Module needed to add delays in the code
 
 import numpy as np
-import pandas as pd
 import psutil
 import serial  # Module needed for serial communication
 from prettytable import PrettyTable
@@ -11,7 +12,8 @@ from prettytable import PrettyTable
 import AITOSensors as Sensor
 import BigPoolEnginPower
 
-filename = 'test.xlsx'
+my_file = open("data.csv", "ab")
+my_file.seek(0, os.SEEK_END)
 
 
 def main():
@@ -80,12 +82,17 @@ def main():
         count = count + 1
         print(receive_string)
         print("----" + str(count) + "----")
-        pd.DataFrame([send_float[0],
-                      send_float[1],
-                      send_float[2],
-                      send_float[3],
-                      send_float[4],
-                      send_float[5]]).to_excel('test.xlsx', index= runningTime )
+        cvs_writer = csv.writer(my_file)
+        cvs_writer.writerow([Sensor.getTFminiData2(),
+                             Sensor.getTFminiData1(),
+                             Sensor.getTFminiData22(),
+                             Gx, Gy, Gz, Ax, Ay, Az, send_float[0],
+                             send_float[1],
+                             send_float[2],
+                             send_float[3],
+                             send_float[4],
+                             send_float[5]
+                             ])
 
 
 if __name__ == '__main__':
