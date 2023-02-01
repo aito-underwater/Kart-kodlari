@@ -313,29 +313,29 @@ def BMEData():
         main()
 
 
-
-def getAllSensorData():
-    while True:
-        (chip_id, chip_version) = BMEData().readBME280ID()
-
-        temperature, pressure, humidity = BMEData().readBME280All()
-        Gx, Gy, Gz, Ax, Ay, Az = MPUData()
-        MOVE_CURSOR_UP = "\033[1A"
-        ERASE = "\x1b[2K"
-
-        myTable = PrettyTable(["Sensor Name:", "Value"])
-        myTable.add_row(["Lidar1 cm", getTFminiData2()])
-        myTable.add_row(["Lidar2 cm", getTFminiData1()])
-        myTable.add_row(["Lidar3 cm", getTFminiData22()])
-        myTable.add_row(["Gyro Gx", Gx])
-        myTable.add_row(["Gyro Gy", Gy])
-        myTable.add_row(["Gyro Gz", Gz])
-        myTable.add_row(["Gyro Ax", Ax])
-        myTable.add_row(["Gyro Ay", Ay])
-        myTable.add_row(["Gyro Az", Az])
-        myTable.add_row(["Bar", WPSData()])
-        myTable.add_row(["Temperature C", temperature])
-        myTable.add_row(["Pressure hPa", pressure])
-        myTable.add_row(["Humidity %", humidity])
-        print(myTable)
-    getAllSensorData
+#
+# def getAllSensorData():
+#     while True:
+#         (chip_id, chip_version) = BMEData().readBME280ID()
+#
+#         temperature, pressure, humidity = BMEData().readBME280All()
+#         Gx, Gy, Gz, Ax, Ay, Az = MPUData()
+#         MOVE_CURSOR_UP = "\033[1A"
+#         ERASE = "\x1b[2K"
+#
+#         myTable = PrettyTable(["Sensor Name:", "Value"])
+#         myTable.add_row(["Lidar1 cm", getTFminiData2()])
+#         myTable.add_row(["Lidar2 cm", getTFminiData1()])
+#         myTable.add_row(["Lidar3 cm", getTFminiData22()])
+#         myTable.add_row(["Gyro Gx", Gx])
+#         myTable.add_row(["Gyro Gy", Gy])
+#         myTable.add_row(["Gyro Gz", Gz])
+#         myTable.add_row(["Gyro Ax", Ax])
+#         myTable.add_row(["Gyro Ay", Ay])
+#         myTable.add_row(["Gyro Az", Az])
+#         myTable.add_row(["Bar", WPSData()])
+#         myTable.add_row(["Temperature C", temperature])
+#         myTable.add_row(["Pressure hPa", pressure])
+#         myTable.add_row(["Humidity %", humidity])
+#         print(myTable)
+#     getAllSensorData
