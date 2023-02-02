@@ -1,8 +1,8 @@
 def geEnginePower(runningTime):
     enginePower = [0] * 6
 
-    enginePower[0] = 0
-    enginePower[1] = 50
+    enginePower[0] = 50
+    enginePower[1] = 0
     enginePower[2] = 0
     enginePower[3] = 0
     enginePower[4] = 0
