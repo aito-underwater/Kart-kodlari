@@ -40,20 +40,8 @@ void setup(){
 
 }
 
-void loop() {
-  // check if data is available
-  if (Serial.available() > 0) {
-    // read the incoming string:
-    String incomingString = Serial.readString();
-
-    // prints the received data
-    Serial.print("I received: ");
-    Serial.println(incomingString);
-  }
-}
 
 
- /*
 void loop(){
 
   if(Serial.available() > 0) {
@@ -109,8 +97,8 @@ void loop(){
 
 void ChangeEngineSpeed( Servo* engine, int power)
 {
-  // engine->writeMicroseconds(power /* *parameters);*/
-/*  engine->writeMicroseconds(power);
+  // engine->writeMicroseconds(power /* *parameters*/);
+  engine->writeMicroseconds(power);
 }
 
 
@@ -119,7 +107,6 @@ int PIDAlgoritmForEngines( Servo* engine, int power)
 {
   return (engine->read() + (engine->read() - power) * 0.5);
 }
-*/
 
 
 
