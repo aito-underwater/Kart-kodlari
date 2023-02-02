@@ -78,7 +78,7 @@ void loop(){
         index++;
       }
       value *= scale;
-      enginesPower[engineIndex] = value;
+      enginesPower[engineIndex] = value * 5  + 1500;
       value = 0;
       engineIndex++;
     } 
@@ -101,11 +101,11 @@ void loop(){
     Serial.print(" 6 : ");
   Serial.print(enginesPower[5]);
   Serial.println(" ");
+    }
 
-  }
-  
 
 }
+
 
 void ChangeEngineSpeed( Servo* engine, int power)
 {
