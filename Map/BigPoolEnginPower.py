@@ -3,7 +3,7 @@ def geEnginePower(runningTime):
 
     enginePower[0] = 0
     enginePower[1] = 50
-    enginePower[2] = 0
+    enginePower[2] = 50
     enginePower[3] = 0
     enginePower[4] = 0
     enginePower[5] = 0
