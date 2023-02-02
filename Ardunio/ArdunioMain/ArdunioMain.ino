@@ -1,3 +1,4 @@
+
 #include <Servo.h>
 
 // <------------ Engines params ------------> //
@@ -52,6 +53,7 @@ void loop() {
 }
 
 
+ /*
 void loop(){
 
   if(Serial.available() > 0) {
@@ -107,8 +109,8 @@ void loop(){
 
 void ChangeEngineSpeed( Servo* engine, int power)
 {
-  // engine->writeMicroseconds(power /* *parameters*/);
-  engine->writeMicroseconds(power);
+  // engine->writeMicroseconds(power /* *parameters);*/
+/*  engine->writeMicroseconds(power);
 }
 
 
@@ -117,7 +119,7 @@ int PIDAlgoritmForEngines( Servo* engine, int power)
 {
   return (engine->read() + (engine->read() - power) * 0.5);
 }
-
+*/
 
 
 

@@ -56,15 +56,14 @@ def main():
         myTable.add_row(["Engine 5", send_float[4]])
         myTable.add_row(["Engine 6", send_float[5]])
         print(myTable)
-        # for data in send_float:
-        #     data = str("{:08b}".format(data, 'b'))
-        #
-        #     if data[0] == '-':
-        #         data = '1' + data[1:]
-        #     else:
-        #         pass
+        for data in send_float:
+            data = str("{:08b}".format(data, 'b'))
 
-        send_binary += str(send_float)
+            if data[0] == '-':
+                data = '1' + data[1:]
+            else:
+                pass
+            send_binary += str(data)
 
         # Send the string. Make sure you encode it before you send it to the Arduino.
         ser.write(send_binary.encode('utf-8'))
@@ -136,3 +135,28 @@ if __name__ == '__main__':
         print("-------------------------------------------------")
         print(">>>>>>>>>>>>>>>>>>>>>>>ERROR<<<<<<<<<<<<<<<<<<<<<")
         print("-------------------------------------------------")
+
+
+#######################################################################
+import serial  # Module needed for serial communication
+import time  # Module needed to add delays in the code
+
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+
+ser.flush()
+
+# Infinite loop
+while (1):
+    send_float = [1.2,2.2,3.3,4.4,5.5,6.6]
+
+   # Send the string. Make sure you encode it before you send it to the Arduino.
+    ser.write(send_float)
+
+    # Do nothing for 500 milliseconds (0.5 seconds)
+    time.sleep(0.5)
+
+    # Receive data from the Arduino
+    receive_string = ser.readline().decode('utf-8').rstrip()
+
+    # Print the data received from Arduino to the terminal
+    print(receive_string)
