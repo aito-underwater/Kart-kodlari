@@ -1,4 +1,3 @@
-
 import math
 
 
@@ -20,10 +19,10 @@ class AITOMap:
 
     def __init__(self):
         self.transform = Device()
-        self.mapW = 1250
-        self.mapH = 2500
-        self.map = [[[0] * self.mapW] * self.mapH]
-        self.lidarRight = 0
+        self.mapW = 1250  # *****
+        self.mapH = 2500  # ***** Pool
+        self.map = [[[0] * self.mapW] * self.mapH]  # *****
+        self.lidarRight = 0  # *****
         self.lidarLeft = 0
         self.lidarForward = 0
 
@@ -79,14 +78,10 @@ class AITOMap:
 
 mapper = AITOMap()
 
-
 mapper.transform.rotation.X = 1
 
-
-
-# while True:
-#     mapper.GetSensorsData()
-#  #   print(mapper.transform.rotation)
-
+while True:
+    mapper.GetSensorsData()
+    print(mapper.transform.rotation)
 
 print("I am not gonna die")
