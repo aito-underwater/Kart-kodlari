@@ -1,5 +1,5 @@
 import time
-def geEnginePower(runningTime, ):
+def geEnginePower(runningTime ):
     enginePower = [0] * 6
 
     enginePower[0] = 10
