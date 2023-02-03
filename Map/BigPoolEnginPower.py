@@ -96,4 +96,4 @@ def geEnginePower(runningTime):
     else:
         timer = time.time()
         runningTime = round(time.time() - timer, 2)
-        return enginePower
+    return enginePower
