@@ -1,5 +1,7 @@
 import time
-def geEnginePower(runningTime ):
+
+
+def geEnginePower(runningTime):
     enginePower = [0] * 6
 
     enginePower[0] = 10
@@ -9,9 +11,7 @@ def geEnginePower(runningTime ):
     enginePower[4] = 10
     enginePower[5] = 10
 
-
     print(runningTime)
-
 
     if runningTime < 5:  # 1
         enginePower[0] = 75
