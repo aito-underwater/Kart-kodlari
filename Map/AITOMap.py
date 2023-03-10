@@ -18,6 +18,7 @@ class Device:
 class AITOMap:
 
     def __init__(self):
+        self._canStart = False
         self.transform = Device()
         self.mapW = 1250  # *****
         self.mapH = 2500  # ***** Pool
@@ -62,6 +63,26 @@ class AITOMap:
             self.transform.position.Y = math.cos(self.transform.rotation.Y) * self.lidarForward
             # Calculate for X axis
             if self.lidarLeft is not None and self.lidarRight is not None:
+
+                if math.cos(self.transform.rotation.Y) * self.lidarLeft - math.cos(
+                        self.transform.rotation.Y) * self.lidarRight < 0.01:
+                    self.transform.position.X = math.cos(self.transform.rotation.Y) * self.lidarLeft
+
+        elif (self.transform.rotation.Y > 90 and self.transform.rotation.Y < 180):
+            pass
+        elif (self.transform.rotation.Y > 180 and self.transform.rotation.Y < 270):
+            pass
+        elif (self.transform.rotation.Y > 270 and self.transform.rotation.Y < 360):
+            self.transform.position.X = math.cos(self.transform.rotation.X) * self.lidarForward
+            pass
+
+    def CalculateStartPosition(self):
+
+        if self.transform.rotation.Y > 0 and self.transform.rotation.Y < 90:
+            # Calculate for Y axis
+            self.transform.position.Y = math.cos(self.transform.rotation.Y) * self.lidarForward
+            # Calculate for X axis
+            if self.lidarLeft > 0 and self.lidarRight > 0 and self.lidarForward > 0:
 
                 if math.cos(self.transform.rotation.Y) * self.lidarLeft - math.cos(
                         self.transform.rotation.Y) * self.lidarRight < 0.01:
