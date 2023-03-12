@@ -24,7 +24,7 @@ class AITONeuralNetwork:
         self.generation_count = generation_count
         self.generation_weight = secret_layer_size * secret_layer_size * (
                 secret_layer_count - 1) + input_layer_size * secret_layer_size
-        self.model_path  = os.getcwd() + '\\Models\\'
+        self.model_path  = os.getcwd() + '/Models/'
 
     def set_up(self):
         self.create_network_weight()
