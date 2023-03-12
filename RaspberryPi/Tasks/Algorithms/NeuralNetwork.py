@@ -36,8 +36,8 @@ class AITONeuralNetwork:
             with open(self.model_path + 'AITO.Data', 'rb') as f:
                 self = pickle.load(f)
                 return self
-
-        with open( self.model_path + path, 'rb') as f:
+        print(self.model_path + path)
+        with open(self.model_path + path, 'rb') as f:
             self = pickle.load(f)
             return self
 
