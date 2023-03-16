@@ -1,7 +1,8 @@
 import random
 import time
-from time import time
 from random import choice
+from time import time
+
 import numpy as np
 import serial  # Module needed for serial communication
 
@@ -75,8 +76,7 @@ def rotate_right(start_time):
 
 
 def rotate_random(start_time):
-
-    end_time = start_time + random.randint(1,time_to_turn * 2)
+    end_time = start_time + random.randint(1, time_to_turn * 2)
 
     send_data_to_engines(right_vector * choice([-1, 1]))
     while int(time()) < end_time:
@@ -89,7 +89,13 @@ def go_forward():
 
 def calculate_engines_power(input):
     # y = model.predict([162.46283326, 346.14933504, 109.24856128, 41.12214409])
-    return model.predict(input)
+    y = model.predict(input)
+    flag = y[len(y) - 1]
+    if flag == 1:
+        return True
+    else:
+        return y[0:len(y) - 1]
+
 
 def stop_all_functions():
     return stop_vector

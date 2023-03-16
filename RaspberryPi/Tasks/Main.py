@@ -30,6 +30,7 @@ def main():
     # ser.flush()
     # Infinite loop
     count = 0
+    go_down = False
     send_binary = ''
 
     timer = time.time()
@@ -37,79 +38,84 @@ def main():
     target = None
     while True:
         if task is not None:
-            if target is not None:
-                #  temperature, pressure, humidity = Sensor.readBME280All()
-                Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
+            if go_down is not True:
+                if target is not None:
+                    #  temperature, pressure, humidity = Sensor.readBME280All()
+                    Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 
-                myTable = PrettyTable(["Sensor Name:", "Value"])
-                myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
-                # myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
-                # myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
-                # myTable.add_row(["Gyro Gx", Gx])
-                # myTable.add_row(["Gyro Gy", Gy])
-                # myTable.add_row(["Gyro Gz", Gz])
-                # myTable.add_row(["Gyro Ax", Ax])
-                # myTable.add_row(["Gyro Ay", Ay])
-                # myTable.add_row(["Gyro Az", Az])
-                # myTable.add_row(["Bar", Sensor.WPSData()])
-                # myTable.add_row(["Temperature C", temperature]
-                # myTable.add_row(["Pressure hPa", pressure])
-                # myTable.add_row(["Humidity %", humidity])
-
-
-
-
-                # !!!  send_float parametresi kesinlikle değişecek !!!
-                # Burası Yapay zeakanın çalışacağı yer aman dikkat edelim
-                send_float = np.array(EnginPower.geEnginePower())
-
-                # !!! Yapay zeka kodu burası !!!
-                # EnginPower.calculate_engines_power()
-
-
-                myTable.add_row(["Engine 1", send_float[0]])
-                myTable.add_row(["Engine 2", send_float[1]])
-                myTable.add_row(["Engine 3", send_float[2]])
-                myTable.add_row(["Engine 4", send_float[3]])
-                myTable.add_row(["Engine 5", send_float[4]])
-                myTable.add_row(["Engine 6", send_float[5]])
-
-                print(myTable)
-
-                EnginPower.send_data_to_engines(send_float)
+                    myTable = PrettyTable(["Sensor Name:", "Value"])
+                    myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
+                    # myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
+                    # myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
+                    # myTable.add_row(["Gyro Gx", Gx])
+                    # myTable.add_row(["Gyro Gy", Gy])
+                    # myTable.add_row(["Gyro Gz", Gz])
+                    # myTable.add_row(["Gyro Ax", Ax])
+                    # myTable.add_row(["Gyro Ay", Ay])
+                    # myTable.add_row(["Gyro Az", Az])
+                    # myTable.add_row(["Bar", Sensor.WPSData()])
+                    # myTable.add_row(["Temperature C", temperature]
+                    # myTable.add_row(["Pressure hPa", pressure])
+                    # myTable.add_row(["Humidity %", humidity])
 
 
 
-                cvs_writer.writerow([Sensor.getTFminiData2(),
-                                     Sensor.getTFminiData1(),
-                                     Sensor.getTFminiData22(),
-                                     Gx, Gy, Gz,
-                                     Ax, Ay, Az,
-                                     send_float[0],
-                                     send_float[1],
-                                     send_float[2],
-                                     send_float[3],
-                                     send_float[4],
-                                     send_float[5]
-                                     ])
 
-                if keyboard.is_pressed("q"):  # returns True if "q" is pressed
-                    EnginPower.stop_all_functions()
+                    # !!!  send_float parametresi kesinlikle değişecek !!!
+                    # Burası Yapay zeakanın çalışacağı yer aman dikkat edelim
+                    # send_float = np.array(EnginPower.geEnginePower())
 
-                    warnings.warn(
-                        '!!!WARNINGGG!!! You are changing current task. !!!WARNINGGG!!!',
-                        stacklevel=2)
-                    task = None
-            else:
+                    # !!! Yapay zeka kodu burası !!!
+                    sent_engines_powers = EnginPower.calculate_engines_power()
+                    if sent_engines_powers is True:
+                        go_down = True
 
-                if Sensor.getTFminiData2() < 100:
-                    if count < 4:
-                        EnginPower.rotate_right(time())
-                        count = count + 1
-                    else:
-                        EnginPower.rotate_random(time())
+                    EnginPower.send_data_to_engines(sent_engines_powers)
+
+                    myTable.add_row(["Engine 1", sent_engines_powers[0]])
+                    myTable.add_row(["Engine 2", sent_engines_powers[1]])
+                    myTable.add_row(["Engine 3", sent_engines_powers[2]])
+                    myTable.add_row(["Engine 4", sent_engines_powers[3]])
+                    myTable.add_row(["Engine 5", sent_engines_powers[4]])
+                    myTable.add_row(["Engine 6", sent_engines_powers[5]])
+
+                    print(myTable)
+
+
+
+                    cvs_writer.writerow([Sensor.getTFminiData2(),
+                                         Sensor.getTFminiData1(),
+                                         Sensor.getTFminiData22(),
+                                         Gx, Gy, Gz,
+                                         Ax, Ay, Az,
+                                         sent_engines_powers[0],
+                                         sent_engines_powers[1],
+                                         sent_engines_powers[2],
+                                         sent_engines_powers[3],
+                                         sent_engines_powers[4],
+                                         sent_engines_powers[5]
+                                         ])
+
+                    if keyboard.is_pressed("q"):  # returns True if "q" is pressed
+                        EnginPower.stop_all_functions()
+
+                        warnings.warn(
+                            '!!!WARNINGGG!!! You are changing current task. !!!WARNINGGG!!!',
+                            stacklevel=2)
+                        task = None
                 else:
-                    EnginPower.go_forward()
+
+                    if Sensor.getTFminiData2() < 100:
+                        if count < 4:
+                            EnginPower.rotate_right(time())
+                            count = count + 1
+                        else:
+                            EnginPower.rotate_random(time())
+                    else:
+                        EnginPower.go_forward()
+            else:
+                EnginPower.send_data_to_engines(EnginPower.down_vector)
+                pass
         else:
 
             print("Please select task")
