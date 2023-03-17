@@ -21,6 +21,7 @@ right_vector = [100, -100, -100, 100, 0, 0]
 turn_right_vector = [100, -100, 100, -100, 0, 0]
 down_vector = [0, 0, 0, 0, 100, 100]
 stop_vector = [0, 0, 0, 0, 0, 0]
+stop_vector = [100, 100, 100, 100, 100, 100]
 # Needed time to rotate vehicle
 time_to_turn = 5
 
