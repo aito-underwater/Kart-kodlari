@@ -3,11 +3,11 @@ import EnginPower
 
 while True:
     a = input("1. Forward_vector \n"
-              "1. Forward_vector \n"
-              "1. Forward_vector \n"
-              "1. Forward_vector \n"
-              "1. Forward_vector \n"
-              "1. Forward_vector \n")
+              "2. right_vector \n"
+              "3. turn_right_vector \n"
+              "4. down_vector \n"
+              "5. stop_vector \n"
+              )
     if a == 1:
         EnginPower.send_data_to_engines(EnginPower.forward_vector)
     if a == 2:
