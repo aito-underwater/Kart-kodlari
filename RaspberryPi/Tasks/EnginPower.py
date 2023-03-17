@@ -1,7 +1,6 @@
 import random
 import time
-from random import choice
-from time import time
+
 
 import numpy as np
 import serial  # Module needed for serial communication
