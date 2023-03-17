@@ -16,11 +16,11 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
                              generation_count)
 
 # Main movement vectors
-forward_vector = [100, 100, 100, 100, 50, 50]
-right_vector = [100, -100, -100, 100, 50, 50]
-turn_right_vector = [100, -100, 100, -100, 50, 50]
-down_vector = [50, 50, 50, 50, 100, 100]
-stop_vector = [50, 50, 50, 50, 50, 50]
+forward_vector = [100, 100, 100, 100, 0, 0]
+right_vector = [100, -100, -100, 100, 0, 0]
+turn_right_vector = [100, -100, 100, -100, 0, 0]
+down_vector = [0, 0, 0, 0, 100, 100]
+stop_vector = [0, 0, 0, 0, 0, 0]
 # Needed time to rotate vehicle
 time_to_turn = 5
 
