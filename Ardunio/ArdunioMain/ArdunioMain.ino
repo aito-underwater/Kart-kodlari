@@ -16,7 +16,7 @@ struct __attribute__((packed)) STRUCT {
   int speed;
   int reset;
   int dim;
-} testStruct;
+}testStruct ;
 
 // <----------- Global Params --------------> //
 
@@ -51,9 +51,8 @@ int value, engineIndex, i, index, scale;
 
 
 void setup(){
-
-  Serial.begin(9600);
   Serial2.begin(9600);
+  Serial.begin(9600);
   myTransfer.begin(Serial2);
 
 
@@ -67,6 +66,10 @@ void setup(){
   // Wait for input
   while (!Serial.available());
   Serial.read();
+  testStruct.degree = 180;
+
+
+
 
 }
 
@@ -104,18 +107,7 @@ void loop(){
       ChangeEngineSpeed(&engines[i],enginesPower[i]);
     }
     
-    testStruct.degree = 180;
-
-    testStruct.speed = 0;
-    testStruct.reset = 0;
-    testStruct.dim = 10;
-
-    uint16_t sendSize = 0;
-
-
-    sendSize = myTransfer.txObj(testStruct, sendSize);
-    myTransfer.sendData(sendSize);
-    delay(100);
+ 
 
    Serial.print("Hi Raspberry Pi! You sent me: ");
     Serial.print(" 1 : ");
@@ -133,6 +125,8 @@ void loop(){
   Serial.println(" ");
 
     }
+
+    
 
 }
 
