@@ -12,7 +12,7 @@ struct __attribute__((packed)) STRUCT {
   int dim;
 } testStruct;
 
-int i = 0;
+
 int incomingData;
 void setup() {
   //Roli_Port.begin(9600);
@@ -26,12 +26,12 @@ void setup() {
 
 void loop() {
 
-//   if(Serial.available()>0){
-//     incomingData = 0
-//     Serial.print(incomingData);
-//     if(incomingData>0){
+  if(Serial.available()>0){
+    incomingData = 0;
+    Serial.print(incomingData);
+    if(incomingData>0){
     testStruct.degree = 0;}
-
+    
   }
 
   testStruct.speed = 0;

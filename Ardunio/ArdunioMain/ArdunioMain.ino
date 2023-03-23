@@ -1,4 +1,28 @@
+// <---------- Engine Libraries ------------> //
 #include <Servo.h>
+
+// <------------Camera Libraries -----------> //
+#include <SoftwareSerial.h>
+SoftwareSerial Serial2(7,8); //(18Rx,Tx)
+
+#include "SerialTransfer.h"
+SerialTransfer myTransfer;
+
+
+// <------------- Structs ------------------> //
+
+struct __attribute__((packed)) STRUCT {
+  int degree;
+  int speed;
+  int reset;
+  int dim;
+} testStruct;
+
+// <----------- Global Params --------------> //
+
+// <------------Camera Params ---------------> //
+
+int incomingData;
 
 // <------------ Engines params ------------> //
 #define MAX_SIGNAL 2000
@@ -29,7 +53,8 @@ int value, engineIndex, i, index, scale;
 void setup(){
 
   Serial.begin(9600);
-
+  Serial2.begin(9600);
+  myTransfer.begin(Serial2);
 
 
   engines[0].attach(MOTOR_PIN1);
@@ -39,16 +64,11 @@ void setup(){
   engines[4].attach(MOTOR_PIN5);
   engines[5].attach(MOTOR_PIN6);
 
-
-
   // Wait for input
   while (!Serial.available());
   Serial.read();
 
-
-
 }
-
 
 
 void loop(){
@@ -83,6 +103,19 @@ void loop(){
     {
       ChangeEngineSpeed(&engines[i],enginesPower[i]);
     }
+    
+    testStruct.degree = 180;
+
+    testStruct.speed = 0;
+    testStruct.reset = 0;
+    testStruct.dim = 10;
+
+    uint16_t sendSize = 0;
+
+
+    sendSize = myTransfer.txObj(testStruct, sendSize);
+    myTransfer.sendData(sendSize);
+    delay(100);
 
    Serial.print("Hi Raspberry Pi! You sent me: ");
     Serial.print(" 1 : ");
@@ -99,9 +132,7 @@ void loop(){
   Serial.print(enginesPower[5]);
   Serial.println(" ");
 
-
     }
-
 
 }
 
@@ -110,7 +141,7 @@ void ChangeEngineSpeed( Servo* engine, int power)
 {
   // engine->writeMicroseconds(power parameters);
   engine->writeMicroseconds(power);
-    Serial.println(" sadasdsad");
+  
 }
 
 
