@@ -1,7 +1,6 @@
 import random
 import time
 
-
 import numpy as np
 import serial  # Module needed for serial communication
 
@@ -16,10 +15,10 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
                              generation_count)
 
 # Main movement vectors
-forward_vector = [ 0, 0,100, 100, 100, 100]
-right_vector = [0, 0,100, -100, -100, 100]
-turn_right_vector = [0, 0,100, -100, 100, -100]
-down_vector = [100, 100,0, 0, 0, 0]
+forward_vector = [0, 0, 100, 100, 100, 100]
+right_vector = [0, 0, 100, -100, -100, 100]
+turn_right_vector = [0, 0, 100, -100, 100, -100]
+down_vector = [100, 100, 0, 0, 0, 0]
 stop_vector = [0, 0, 0, 0, 0, 0]
 all_vector = [100, 100, 100, 100, 100, 100]
 # Needed time to rotate vehicle
@@ -94,7 +93,7 @@ def calculate_engines_power(input):
     if flag == 1:
         return True
     else:
-        return y[0:len(y) - 1]
+        return y
 
 
 def stop_all_functions():
@@ -113,3 +112,17 @@ def change_task(argument):
     model.load_model(switcher.get(argument, "Invalid Task"))
 
     # return switcher.get(argument, "Invalid Task")
+
+
+def select_vector(power_vector):
+    index = abs(power_vector.index(max(power_vector)))
+    if power_vector[index] > 0:
+        sign = 1
+    else:
+        sign = - 1
+    if index is 0:
+        return sign * forward_vector
+    if index is 1:
+        return sign * right_vector
+    if index is 2:
+        return sign * turn_right_vector

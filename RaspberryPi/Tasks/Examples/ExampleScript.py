@@ -1,43 +1,61 @@
-import random
+import numpy as np
+import pandas as pd
 
 from RaspberryPi.Tasks.Algorithms.NeuralNetwork import AITONeuralNetwork as nn
-import pandas as pd
-import numpy as np
 
-input_layer_size = 4
+
+input_layer_size = 2
 secret_layer_size = 4
 secret_layer_count = 2
-generation_count = 1
+generation_count = 20
+
+df = pd.read_csv('../Datas/test.csv')
+
+x = np.array(pd.DataFrame(df, columns=["X", "Y"]))
+
+y = np.array(pd.DataFrame(df, columns=["forward", "right", "rotate", "down"]))
+
+# df = np.array(pd.DataFrame(df, columns = ["X","Y","forward","right","rotate","down"]))
+
+# y = [] # test Data
 
 
-df = pd.read_csv('../Datas/HitPinger.csv', index_col=0)
-
-df = np.array(pd.DataFrame(df, columns = ["volt","rotate","pressure","vibration"]))
-
-
-y = [] # test Data
-k = 0
-for i in df:
-    y.append([])
-    for j in range(len(i)):
-        y[k].append(round(random.uniform(-10.0, 10.0),5))
-    k = k +1
+# k = 0
+# for i in df:
+#     y.append([])
+#     for j in range(len(i)):
+#         y[k].append(round(random.uniform(-10.0, 10.0),5))
+#     k = k +1
 
 
 test_nn = nn(input_layer_size, secret_layer_size, secret_layer_count,
-                                generation_count)
-# test_nn.set_up()
-# print((df[2]))
-# print((y[2]))
-# test_nn.fit(input_x=df,
-#              output_y=y, iteration=2, genetic_iteration=10)
+             generation_count)
+test_nn.set_up()
 
-test_nn.load_model("../Models/SitOnCircle.dat")
-y = test_nn.predict(
+test_nn.fit(input_x=x,
+            output_y=y, iteration=100, genetic_iteration=10)
+
+test_nn.save_model()
+# test_nn = test_nn.load_model("..\Examples\AITO.dat")
+
+predict = test_nn.predict(
     [
-        [162.46283326, 346.14933504, 109.24856128,  41.12214409],
-        [161.46283326, 346.14933504, 109.24856128,  41.12214409]
+        [1635, 375],
+        [975, 525],
+        [945, 915],
+        [1215, 975],
+        [465, 1035],
+        [135, 855],
+        [285, 165],
+        [555, 165],
+        [1695, 435],
+        [1695, 915],
+        [1395, 885],
+        [1005, 855],
+        [825, 855],
+        [615, 615]
+
     ])
 
+print(predict)
 
-print(y)

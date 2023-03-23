@@ -1,15 +1,15 @@
 import csv
 import os
+import struct
 import sys
 import threading
-import time  # Module needed to add delays in the code
+import time
 import warnings
 from time import time
 
 import keyboard
-import numpy as np
 import psutil
-
+import serial
 from prettytable import PrettyTable
 
 import AITOSensors as Sensor
@@ -33,10 +33,20 @@ def main():
     go_down = False
     send_binary = ''
 
+    ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with the appropriate serial port
+
     timer = time.time()
     task = None
     target = None
     while True:
+        # ser.flush()
+        response = ser.read(8)
+        # data_left = ser.inWaiting()  # Get the number of characters ready to be read
+        # response += ser.read(data_left)
+        # print(response)
+        # time.sleep(1)
+        data = struct.unpack('ii', response)
+
         if task is not None:
             if go_down is not True:
                 if target is not None:
@@ -58,42 +68,39 @@ def main():
                     # myTable.add_row(["Pressure hPa", pressure])
                     # myTable.add_row(["Humidity %", humidity])
 
-
-
-
                     # !!!  send_float parametresi kesinlikle değişecek !!!
                     # Burası Yapay zeakanın çalışacağı yer aman dikkat edelim
                     # send_float = np.array(EnginPower.geEnginePower())
 
                     # !!! Yapay zeka kodu burası !!!
-                    sent_engines_powers = EnginPower.calculate_engines_power()
-                    if sent_engines_powers is True:
+                    power_vector = EnginPower.calculate_engines_power(data)
+                    if power_vector is True:
                         go_down = True
-
-                    EnginPower.send_data_to_engines(sent_engines_powers)
-
-                    myTable.add_row(["Engine 1", sent_engines_powers[0]])
-                    myTable.add_row(["Engine 2", sent_engines_powers[1]])
-                    myTable.add_row(["Engine 3", sent_engines_powers[2]])
-                    myTable.add_row(["Engine 4", sent_engines_powers[3]])
-                    myTable.add_row(["Engine 5", sent_engines_powers[4]])
-                    myTable.add_row(["Engine 6", sent_engines_powers[5]])
+                    if go_down is True:
+                        EnginPower.send_data_to_engines(EnginPower.down_vector)
+                    else:
+                        EnginPower.send_data_to_engines(EnginPower.select_vector(power_vector))
+                    engine_data = EnginPower.select_vector(power_vector)
+                    myTable.add_row(["Engine 1", engine_data[0]])
+                    myTable.add_row(["Engine 2", engine_data[1]])
+                    myTable.add_row(["Engine 3", engine_data[2]])
+                    myTable.add_row(["Engine 4", engine_data[3]])
+                    myTable.add_row(["Engine 5", engine_data[4]])
+                    myTable.add_row(["Engine 6", engine_data[5]])
 
                     print(myTable)
-
-
 
                     cvs_writer.writerow([Sensor.getTFminiData2(),
                                          Sensor.getTFminiData1(),
                                          Sensor.getTFminiData22(),
                                          Gx, Gy, Gz,
                                          Ax, Ay, Az,
-                                         sent_engines_powers[0],
-                                         sent_engines_powers[1],
-                                         sent_engines_powers[2],
-                                         sent_engines_powers[3],
-                                         sent_engines_powers[4],
-                                         sent_engines_powers[5]
+                                         engine_data[0],
+                                         engine_data[1],
+                                         engine_data[2],
+                                         engine_data[3],
+                                         engine_data[4],
+                                         engine_data[5]
                                          ])
 
                     if keyboard.is_pressed("q"):  # returns True if "q" is pressed

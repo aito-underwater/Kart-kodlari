@@ -24,7 +24,7 @@ class AITONeuralNetwork:
         self.generation_count = generation_count
         self.generation_weight = secret_layer_size * secret_layer_size * (
                 secret_layer_count - 1) + input_layer_size * secret_layer_size
-        self.model_path  = os.getcwd() + '/Models/'
+        self.model_path  = os.getcwd() + "..\Models"
 
     def set_up(self):
         self.create_network_weight()
@@ -33,16 +33,17 @@ class AITONeuralNetwork:
     def load_model(self, path=None):
 
         if path is None:
-            with open(self.model_path + 'AITO.Data', 'rb') as f:
+
+            with open('..\Models\AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
         print(self.model_path + path)
-        with open(self.model_path + path, 'rb') as f:
+        with open( path, 'rb') as f:
             self = pickle.load(f)
             return self
 
     def save_model(self):
-        with open('AITO.dat', 'wb') as f:
+        with open('AITO4.dat', 'wb') as f:
             pickle.dump(self, f)
 
     def create_network_weight(self):
@@ -50,7 +51,7 @@ class AITONeuralNetwork:
             self.network_weight.append([])
             for i in range(self.generation_weight):
                 self.network_weight[generation].append(round(random.uniform(-1.0, 1.0),
-                                                             5))
+                                                             5)/50)
 
     def split_data(self):
         for generation in range(self.generation_count):
@@ -69,7 +70,7 @@ class AITONeuralNetwork:
             for j in range(len(self.network_weight[i])):
                 new_data[i].append([])
                 for t in range(len(self.network_weight[i][j])):
-                    new_data[i][j].append(self.network_weight[i][j][t] + round(random.uniform(-10.0, 10.0),
+                    new_data[i][j].append(self.network_weight[i][j][t] + round(random.uniform(-1.0, 1.0),
                                                                                5) / 100)
 
         return new_data
