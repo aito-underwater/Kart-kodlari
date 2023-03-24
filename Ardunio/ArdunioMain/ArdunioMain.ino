@@ -27,11 +27,28 @@ int incomingData;
 // <------------ Engines params ------------> //
 #define MAX_SIGNAL 2000
 #define MIN_SIGNAL 1000
-#define MOTOR_PIN1 3
-#define MOTOR_PIN2 5
-#define MOTOR_PIN3 6
+
+// Sağ arka motor port : 5
+// Sol arka motor port : 6
+// Sağ orta motor port : 3
+// Sol orta motor port : 9
+// Sağ ön   motor port : 10
+// Sol ön   motor port : 11
+
+
+// Sağ arka motor
+#define MOTOR_PIN1 5
+// Sol arka motor
+#define MOTOR_PIN2 6
+
+// Sağ orta motor
+#define MOTOR_PIN3 3
+// Sol orta motor
 #define MOTOR_PIN4 9
+
+// Sağ ön   motor
 #define MOTOR_PIN5 10
+// Sol ön   motor
 #define MOTOR_PIN6 11
 
 // <------------ Functions ------------> //
@@ -134,7 +151,7 @@ void loop(){
 void ChangeEngineSpeed( Servo* engine, int power)
 {
   // engine->writeMicroseconds(power parameters);
-  engine->writeMicroseconds(power);
+  engine->writeMicroseconds(PIDAlgoritmForEngines(engine,power));
   
 }
 

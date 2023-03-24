@@ -15,12 +15,15 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
                              generation_count)
 
 # Main movement vectors
-forward_vector = [0, 0, 100, 100, 100, 100]
-right_vector = [0, 0, 100, -100, -100, 100]
-turn_right_vector = [0, 0, 100, -100, 100, -100]
-down_vector = [100, 100, 0, 0, 0, 0]
+forward_vector = [100, 100, 0, 0, 100, 100]
+right_vector = [100, -100, 0, 0, -100, 100]
+turn_right_vector = [100, 100, 0, 0, -100, -100]
+down_vector = [0, 0, 100, 100, 0, 0]
+up_vector = [0, 0, -100, -100, 0, 0]
+stable_vector = [0, 0, 20, 20, 0, 0]
 stop_vector = [0, 0, 0, 0, 0, 0]
 all_vector = [100, 100, 100, 100, 100, 100]
+
 # Needed time to rotate vehicle
 time_to_turn = 5
 
@@ -77,7 +80,7 @@ def rotate_right(start_time):
 def rotate_random(start_time):
     end_time = start_time + random.randint(1, time_to_turn * 2)
 
-    send_data_to_engines(right_vector * choice([-1, 1]))
+    send_data_to_engines(right_vector * random.choice([-1, 1]))
     while int(time()) < end_time:
         send_data_to_engines(stop_vector)
 
@@ -115,11 +118,13 @@ def change_task(argument):
 
 
 def select_vector(power_vector):
+
     index = abs(power_vector.index(max(power_vector)))
     if power_vector[index] > 0:
         sign = 1
     else:
         sign = - 1
+
     if index is 0:
         return sign * forward_vector
     if index is 1:
