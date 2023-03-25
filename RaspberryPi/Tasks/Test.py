@@ -35,7 +35,7 @@ while True:
         EnginPower.send_data_to_engines(EnginPower.stable_vector)
     if a == 0:
         timer = time.time() + 5
-        while time.time() > timer:
+        while time.time() <timer:
             EnginPower.send_data_to_engines(EnginPower.down_vector)
         EnginPower.send_data_to_engines(np.negative(EnginPower.down_vector))
 
