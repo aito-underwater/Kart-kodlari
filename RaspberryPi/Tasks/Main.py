@@ -148,11 +148,12 @@ if __name__ == '__main__':
         tWPS.start()
       #  tMPU.start()
         tBME.start()
+
         test.start()
         t1.join()
         t2.join()
         t22.join()
-        test.start()
+        # test.start()
         tWPS.join()
      #   tMPU.join()
         tBME.join()
