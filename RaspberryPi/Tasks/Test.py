@@ -6,10 +6,10 @@ while True:
                   "3. Left_vector \n"
                   "4. Turn_right_vector \n"
                   "5. Turn_left_vector \n"
-                  "7. Down_vector \n"
-                  "8. Stop_vector \n"
-                  "9. All_vector \n"
-                  "0. Stable_vector \n"
+                  "6. Down_vector \n"
+                  "7. Stop_vector \n"
+                  "8. All_vector \n"
+                  "9. Stable_vector \n"
                   ))
 
     if a == 1:
@@ -25,11 +25,8 @@ while True:
     if a == 6:
         EnginPower.send_data_to_engines(EnginPower.down_vector)
     if a == 7:
-        EnginPower.send_data_to_engines(EnginPower.down_vector )
-    if a == 8:
         EnginPower.send_data_to_engines(EnginPower.stop_vector)
-    if a == 9:
+    if a == 8:
         EnginPower.send_data_to_engines(EnginPower.all_vector)
-    if a == 0:
+    if a == 9:
         EnginPower.send_data_to_engines(EnginPower.stable_vector)
-print("dasdsad")
