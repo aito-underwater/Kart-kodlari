@@ -128,6 +128,7 @@ def main():
             print("3. Hit Pinger.")
             arg = int(input())
             EnginPower.change_task(arg)
+            task = 1
 
 
 if __name__ == '__main__':
