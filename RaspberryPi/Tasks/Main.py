@@ -133,7 +133,7 @@ if __name__ == '__main__':
         t2 = threading.Thread(target=Sensor.getTFminiData2)
         t22 = threading.Thread(target=Sensor.getTFminiData22)
         tWPS = threading.Thread(target=Sensor.WPSData)
-        tMPU = threading.Thread(target=Sensor.MPUData)
+        # tMPU = threading.Thread(target=Sensor.MPUData)
         tBME = threading.Thread(target=Sensor.BMEData)
         test = threading.Thread(target=main)
 
@@ -143,7 +143,7 @@ if __name__ == '__main__':
         t2.start()
         t22.start()
         tWPS.start()
-        tMPU.start()
+      #  tMPU.start()
         tBME.start()
         test.start()
         t1.join()
@@ -151,7 +151,7 @@ if __name__ == '__main__':
         t22.join()
         test.start()
         tWPS.join()
-        tMPU.join()
+     #   tMPU.join()
         tBME.join()
         test.join()
 
