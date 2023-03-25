@@ -34,6 +34,7 @@ def main():
     timer = time.time()
     task = None
     target = None
+    print("Hello")
     while True:
         # ser.flush()
         response = ser.read(8)
