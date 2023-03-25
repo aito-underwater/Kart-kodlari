@@ -32,3 +32,4 @@ while True:
         EnginPower.send_data_to_engines(EnginPower.all_vector)
     if a == 0:
         EnginPower.send_data_to_engines(EnginPower.stable_vector)
+print("dasdsad")
