@@ -112,7 +112,7 @@ def main():
                 else:
 
                     print("123456")
-                    if Sensor.getTFminiData2() < 100:
+                    if Sensor.getTFminiData2() < 500:
                         print("go_down")
                         if count < 4:
                             EnginPower.rotate_right(time.time())
