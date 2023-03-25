@@ -53,7 +53,7 @@ def getTFminiData1():
                         return distance
 
 
-RX2 = 24
+RX2 = 23
 pigpio.exceptions = False
 pi2 = pigpio.pi()
 pi2.set_mode(RX2, pigpio.INPUT)
