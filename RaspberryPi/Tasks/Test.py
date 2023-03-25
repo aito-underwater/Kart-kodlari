@@ -1,5 +1,8 @@
+import time
+
 import EnginPower
 import numpy as np
+timer = 0
 while True:
     a = int(input("1. Forward_vector \n"
                   "2. Right_vector \n"
@@ -30,3 +33,7 @@ while True:
         EnginPower.send_data_to_engines(EnginPower.all_vector)
     if a == 9:
         EnginPower.send_data_to_engines(EnginPower.stable_vector)
+    if a == 0:
+        timer = time.time() + 5
+        while time.time() > timer:
+            EnginPower.send_data_to_engines(EnginPower.stable_vector)
