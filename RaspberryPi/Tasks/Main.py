@@ -142,21 +142,21 @@ if __name__ == '__main__':
 
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
 
-        t1.start()
-        t2.start()
-        t22.start()
-        tWPS.start()
-      #  tMPU.start()
-        tBME.start()
+        # t1.start()
+        # t2.start()
+        # t22.start()
+      #   tWPS.start()
+      # #  tMPU.start()
+      #   tBME.start()
 
         test.start()
-        t1.join()
-        t2.join()
-        t22.join()
+        # t1.join()
+        # t2.join()
+        # t22.join()
         # test.start()
-        tWPS.join()
-     #   tMPU.join()
-        tBME.join()
+     #    tWPS.join()
+     # #   tMPU.join()
+     #    tBME.join()
         test.join()
 
     except KeyboardInterrupt:
