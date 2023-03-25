@@ -45,11 +45,12 @@ def main():
         data = struct.unpack('ii', response)
 
         if task is not None:
+            print("Hello")
             if go_down is False:
                 if target is not None:
                     #  temperature, pressure, humidity = Sensor.readBME280All()
                     Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
-                    print("Hello")
+
 
                     myTable = PrettyTable(["Sensor Name:", "Value"])
                     myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
