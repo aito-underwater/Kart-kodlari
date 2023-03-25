@@ -120,7 +120,7 @@ def main():
                         else:
                             EnginPower.rotate_random(time.time())
                     else:
-                        print("dsdsad")
+
                         EnginPower.send_data_to_engines(EnginPower.forward_vector)
 
             else:
