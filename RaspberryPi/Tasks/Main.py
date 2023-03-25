@@ -42,7 +42,7 @@ def main():
         # response += ser.read(data_left)
         # print(response)
         # time.sleep(1)
-        data = struct.unpack('ii', response)
+        # data = struct.unpack('ii', response)
 
         if task is not None:
 
@@ -121,7 +121,7 @@ def main():
                 EnginPower.send_data_to_engines(EnginPower.down_vector)
 
         else:
-            print("Hello")
+
             print("Please select task")
             print("1. Pass Through Circle.")
             print("2. Sit On Circle.")
