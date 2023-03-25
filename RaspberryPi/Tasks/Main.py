@@ -145,7 +145,7 @@ if __name__ == '__main__':
 
         # t1.start()
         # t2.start()
-         t22.start()
+        t22.start()
       #   tWPS.start()
       # #  tMPU.start()
       #   tBME.start()
@@ -153,7 +153,7 @@ if __name__ == '__main__':
         test.start()
         # t1.join()
         # t2.join()
-         t22.join()
+        t22.join()
         # test.start()
      #    tWPS.join()
      # #   tMPU.join()
