@@ -74,7 +74,7 @@ def rotate_right(start_time):
 
     send_data_to_engines(right_vector)
     while int(time.time()) < end_time:
-        send_data_to_engines(stop_vector)
+        send_data_to_engines(right_vector)
 
 
 def rotate_random(start_time):
