@@ -30,13 +30,15 @@ y = np.array(pd.DataFrame(df, columns=["forward", "right", "rotate", "down"]))
 
 test_nn = nn(input_layer_size, secret_layer_size, secret_layer_count,
              generation_count)
-test_nn.set_up()
+# test_nn.set_up()
+#
+# test_nn.fit(input_x=x,
+#             output_y=y, iteration=100, genetic_iteration=10)
+#
+# test_nn.save_model()
 
-test_nn.fit(input_x=x,
-            output_y=y, iteration=100, genetic_iteration=10)
-
-test_nn.save_model()
-# test_nn = test_nn.load_model("..\Examples\AITO.dat")
+# Hangi dosyada çaışıyorsak o dosyanın tolu üzerinden işlem yapmamız gerekiyor
+test_nn = test_nn.load_model("AITO1.dat")
 
 predict = test_nn.predict(
     [

@@ -108,12 +108,15 @@ def change_task(argument):
     global model
     print(model)
     switcher = {
-        1: "PassThroughCircle.dat",
-        2: "SitOnCircle.dat",
-        3: "HitPinger.dat"
+        1: "SitOnCircle1.dat",
+        2: "SitOnCircle2.dat",
+        3: "SitOnCircle3.dat",
+        4: "SitOnCircle4.dat",
+        5: "SitOnCircle5.dat",
+        6: "SitOnCircle6.dat"
     }
-    model = model.load_model("/AITO.dat")
-    # Geri çevireceksin //  model.load_model(switcher.get(argument, "Invalid Task"))
+
+    model.load_model(switcher.get(argument, "Invalid Task"))
 
     # return switcher.get(argument, "Invalid Task")
 

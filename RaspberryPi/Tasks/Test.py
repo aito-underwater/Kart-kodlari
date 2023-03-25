@@ -1,6 +1,6 @@
 import time
 
-import EnginPower
+import EnginePower
 import numpy as np
 timer = 0
 while True:

@@ -13,7 +13,7 @@ import serial
 from prettytable import PrettyTable
 
 import AITOSensors as Sensor
-import EnginPower
+import EnginePower
 
 my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
