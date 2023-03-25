@@ -34,7 +34,7 @@ def main():
     timer = time.time()
     task = None
     target = None
-    print("Hello")
+
     while True:
         # ser.flush()
         response = ser.read(8)
@@ -45,10 +45,11 @@ def main():
         data = struct.unpack('ii', response)
 
         if task is not None:
-            if go_down is not True:
+            if go_down is False:
                 if target is not None:
                     #  temperature, pressure, humidity = Sensor.readBME280All()
                     Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
+                    print("Hello")
 
                     myTable = PrettyTable(["Sensor Name:", "Value"])
                     myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
@@ -117,7 +118,7 @@ def main():
                         EnginPower.go_forward()
             else:
                 EnginPower.send_data_to_engines(EnginPower.down_vector)
-                pass
+
         else:
 
             print("Please select task")
