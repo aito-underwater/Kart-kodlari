@@ -45,7 +45,7 @@ def main():
         data = struct.unpack('ii', response)
 
         if task is not None:
-            print("Hello")
+
             if go_down is False:
                 if target is not None:
                     #  temperature, pressure, humidity = Sensor.readBME280All()
@@ -121,7 +121,7 @@ def main():
                 EnginPower.send_data_to_engines(EnginPower.down_vector)
 
         else:
-
+            print("Hello")
             print("Please select task")
             print("1. Pass Through Circle.")
             print("2. Sit On Circle.")
