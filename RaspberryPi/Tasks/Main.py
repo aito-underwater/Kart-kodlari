@@ -47,7 +47,9 @@ def main():
         if task is not None:
 
             if go_down is False:
+                print("go_down")
                 if target is not None:
+                    print("Dont Goooo")
                     #  temperature, pressure, humidity = Sensor.readBME280All()
                     Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 
