@@ -111,6 +111,7 @@ def main():
                         task = None
                 else:
 
+                    print("123456")
                     if Sensor.getTFminiData2() < 100:
                         print("go_down")
                         if count < 4:
