@@ -110,15 +110,17 @@ def main():
                             stacklevel=2)
                         task = None
                 else:
-                    print("go_down")
+
                     if Sensor.getTFminiData2() < 100:
+                        print("go_down")
                         if count < 4:
                             EnginPower.rotate_right(time.time())
                             count = count + 1
                         else:
                             EnginPower.rotate_random(time.time())
                     else:
-                        EnginPower.go_forward()
+                        EnginPower.send_data_to_engines(EnginPower.forward_vector)
+
             else:
                 EnginPower.send_data_to_engines(EnginPower.down_vector)
 
