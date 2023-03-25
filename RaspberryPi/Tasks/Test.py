@@ -25,9 +25,9 @@ while True:
     if a == 6:
         EnginPower.send_data_to_engines(EnginPower.down_vector)
     if a == 7:
-        EnginPower.send_data_to_engines(EnginPower.stop_vector )
+        EnginPower.send_data_to_engines(EnginPower.down_vector )
     if a == 8:
-        EnginPower.send_data_to_engines(EnginPower.all_vector)
+        EnginPower.send_data_to_engines(EnginPower.stop_vector)
     if a == 9:
         EnginPower.send_data_to_engines(EnginPower.all_vector)
     if a == 0:
