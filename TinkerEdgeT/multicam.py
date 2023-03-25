@@ -24,7 +24,7 @@ def send_data(a, b):
     # time.sleep(0.5)
 
 while True:
-
+    print(cap)
     while True:
         ret, frame = cap.read()
         if not ret:
