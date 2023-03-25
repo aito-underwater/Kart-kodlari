@@ -6,10 +6,11 @@ import serial  # Module needed for serial communication
 
 from Algorithms import NeuralNetwork as nn
 
-input_layer_size = 4
+input_layer_size = 2
 secret_layer_size = 4
 secret_layer_count = 2
-generation_count = 1
+generation_count = 20
+
 
 model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_count,
                              generation_count)
@@ -111,7 +112,7 @@ def change_task(argument):
         2: "SitOnCircle.dat",
         3: "HitPinger.dat"
     }
-    model.load_model("/AITO.dat")
+    model = model.load_model("/AITO.dat")
     # Geri çevireceksin //  model.load_model(switcher.get(argument, "Invalid Task"))
 
     # return switcher.get(argument, "Invalid Task")
