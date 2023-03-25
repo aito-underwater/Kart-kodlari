@@ -111,7 +111,7 @@ def change_task(argument):
         2: "SitOnCircle.dat",
         3: "HitPinger.dat"
     }
-    model.load_model("./AITO.dat")
+    model.load_model("/AITO.dat")
     # Geri çevireceksin //  model.load_model(switcher.get(argument, "Invalid Task"))
 
     # return switcher.get(argument, "Invalid Task")
