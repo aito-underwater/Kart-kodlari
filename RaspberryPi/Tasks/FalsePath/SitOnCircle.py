@@ -1,16 +1,20 @@
 import time
 
 import RaspberryPi.Tasks.EnginePower as EnginePower
-import numpy as np
+
 timer = 0
+
+permTimer = time.time()
+
+i = 10
 while True:
     timer = time.time()
 
-    if timer < 10:
+    if timer < permTimer + i * 1:
         EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
-    elif timer > 20:
+    elif timer < permTimer + i * 2:
         EnginePower.send_data_to_engines(EnginePower.forward_vector)
-    elif timer > 30:
+    elif timer < permTimer + i * 3:
         EnginePower.send_data_to_engines(EnginePower.down_vector)
-    elif timer > 40:
+    elif timer < permTimer + i * 4:
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
