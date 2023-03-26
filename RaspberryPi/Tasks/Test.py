@@ -33,8 +33,8 @@ while True:
     if a == 9:
         EnginePower.send_data_to_engines(EnginePower.stable_vector)
     if a == 0:
-        timer = time.time() + 5
-        while time.time() <timer:
+        timer = time.time() + 15
+        while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.down_vector)
         EnginePower.send_data_to_engines(np.negative(EnginePower.down_vector))
 
