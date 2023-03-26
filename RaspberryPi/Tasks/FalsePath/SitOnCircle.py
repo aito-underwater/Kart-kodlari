@@ -1,6 +1,6 @@
 import time
 
-import RaspberryPi.Tasks.EnginePower as EnginePower
+from .. import EnginePower
 
 timer = 0
 
