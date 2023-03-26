@@ -2,7 +2,7 @@ import time
 
 import numpy as np
 
-import RaspberryPi.Tasks.EnginePower as EnginePower
+from .. import EnginePower
 
 timer = 0
 permTimer = time.time()
