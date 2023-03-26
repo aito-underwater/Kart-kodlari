@@ -1,6 +1,11 @@
+import sys
+
+# setting path
+sys.path.append('../Tasks')
+
 import time
 
-from .. import EnginePower
+from Tasks.EnginePower import EnginePower
 
 timer = 0
 
