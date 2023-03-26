@@ -1,5 +1,6 @@
 import EnginePower
-
+import time
+import numpy as np
 timer = 0
 while True:
     a = int(input("1. Forward_vector \n"
@@ -13,81 +14,80 @@ while True:
                   "9. Stable_vector \n"
                   ))
 
-    #
-    # if a == 1:
-    #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
-    # if a == 2:
-    #     EnginePower.send_data_to_engines(EnginePower.right_vector)
-    # if a == 3:
-    #     EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
-    # if a == 4:
-    #     EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
-    # if a == 5:
-    #     EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
-    # if a == 6:
-    #     EnginePower.send_data_to_engines(EnginePower.down_vector)
-    # if a == 7:
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    # if a == 8:
-    #     EnginePower.send_data_to_engines(EnginePower.all_vector)
-    # if a == 9:
-    #     EnginePower.send_data_to_engines(EnginePower.stable_vector)
-    # if a == 0:
-    #     timer = time.time() + 5
-    #     while time.time() <timer:
-    #         EnginePower.send_data_to_engines(EnginePower.down_vector)
-    #     EnginePower.send_data_to_engines(np.negative(EnginePower.down_vector))
-    #
-
-    # if a == 1:
-    #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
-    # if a == 2:
-    #     EnginePower.send_data_to_engines(EnginePower.right_vector)
-    # if a == 3:
-    #     EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
-    # if a == 4:
-    #     EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
-    # if a == 5:
-    #     EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
-    # if a == 6:
-    #     EnginePower.send_data_to_engines(EnginePower.down_vector)
-    # if a == 7:
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    # if a == 8:
-    #     EnginePower.send_data_to_engines(EnginePower.all_vector)
-    # if a == 9:
-    #     EnginePower.send_data_to_engines(EnginePower.stable_vector)
-    # if a == 0:
-    #     timer = time.time() + 5
-    #     while time.time() <timer:
-    #         EnginePower.send_data_to_engines(EnginePower.down_vector)
-    #     EnginePower.send_data_to_engines(np.negative(EnginePower.down_vector))
-    #
-
     if a == 1:
-        EnginePower.send_data_to_engines(EnginePower.vector_1)
+        EnginePower.send_data_to_engines(EnginePower.forward_vector)
     if a == 2:
-        EnginePower.send_data_to_engines(EnginePower.vector_2)
+        EnginePower.send_data_to_engines(EnginePower.right_vector)
     if a == 3:
-        EnginePower.send_data_to_engines(EnginePower.vector_3)
+        EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
     if a == 4:
-        EnginePower.send_data_to_engines(EnginePower.vector_4)
+        EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
     if a == 5:
-        EnginePower.send_data_to_engines(EnginePower.vector_5)
+        EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
     if a == 6:
-        EnginePower.send_data_to_engines(EnginePower.vector_6)
+        EnginePower.send_data_to_engines(EnginePower.down_vector)
     if a == 7:
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
+    if a == 8:
+        EnginePower.send_data_to_engines(EnginePower.all_vector)
+    if a == 9:
+        EnginePower.send_data_to_engines(EnginePower.stable_vector)
+    if a == 0:
+        timer = time.time() + 5
+        while time.time() <timer:
+            EnginePower.send_data_to_engines(EnginePower.down_vector)
+        EnginePower.send_data_to_engines(np.negative(EnginePower.down_vector))
 
+    #
+    # if a == 1:
+    #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
+    # if a == 2:
+    #     EnginePower.send_data_to_engines(EnginePower.right_vector)
+    # if a == 3:
+    #     EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
+    # if a == 4:
+    #     EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
+    # if a == 5:
+    #     EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
+    # if a == 6:
+    #     EnginePower.send_data_to_engines(EnginePower.down_vector)
+    # if a == 7:
+    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
     # if a == 8:
-    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_1[:, 0])
+    #     EnginePower.send_data_to_engines(EnginePower.all_vector)
     # if a == 9:
-    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_2[:, 0])
-    # if a == 10:
-    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_3[:, 0])
-    # if a == 11:
-    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_4[:, 0])
-    # if a == 12:
-    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_5[:, 0])
-    # if a == 13:
-    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_6[:, 0])
+    #     EnginePower.send_data_to_engines(EnginePower.stable_vector)
+    # if a == 0:
+    #     timer = time.time() + 5
+    #     while time.time() <timer:
+    #         EnginePower.send_data_to_engines(EnginePower.down_vector)
+    #     EnginePower.send_data_to_engines(np.negative(EnginePower.down_vector))
+
+    # -----------------------------------------------------------
+    # if a == 1:
+    #     EnginePower.send_data_to_engines(EnginePower.vector_1)
+    # if a == 2:
+    #     EnginePower.send_data_to_engines(EnginePower.vector_2)
+    # if a == 3:
+    #     EnginePower.send_data_to_engines(EnginePower.vector_3)
+    # if a == 4:
+    #     EnginePower.send_data_to_engines(EnginePower.vector_4)
+    # if a == 5:
+    #     EnginePower.send_data_to_engines(EnginePower.vector_5)
+    # if a == 6:
+    #     EnginePower.send_data_to_engines(EnginePower.vector_6)
+    # if a == 7:
+    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
+    #
+    # # if a == 8:
+    # #     EnginePower.send_data_to_engines(2 * EnginePower.vector_1[:, 0])
+    # # if a == 9:
+    # #     EnginePower.send_data_to_engines(2 * EnginePower.vector_2[:, 0])
+    # # if a == 10:
+    # #     EnginePower.send_data_to_engines(2 * EnginePower.vector_3[:, 0])
+    # # if a == 11:
+    # #     EnginePower.send_data_to_engines(2 * EnginePower.vector_4[:, 0])
+    # # if a == 12:
+    # #     EnginePower.send_data_to_engines(2 * EnginePower.vector_5[:, 0])
+    # # if a == 13:
+    # #     EnginePower.send_data_to_engines(2 * EnginePower.vector_6[:, 0])
