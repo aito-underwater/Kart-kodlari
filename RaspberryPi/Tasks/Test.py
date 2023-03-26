@@ -1,7 +1,5 @@
-import time
-
 import EnginePower
-import numpy as np
+
 timer = 0
 while True:
     a = int(input("1. Forward_vector \n"
@@ -81,16 +79,15 @@ while True:
     if a == 7:
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
-
-    if a == 8:
-        EnginePower.send_data_to_engines(2 * EnginePower.vector_1[:,0])
-    if a == 9:
-        EnginePower.send_data_to_engines( 2* EnginePower.vector_2[:,0])
-    if a == 10:
-        EnginePower.send_data_to_engines(2* EnginePower.vector_3[:,0])
-    if a == 11:
-        EnginePower.send_data_to_engines( 2* EnginePower.vector_4[:,0])
-    if a == 12:
-        EnginePower.send_data_to_engines(2* EnginePower.vector_5[:,0])
-    if a == 13:
-        EnginePower.send_data_to_engines(2* EnginePower.vector_6[:,0])
+    # if a == 8:
+    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_1[:, 0])
+    # if a == 9:
+    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_2[:, 0])
+    # if a == 10:
+    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_3[:, 0])
+    # if a == 11:
+    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_4[:, 0])
+    # if a == 12:
+    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_5[:, 0])
+    # if a == 13:
+    #     EnginePower.send_data_to_engines(2 * EnginePower.vector_6[:, 0])
