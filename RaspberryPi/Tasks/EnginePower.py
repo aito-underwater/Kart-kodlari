@@ -24,6 +24,13 @@ up_vector = [0, 0, -50, -50, 0, 0]
 stable_vector = [0, 0, 45, 45, 0, 0]
 stop_vector = [0, 0, 0, 0, 0, 0]
 all_vector = [50, 50, 50, 50, 50, 50]
+vector_1 = [50, 0, 0, 0, 0, 0]
+vector_2 = [0, 50, 0, 0, 0, 0]
+vector_3 = [0, 0, 50, 0, 0, 0]
+vector_4 = [0, 0, 0, 50, 0, 0]
+vector_5 = [0, 0, 0, 0, 50, 0]
+vector_6 = [0, 0, 0, 0, 0, 50]
+
 
 # Needed time to rotate vehicle
 time_to_turn = 5
