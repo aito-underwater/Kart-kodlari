@@ -78,5 +78,6 @@ while True:
         EnginePower.send_data_to_engines(EnginePower.vector_5)
     if a == 6:
         EnginePower.send_data_to_engines(EnginePower.vector_6)
-
+    if a == 7:
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
