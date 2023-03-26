@@ -44,6 +44,7 @@ def main():
         # time.sleep(1)
         # data = struct.unpack('ii', response)
 
+
         if task is not None:
 
             if go_down is False:
@@ -72,14 +73,14 @@ def main():
 
 
                     # !!! Yapay zeka kodu burası !!!
-                    power_vector = EnginPower.calculate_engines_power(data)
+                    power_vector = EnginePower.calculate_engines_power(data)
                     if power_vector is True:
                         go_down = True
                     if go_down is True:
-                        EnginPower.send_data_to_engines(EnginPower.down_vector)
+                        EnginePower.send_data_to_engines(EnginePower.down_vector)
                     else:
-                        EnginPower.send_data_to_engines(EnginPower.select_vector(power_vector) + EnginPower.stable_vector)
-                    engine_data = EnginPower.select_vector(power_vector)
+                        EnginePower.send_data_to_engines(EnginePower.select_vector(power_vector) + EnginePower.stable_vector)
+                    engine_data = EnginePower.select_vector(power_vector)
                     myTable.add_row(["Engine 1", engine_data[0]])
                     myTable.add_row(["Engine 2", engine_data[1]])
                     myTable.add_row(["Engine 3", engine_data[2]])
@@ -103,7 +104,7 @@ def main():
                                          ])
 
                     if keyboard.is_pressed("q"):  # returns True if "q" is pressed
-                        EnginPower.stop_all_functions()
+                        EnginePower.stop_all_functions()
 
                         warnings.warn(
                             '!!!WARNINGGG!!! You are changing current task. !!!WARNINGGG!!!',
@@ -115,16 +116,16 @@ def main():
                     if Sensor.getTFminiData2() < 500:
                         print("go_down")
                         if count < 4:
-                            EnginPower.rotate_right(time.time())
+                            EnginePower.rotate_right(time.time())
                             count = count + 1
                         else:
-                            EnginPower.rotate_random(time.time())
+                            EnginePower.rotate_random(time.time())
                     else:
 
-                        EnginPower.send_data_to_engines(EnginPower. forward_vector)
+                        EnginePower.send_data_to_engines(EnginePower. forward_vector)
 
             else:
-                EnginPower.send_data_to_engines(EnginPower.down_vector)
+                EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         else:
 
@@ -133,7 +134,7 @@ def main():
             print("2. Sit On Circle.")
             print("3. Hit Pinger.")
             arg = int(input())
-            EnginPower.change_task(arg)
+            EnginePower.change_task(arg)
             task = 1
 
 

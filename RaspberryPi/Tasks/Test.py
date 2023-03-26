@@ -15,27 +15,28 @@ while True:
                   "9. Stable_vector \n"
                   ))
 
+
     if a == 1:
-        EnginPower.send_data_to_engines(EnginPower.forward_vector)
+        EnginePower.send_data_to_engines(EnginePower.forward_vector)
     if a == 2:
-        EnginPower.send_data_to_engines(EnginPower.right_vector)
+        EnginePower.send_data_to_engines(EnginePower.right_vector)
     if a == 3:
-        EnginPower.send_data_to_engines(np.negative(EnginPower.right_vector))
+        EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
     if a == 4:
-        EnginPower.send_data_to_engines(EnginPower.turn_right_vector)
+        EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
     if a == 5:
-        EnginPower.send_data_to_engines(np.negative(EnginPower.turn_right_vector))
+        EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
     if a == 6:
-        EnginPower.send_data_to_engines(EnginPower.down_vector)
+        EnginePower.send_data_to_engines(EnginePower.down_vector)
     if a == 7:
-        EnginPower.send_data_to_engines(EnginPower.stop_vector)
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 8:
-        EnginPower.send_data_to_engines(EnginPower.all_vector)
+        EnginePower.send_data_to_engines(EnginePower.all_vector)
     if a == 9:
-        EnginPower.send_data_to_engines(EnginPower.stable_vector)
+        EnginePower.send_data_to_engines(EnginePower.stable_vector)
     if a == 0:
         timer = time.time() + 5
         while time.time() <timer:
-            EnginPower.send_data_to_engines(EnginPower.down_vector)
-        EnginPower.send_data_to_engines(np.negative(EnginPower.down_vector))
+            EnginePower.send_data_to_engines(EnginePower.down_vector)
+        EnginePower.send_data_to_engines(np.negative(EnginePower.down_vector))
 
