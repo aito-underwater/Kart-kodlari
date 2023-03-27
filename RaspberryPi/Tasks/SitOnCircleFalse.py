@@ -24,7 +24,7 @@ while True:
     timer = int(time.time())
     if timer < (permTimer + i * 1):
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    elif timer < (permTimer + (i * 2) / 3):
+    elif timer < (permTimer + (i * 4)):
         EnginePower.send_data_to_engines(np.add(EnginePower.forward_vector, EnginePower.stable_vector))
     elif timer < (permTimer + i * 8):
         EnginePower.send_data_to_engines(EnginePower.down_vector)
