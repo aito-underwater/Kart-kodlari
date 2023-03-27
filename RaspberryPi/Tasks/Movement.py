@@ -29,4 +29,7 @@ while True:
         EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector) + EnginePower.stable_vector)
 
     elif timer < permTimer + i * 7:
+        EnginePower.send_data_to_engines(EnginePower.stable_vector + EnginePower.forward_vector)
+
+    elif timer < permTimer + i * 8:
         EnginePower.send_data_to_engines(EnginePower.up_vector)
