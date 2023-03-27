@@ -6,7 +6,7 @@ timer = 0
 
 permTimer = int(time.time())
 
-i = 10
+i = 8
 # while True:
 #     timer = int(time.time())
 #     if timer < (permTimer + i * 1):
@@ -24,9 +24,9 @@ while True:
     timer = int(time.time())
     if timer < (permTimer + i * 1):
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    elif timer < (permTimer + i * 4):
+    elif timer < (permTimer + i * 3):
         EnginePower.send_data_to_engines(np.add(EnginePower.forward_vector, EnginePower.stable_vector))
-    elif timer < (permTimer + i * 7):
+    elif timer < (permTimer + i * 5):
         EnginePower.send_data_to_engines(EnginePower.down_vector)
-    elif timer < (permTimer + i * 9):
+    elif timer < (permTimer + i * 6):
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
