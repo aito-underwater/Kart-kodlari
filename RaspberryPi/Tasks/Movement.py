@@ -2,7 +2,7 @@ import time
 
 import numpy as np
 
-from RaspberryPi.Tasks import EnginePower
+import EnginePower
 
 timer = 0
 permTimer = time.time()
@@ -27,7 +27,6 @@ while True:
 
     elif timer < permTimer + i * 6:
         EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector) + EnginePower.stable_vector)
-
 
     elif timer < permTimer + i * 7:
         EnginePower.send_data_to_engines(EnginePower.up_vector)
