@@ -2,7 +2,7 @@ import time
 
 import numpy as np
 
-from .. import EnginePower
+from RaspberryPi.Tasks import EnginePower
 
 timer = 0
 permTimer = time.time()
@@ -17,7 +17,7 @@ while True:
         EnginePower.send_data_to_engines(EnginePower.stable_vector)
 
     elif timer < permTimer + i * 3:
-        EnginePower.send_data_to_engines(np.negative(EnginePower.stable_vector + EnginePower.forward_vector))
+        EnginePower.send_data_to_engines(EnginePower.stable_vector + EnginePower.forward_vector)
 
     elif timer < permTimer + i * 4:
         EnginePower.send_data_to_engines(EnginePower.right_vector + EnginePower.stable_vector)
@@ -26,10 +26,8 @@ while True:
         EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector) + EnginePower.stable_vector)
 
     elif timer < permTimer + i * 6:
-        EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
+        EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector) + EnginePower.stable_vector)
+
 
     elif timer < permTimer + i * 7:
-        EnginePower.send_data_to_engines(np.negative(EnginePower.stable_vector + EnginePower.forward_vector))
-
-    elif timer < permTimer + i * 9:
         EnginePower.send_data_to_engines(EnginePower.up_vector)
