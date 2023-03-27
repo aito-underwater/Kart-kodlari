@@ -28,5 +28,3 @@ while True:
         EnginePower.send_data_to_engines(np.add(EnginePower.forward_vector, EnginePower.stable_vector))
     elif timer < (permTimer + i * 5):
         EnginePower.send_data_to_engines(EnginePower.down_vector)
-    elif timer < (permTimer + i * 8):
-        EnginePower.send_data_to_engines(EnginePower.up_vector)
