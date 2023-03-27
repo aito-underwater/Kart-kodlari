@@ -17,13 +17,13 @@ while True:
         EnginePower.send_data_to_engines(EnginePower.stable_vector)
 
     elif timer < permTimer + i * 4:
-        EnginePower.send_data_to_engines(EnginePower.stable_vector + EnginePower.forward_vector)
+        EnginePower.send_data_to_engines(np.add(EnginePower.stable_vector, EnginePower.forward_vector))
 
     elif timer < permTimer + i * 6:
-        EnginePower.send_data_to_engines(EnginePower.turn_right_vector + EnginePower.stable_vector)
+        EnginePower.send_data_to_engines(np.add(EnginePower.turn_right_vector, EnginePower.stable_vector))
 
     elif timer < permTimer + i * 7:
-        EnginePower.send_data_to_engines(EnginePower.stable_vector + EnginePower.forward_vector)
+        EnginePower.send_data_to_engines(np.add(EnginePower.stable_vector + EnginePower.forward_vector))
 
     elif timer < permTimer + i * 10:
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
