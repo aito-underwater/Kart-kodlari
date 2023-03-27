@@ -25,5 +25,5 @@ while True:
     elif timer < permTimer + i * 7:
         EnginePower.send_data_to_engines(EnginePower.stable_vector + EnginePower.forward_vector)
 
-    elif timer < permTimer + i * 8:
+    elif timer < permTimer + i * 10:
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
