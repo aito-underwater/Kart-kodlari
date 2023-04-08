@@ -57,7 +57,7 @@ def main():
                     myTable = PrettyTable(["Sensor Name:", "Value"])
                     # myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
                     # myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
-                    myTable.add_row(["Lidar3 cm", Sensor.getTFminiData2()])
+                    myTable.add_row(["Lidar3 cm", str(Sensor.getTFminiData2())])
                     # myTable.add_row(["Gyro Gx", Gx])
                     # myTable.add_row(["Gyro Gy", Gy])
                     # myTable.add_row(["Gyro Gz", Gz])
