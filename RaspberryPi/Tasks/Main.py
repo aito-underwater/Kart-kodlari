@@ -43,7 +43,7 @@ def main():
         data = struct.unpack('ii', response)
 
         if task is not None:
-
+            print("---------------------")
             if go_down is False:
 
                 if target is not None:
