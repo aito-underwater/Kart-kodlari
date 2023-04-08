@@ -125,8 +125,8 @@ def     change_task(argument):
         6: "SitOnCircle6.dat"
     }
 
-    model.load_model(switcher.get(argument, "Invalid Task"))
-
+    # model.load_model(switcher.get(argument, "Invalid Task"))
+    model.load_model()
     # return switcher.get(argument, "Invalid Task")
 
 
