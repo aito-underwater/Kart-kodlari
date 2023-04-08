@@ -42,7 +42,7 @@ class AITONeuralNetwork:
             return self
 
     def save_model(self):
-        with open('./AITO.dat', 'wb') as f:
+        with open('AITO.dat', 'wb') as f:
             pickle.dump(self, f)
 
     def create_network_weight(self):
