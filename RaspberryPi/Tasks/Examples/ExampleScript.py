@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import sys
-sys.path.insert(0,'../..')
+sys.path.insert(0,'../../../..')
 
 from RaspberryPi.Tasks.Algorithms.NeuralNetwork import AITONeuralNetwork as nn
 
