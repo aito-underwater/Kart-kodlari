@@ -37,12 +37,12 @@ class AITONeuralNetwork:
                 self = pickle.load(f)
                 return self
         print('/Models/' + path)
-        with open(self.model_path +'/Models/' + path, 'rb') as f:
+        with open('/Models/' + path, 'rb') as f:
             self = pickle.load(f)
             return self
 
     def save_model(self):
-        with open('AITO.dat', 'wb') as f:
+        with open('../Models/AITO.dat', 'wb') as f:
             pickle.dump(self, f)
 
     def create_network_weight(self):
