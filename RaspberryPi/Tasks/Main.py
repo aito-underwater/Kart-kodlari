@@ -42,8 +42,8 @@ def main():
         response += ser.read(data_left)
         print(response)
         time.sleep(1)
-        if False:
-            data = struct.unpack('ii', response)
+        if len(response)> 8:
+            data = struct.unpack('ii', response[0:8])
 
         if task is not None:
             print("---------------------")
