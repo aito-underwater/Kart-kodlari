@@ -138,12 +138,12 @@ def main():
 
 if __name__ == '__main__':
     try:
-        t1 = threading.Thread(target=Sensor.getTFminiData1)
-        t2 = threading.Thread(target=Sensor.getTFminiData2)
-        t22 = threading.Thread(target=Sensor.getTFminiData22)
-        tWPS = threading.Thread(target=Sensor.WPSData)
-        # tMPU = threading.Thread(target=Sensor.MPUData)
-        tBME = threading.Thread(target=Sensor.BMEData)
+        # t1 = threading.Thread(target=Sensor.getTFminiData1)
+        # t2 = threading.Thread(target=Sensor.getTFminiData2)
+        # t22 = threading.Thread(target=Sensor.getTFminiData22)
+        # tWPS = threading.Thread(target=Sensor.WPSData)
+        # # tMPU = threading.Thread(target=Sensor.MPUData)
+        # tBME = threading.Thread(target=Sensor.BMEData)
         test = threading.Thread(target=main)
 
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
