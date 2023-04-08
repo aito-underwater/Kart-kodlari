@@ -113,16 +113,16 @@ def stop_all_functions():
     return stop_vector
 
 
-def change_task(argument):
+def     change_task(argument):
     global model
     print(model)
     switcher = {
-        1: "SitOnCircle1.dat",
-        2: "SitOnCircle2.dat",
-        3: "SitOnCircle3.dat",
-        4: "SitOnCircle4.dat",
-        5: "SitOnCircle5.dat",
-        6: "SitOnCircle6.dat"
+        1: "/SitOnCircle1.dat",
+        2: "/SitOnCircle2.dat",
+        3: "/SitOnCircle3.dat",
+        4: "/SitOnCircle4.dat",
+        5: "/SitOnCircle5.dat",
+        6: "/SitOnCircle6.dat"
     }
 
     model.load_model(switcher.get(argument, "Invalid Task"))
