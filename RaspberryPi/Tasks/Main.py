@@ -57,7 +57,7 @@ def main():
                     myTable = PrettyTable(["Sensor Name:", "Value"])
                     # myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
                     # myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
-                    myTable.add_row(["Lidar3 cm", Sensor.getTFminiData22()])
+                    myTable.add_row(["Lidar3 cm", Sensor.getTFminiData2()])
                     # myTable.add_row(["Gyro Gx", Gx])
                     # myTable.add_row(["Gyro Gy", Gy])
                     # myTable.add_row(["Gyro Gz", Gz])
@@ -95,8 +95,8 @@ def main():
                     cvs_writer.writerow([Sensor.getTFminiData2(),
                                          Sensor.getTFminiData1(),
                                          Sensor.getTFminiData22(),
-                                         Gx, Gy, Gz,
-                                         Ax, Ay, Az,
+                                         # Gx, Gy, Gz,
+                                         # Ax, Ay, Az,
                                          engine_data[0],
                                          engine_data[1],
                                          engine_data[2],
