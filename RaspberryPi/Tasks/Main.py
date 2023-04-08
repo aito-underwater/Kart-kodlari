@@ -50,7 +50,7 @@ def main():
             if go_down is False:
 
                 if data is not None:
-
+                    print("Data geliyor kardeş")
                     #  temperature, pressure, humidity = Sensor.readBME280All()
                     # Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 
