@@ -1,12 +1,10 @@
+import os
 import pickle
 import random
 import sys
 from math import e
-import  os
+
 import numpy as np
-
-
-
 
 
 def sigmoid_function(x):
@@ -24,7 +22,7 @@ class AITONeuralNetwork:
         self.generation_count = generation_count
         self.generation_weight = secret_layer_size * secret_layer_size * (
                 secret_layer_count - 1) + input_layer_size * secret_layer_size
-        self.model_path  = os.getcwd()
+        self.model_path = os.getcwd()
 
     def set_up(self):
         self.create_network_weight()
@@ -33,11 +31,11 @@ class AITONeuralNetwork:
     def load_model(self, path=None):
 
         if path is None:
-            with open('./Models/SitOnCircle3.dat', 'rb') as f:
+            with open('AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
         print(self.model_path + path)
-        with open(self.model_path +'/Models/' + path, 'rb') as f:
+        with open(path, 'rb') as f:
             self = pickle.load(f)
             return self
 
@@ -50,7 +48,7 @@ class AITONeuralNetwork:
             self.network_weight.append([])
             for i in range(self.generation_weight):
                 self.network_weight[generation].append(round(random.uniform(-1.0, 1.0),
-                                                             5)/50)
+                                                             5) / 50)
 
     def split_data(self):
         for generation in range(self.generation_count):
@@ -208,6 +206,12 @@ class AITONeuralNetwork:
         return y
 
     def inputIsNotValid(self, input_x):
-        if self.input_layer_size != len(input_x[0]):
-            return True
-        return False
+        if type(input_x[0]) is int:
+            if self.input_layer_size != len(input_x):
+                return True
+            return False
+
+        else:
+            if self.input_layer_size != len(input_x[0]):
+                return True
+            return False
