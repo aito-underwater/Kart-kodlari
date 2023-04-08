@@ -33,7 +33,7 @@ def main():
     timer = time.time()
     task = None
     target = None
-
+    data = None
     while True:
         ser.flush()
 
@@ -45,7 +45,7 @@ def main():
         if len(response)> 8:
             data = struct.unpack('ii', response[0:8])
 
-        if task is not None:
+        if data is not None:
             print("---------------------")
             if go_down is False:
 
