@@ -43,7 +43,7 @@ def main():
         print(response)
         time.sleep(1)
         if len(response)> 8:
-            data = []
+            data = [[1]]
             data[0] = struct.unpack('ii', response[0:8])
 
 
