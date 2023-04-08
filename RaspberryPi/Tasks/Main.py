@@ -1,12 +1,10 @@
 import csv
 import os
-import struct
 import sys
 import threading
 import time
 import warnings
-
-
+import struct
 import keyboard
 import psutil
 import serial
@@ -36,14 +34,13 @@ def main():
     target = None
 
     while True:
-        # ser.flush()
-        # response = ser.read(8)
-        # data_left = ser.inWaiting()  # Get the number of characters ready to be read
-        # response += ser.read(data_left)
-        # print(response)
-        # time.sleep(1)
-        # data = struct.unpack('ii', response)
-
+        ser.flush()
+        response = ser.read(8)
+        data_left = ser.inWaiting()  # Get the number of characters ready to be read
+        response += ser.read(data_left)
+        print(response)
+        time.sleep(1)
+        data = struct.unpack('ii', response)
 
         if task is not None:
 
@@ -53,7 +50,6 @@ def main():
 
                     #  temperature, pressure, humidity = Sensor.readBME280All()
                     Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
-
 
                     myTable = PrettyTable(["Sensor Name:", "Value"])
                     myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
@@ -70,8 +66,7 @@ def main():
                     # myTable.add_row(["Pressure hPa", pressure])
                     # myTable.add_row(["Humidity %", humidity])
 
-
-
+                    # <-------------------------------------------------------->
                     # !!! Yapay zeka kodu burası !!!
                     power_vector = EnginePower.calculate_engines_power(data)
                     if power_vector is True:
@@ -79,7 +74,10 @@ def main():
                     if go_down is True:
                         EnginePower.send_data_to_engines(EnginePower.down_vector)
                     else:
-                        EnginePower.send_data_to_engines(EnginePower.select_vector(power_vector) + EnginePower.stable_vector)
+                        EnginePower.send_data_to_engines(
+                            EnginePower.select_vector(power_vector) + EnginePower.stable_vector)
+                    # <-------------------------------------------------------->
+
                     engine_data = EnginePower.select_vector(power_vector)
                     myTable.add_row(["Engine 1", engine_data[0]])
                     myTable.add_row(["Engine 2", engine_data[1]])
@@ -122,7 +120,7 @@ def main():
                             EnginePower.rotate_random(time.time())
                     else:
 
-                        EnginePower.send_data_to_engines(EnginePower. forward_vector)
+                        EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
             else:
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
@@ -153,18 +151,18 @@ if __name__ == '__main__':
         # t1.start()
         # t2.start()
         t22.start()
-      #   tWPS.start()
-      # #  tMPU.start()
-      #   tBME.start()
+        #   tWPS.start()
+        # #  tMPU.start()
+        #   tBME.start()
 
         test.start()
         # t1.join()
         # t2.join()
         t22.join()
         # test.start()
-     #    tWPS.join()
-     # #   tMPU.join()
-     #    tBME.join()
+        #    tWPS.join()
+        # #   tMPU.join()
+        #    tBME.join()
         test.join()
 
     except KeyboardInterrupt:
