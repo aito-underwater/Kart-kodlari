@@ -68,8 +68,8 @@ def send_data_to_engines(powers):
 
     # Print the data received from Arduino to the terminal
     print("------------")
-    # print(powers)
-    # print(receive_string)
+    print(powers)
+    print(receive_string)
 
 
 def normalize_data(data):
