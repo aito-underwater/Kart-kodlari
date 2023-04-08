@@ -114,7 +114,7 @@ def main():
                         task = None
                 else:
 
-                    print("Lidar Verisi : " + Sensor.getTFminiData2())
+                    print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
                     if Sensor.getTFminiData2() < 100:
                         print("go_down")
                         if count < 4:
