@@ -2,6 +2,7 @@ import EnginePower
 import time
 import numpy as np
 timer = 0
+flag = True
 while True:
     a = int(input("1. Forward_vector \n"
                   "2. Right_vector \n"
@@ -29,7 +30,12 @@ while True:
     if a == 7:
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 8:
-        EnginePower.send_data_to_engines(EnginePower.all_vector)
+        if flag:
+            EnginePower.send_data_to_engines(EnginePower.all_vector)
+            flag = False
+        else:
+            EnginePower.send_data_to_engines(EnginePower.all_vector2)
+            flag = True
     if a == 9:
         EnginePower.send_data_to_engines(EnginePower.stable_vector)
     if a == 0:
