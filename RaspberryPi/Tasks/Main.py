@@ -9,7 +9,7 @@ import keyboard
 import psutil
 import serial
 from prettytable import PrettyTable
-sys.path.insert(0,'../../../')
+sys.path.insert(0,'../../')
 
 import AITOSensors as Sensor
 import EnginePower
