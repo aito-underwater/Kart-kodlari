@@ -33,7 +33,7 @@ class AITONeuralNetwork:
     def load_model(self, path=None):
 
         if path is None:
-            with open('/AITO.dat', 'rb') as f:
+            with open('./AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
         print(self.model_path + path)
