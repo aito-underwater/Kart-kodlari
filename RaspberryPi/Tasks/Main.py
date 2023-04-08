@@ -72,6 +72,7 @@ def main():
                     # <-------------------------------------------------------->
                     # !!! Yapay zeka kodu burası !!!
                     power_vector = EnginePower.calculate_engines_power(data)
+                    print(go_down)
                     if power_vector is True:
                         go_down = True
                     if go_down is True:
@@ -114,7 +115,7 @@ def main():
                 else:
 
                     print("123456")
-                    if Sensor.getTFminiData2() < 500:
+                    if Sensor.getTFminiData2() < 100:
                         print("go_down")
                         if count < 4:
                             EnginePower.rotate_right(time.time())
@@ -144,7 +145,7 @@ if __name__ == '__main__':
         print("--------------------------------------------")
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
         # t2 = threading.Thread(target=Sensor.getTFminiData2)
-        # t22 = threading.Thread(target=Sensor.getTFminiData22)
+        t22 = threading.Thread(target=Sensor.getTFminiData22)
         # tWPS = threading.Thread(target=Sensor.WPSData)
         # # tMPU = threading.Thread(target=Sensor.MPUData)
         # tBME = threading.Thread(target=Sensor.BMEData)
@@ -154,7 +155,7 @@ if __name__ == '__main__':
 
         # t1.start()
         # t2.start()
-        # t22.start()
+        t22.start()
         #   tWPS.start()
         # #  tMPU.start()
         #   tBME.start()
@@ -162,7 +163,7 @@ if __name__ == '__main__':
         test.start()
         # t1.join()
         # t2.join()
-        # t22.join()
+        t22.join()
         # test.start()
         #    tWPS.join()
         # #   tMPU.join()
