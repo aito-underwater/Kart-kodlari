@@ -43,7 +43,7 @@ def main():
         print(response)
         time.sleep(1)
         if len(response)> 8:
-            data = struct.unpack('ii', response[0:8])
+            data = [struct.unpack('ii', response[0:8])]
 
         if data is not None:
             print("---------------------")
