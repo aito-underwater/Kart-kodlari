@@ -138,6 +138,7 @@ def main():
 
 if __name__ == '__main__':
     try:
+        print("--------------------------------------------")
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
         # t2 = threading.Thread(target=Sensor.getTFminiData2)
         # t22 = threading.Thread(target=Sensor.getTFminiData22)
