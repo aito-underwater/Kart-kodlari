@@ -115,7 +115,7 @@ def main():
                 else:
 
                     print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
-                    if Sensor.getTFminiData2() < 100:
+                    if Sensor.getTFminiData2(  ) < 100:
                         print("go_down")
                         if count < 4:
                             EnginePower.rotate_right(time.time())
@@ -123,7 +123,7 @@ def main():
                         else:
                             EnginePower.rotate_random(time.time())
                     else:
-
+                        print("----------Forward-------------")
                         EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
             else:
