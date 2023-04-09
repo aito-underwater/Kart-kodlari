@@ -30,7 +30,7 @@ def main():
 
     count = 0
     go_down = False
-    ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with the appropriate serial port
+    ser = serial.Serial('/dev/ttyS0', 115200, timeout=1)  # replace ttyAMA0 with the appropriate serial port
     EnginePower.set_task()
 
     timer = time.time()
@@ -38,9 +38,8 @@ def main():
     target = None
     data = []
     while True:
-        print("-------")
-        response = ser.read(8)
-        print("-------")
+
+        response = ser.read()
         # data_left = ser.inWaiting()  # Get the number of characters ready to be read
         # response += ser.read(data_left)
 
