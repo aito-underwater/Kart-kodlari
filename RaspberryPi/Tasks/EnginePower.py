@@ -142,7 +142,7 @@ def select_vector(power_vector):
     else:
         sign = - 1
 
-    print(index)
+    print("İndex : " + index)
     if index is 0:
         return sign * forward_vector
     if index is 1:
