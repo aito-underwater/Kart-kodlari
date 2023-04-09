@@ -37,7 +37,7 @@ def main():
         response += ser.read(data_left)
         print(response)
         time.sleep(1)
-        if len(response) > 8:
+        if len(response) >= 8:
             permData = struct.unpack('ii', response[0:8])
             data.append(permData[0])
             data.append(permData[1])
