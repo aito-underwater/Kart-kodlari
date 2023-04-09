@@ -30,7 +30,7 @@ def main():
     task = None
     target = None
     data = []
-    while ser.in_waiting:
+    while True:
         ser.flush()
         response = ser.read(8)
         data_left = ser.inWaiting()  # Get the number of characters ready to be read
