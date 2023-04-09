@@ -113,7 +113,7 @@ def stop_all_functions():
     return stop_vector
 
 
-def     change_task(argument):
+def set_task():
     global model
     print(model)
     switcher = {

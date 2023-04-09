@@ -25,7 +25,7 @@ def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with the appropriate serial port
-
+    EnginePower.set_task()
     timer = time.time()
     task = None
     target = None
