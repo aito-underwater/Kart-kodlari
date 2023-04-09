@@ -76,13 +76,12 @@ def main():
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
 
-
                 if power_vector is True:
                     go_down = True
 
                 else:
                     EnginePower.send_data_to_engines(
-                        EnginePower.select_vector(power_vector) )
+                        EnginePower.select_vector(power_vector))
                 # <-------------------------------------------------------->
 
                 engine_data = EnginePower.select_vector(power_vector)
