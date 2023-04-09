@@ -89,21 +89,21 @@ def main():
                     myTable.add_row(["Engine 5", engine_data[4]])
                     myTable.add_row(["Engine 6", engine_data[5]])
 
-                print(myTable)
+                    print(myTable)
 
-                cvs_writer.writerow([
-                                     # Sensor.getTFminiData2(),
-                                     # Sensor.getTFminiData1(),
-                                     # Sensor.getTFminiData22(),
-                                     # Gx, Gy, Gz,
-                                     # Ax, Ay, Az,
-                                     engine_data[0],
-                                     engine_data[1],
-                                     engine_data[2],
-                                     engine_data[3],
-                                     engine_data[4],
-                                     engine_data[5]
-                                     ])
+                    cvs_writer.writerow([
+                                         # Sensor.getTFminiData2(),
+                                         # Sensor.getTFminiData1(),
+                                         # Sensor.getTFminiData22(),
+                                         # Gx, Gy, Gz,
+                                         # Ax, Ay, Az,
+                                         engine_data[0],
+                                         engine_data[1],
+                                         engine_data[2],
+                                         engine_data[3],
+                                         engine_data[4],
+                                         engine_data[5]
+                                         ])
 
                 # if keyboard.is_pressed("q"):  # returns True if "q" is pressed
                 #     EnginePower.stop_all_functions()
