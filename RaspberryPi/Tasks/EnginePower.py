@@ -19,7 +19,7 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
 forward_vector = [0, 0, 0, 0, -100, -100]
 right_vector = [0, 25, 0, 0, 0, 25]
 turn_right_vector = [25, -25, 0, 0, -25, 25]
-down_vector = [0, 0, 100, 100, 0, 0]
+down_vector = [0, 0, 100, -100, 0, 0]
 up_vector = [0, 0, -30, -30, 0, 0]
 stable_vector = [0, 0, 30, 30, 0, 0]
 stop_vector = [0, 0, 0, 0, 0, 0]
@@ -48,7 +48,7 @@ send_binary = ''
 def send_data_to_engines(powers):
     global send_binary
     if powers is None:
-        return 
+        return
     for data in powers:
         data = str("{:08b}".format(data, 'b'))
 
