@@ -206,6 +206,7 @@ class AITONeuralNetwork:
         return y
 
     def inputIsNotValid(self, input_x):
+        print(type(input_x[0]))
         if type(input_x[0]) is int or type(input_x[0]) is float:
             if self.input_layer_size != len(input_x):
 
