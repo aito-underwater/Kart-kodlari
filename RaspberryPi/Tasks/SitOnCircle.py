@@ -38,6 +38,7 @@ def main():
         print(response)
         time.sleep(1)
         if len(response) >= 8:
+            data = []
             permData = struct.unpack('ii', response[0:8])
             data.append(permData[0])
             data.append(permData[1])
