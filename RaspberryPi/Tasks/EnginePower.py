@@ -126,7 +126,7 @@ def set_task():
     }
 
     # model.load_model(switcher.get(argument, "Invalid Task"))
-    model.load_model('AITO.dat')
+    model.load_model('Models/AITO.dat')
     # return switcher.get(argument, "Invalid Task")
 
 
