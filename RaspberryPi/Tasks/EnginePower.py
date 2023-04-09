@@ -132,7 +132,7 @@ def set_task():
 
 def select_vector(power_vector):
 
-    index = abs(power_vector.index(max(power_vector)))
+    index = abs(list(power_vector).index(max(power_vector)))
     if power_vector[index] > 0:
         sign = 1
     else:
