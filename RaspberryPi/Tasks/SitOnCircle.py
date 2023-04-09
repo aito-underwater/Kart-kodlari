@@ -53,9 +53,8 @@ def main():
         # response += ser.read(data_left)
 
         time.sleep(1)
-        print(len(response))
         if len(response) >= 8:
-            print("Hello my man")
+
             data = []
             permData = struct.unpack('!ii', response[0:8])
             data.append(permData[0])
