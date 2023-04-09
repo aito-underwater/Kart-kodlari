@@ -108,8 +108,8 @@ def main():
                                      engine_data[5]
                                      ])
 
-                if keyboard.is_pressed("q"):  # returns True if "q" is pressed
-                    EnginePower.stop_all_functions()
+                # if keyboard.is_pressed("q"):  # returns True if "q" is pressed
+                #     EnginePower.stop_all_functions()
 
             else:
 
