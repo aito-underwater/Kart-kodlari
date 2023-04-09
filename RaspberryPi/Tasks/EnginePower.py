@@ -101,8 +101,9 @@ def go_forward():
 
 def calculate_engines_power(input):
     # y = model.predict([162.46283326, 346.14933504, 109.24856128, 41.12214409])
+    print(input)
+    print(len(input))
     y = model.predict(input)
-    print(y[len(y) - 1])
     flag = y[len(y) - 1]
     if flag == 1:
         return True
