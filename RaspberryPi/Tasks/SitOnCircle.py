@@ -77,7 +77,7 @@ def main():
 
                 else:
                     EnginePower.send_data_to_engines(
-                        EnginePower.select_vector(power_vector) + EnginePower.stable_vector)
+                        EnginePower.select_vector(power_vector) )
                 # <-------------------------------------------------------->
 
                 engine_data = EnginePower.select_vector(power_vector)
