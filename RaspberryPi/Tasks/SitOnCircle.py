@@ -48,7 +48,7 @@ def main():
             EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         else:
-            print("+++++++++++++++++" + str(len(data)))
+            print("+++++++++++++++++" + str(len(response)))
             if len(data) != 0:
 
                 #  temperature, pressure, humidity = Sensor.readBME280All()
