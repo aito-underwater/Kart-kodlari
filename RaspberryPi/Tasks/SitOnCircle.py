@@ -128,7 +128,7 @@ def main():
 
             else:
 
-                print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
+                print("Lidar Verisi : " + str(Sensor.getTFminiData22()))
                 if Sensor.getTFminiData2() < 100:
                     print("go_down")
                     if count < 4:
@@ -145,8 +145,8 @@ if __name__ == '__main__':
     try:
         print("--------------------------------------------")
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
-        t2 = threading.Thread(target=Sensor.getTFminiData2)
-        # t22 = threading.Thread(target=Sensor.getTFminiData22)
+        # t2 = threading.Thread(target=Sensor.getTFminiData2)
+        t22 = threading.Thread(target=Sensor.getTFminiData22)
         # tWPS = threading.Thread(target=Sensor.WPSData)
         # # tMPU = threading.Thread(target=Sensor.MPUData)
         # tBME = threading.Thread(target=Sensor.BMEData)
@@ -155,16 +155,16 @@ if __name__ == '__main__':
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
 
         # t1.start()
-        t2.start()
-        # t22.start()
+        # t2.start()
+        t22.start()
         #   tWPS.start()
         # #  tMPU.start()
         #   tBME.start()
 
         test.start()
         # t1.join()
-        t2.join()
-        # t22.join()
+        # t2.join()
+        t22.join()
         # test.start()
         #    tWPS.join()
         # #   tMPU.join()
