@@ -188,6 +188,8 @@ class AITONeuralNetwork:
         y = []
 
         t = 0
+        print(len(input_x))
+        print(len(self.network_weight[0][0:self.input_layer_size]))
 
         y = (np.dot(input_x, self.network_weight[0][0:self.input_layer_size]))
 
