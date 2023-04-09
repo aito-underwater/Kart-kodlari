@@ -41,10 +41,8 @@ def main():
             permData = struct.unpack('ii', response[0:8])
             data.append(permData[0])
             data.append(permData[1])
-
-
+        print(go_down)
         if go_down is True:
-
             EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         else:
@@ -72,7 +70,7 @@ def main():
                 # <-------------------------------------------------------->
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
-                print(go_down)
+
 
                 if power_vector is True:
                     go_down = True
