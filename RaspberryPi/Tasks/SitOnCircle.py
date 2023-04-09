@@ -21,6 +21,11 @@ cvs_writer = csv.writer(my_file)
 
 
 def main():
+    timer = time.time() + 4
+
+    while timer > time.time():
+        EnginePower.send_data_to_engines(EnginePower.all_vector2)
+
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with the appropriate serial port
