@@ -61,6 +61,13 @@ def main():
             data.append(permData[1])
         print(go_down)
         if go_down is True:
+
+            timer = time.time() + 2
+
+            while timer > time.time():
+                EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
+
             EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         else:
