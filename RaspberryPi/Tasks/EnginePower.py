@@ -130,7 +130,7 @@ def set_task():
     # }
 
     # model.load_model(switcher.get(argument, "Invalid Task"))
-    model = model.load_model('Models/SitOnCircle1.dat')
+    model = model.load_model('Models/SitOnCircle2.dat')
     # return switcher.get(argument, "Invalid Task")
 
 
