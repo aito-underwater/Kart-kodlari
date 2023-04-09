@@ -66,7 +66,7 @@ def main():
         else:
 
             if len(data) != 0:
-
+                print("--sasd")
                 #  temperature, pressure, humidity = Sensor.readBME280All()
                 # Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 
