@@ -50,12 +50,12 @@ def main():
         else:
 
             if len(data) != 0:
-                print("+++++++++++++++++" + str(len(data)))
+
                 #  temperature, pressure, humidity = Sensor.readBME280All()
                 # Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 
                 myTable = PrettyTable(["Sensor Name:", "Value"])
-                myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
+                # myTable.add_row(["Lidar1 cm", Sensor.getTFminiData2()])
                 # myTable.add_row(["Lidar2 cm", Sensor.getTFminiData1()])
                 # myTable.add_row(["Lidar3 cm", str(Sensor.getTFminiData22())])
                 # myTable.add_row(["Gyro Gx", Gx])
@@ -68,7 +68,7 @@ def main():
                 # myTable.add_row(["Temperature C", temperature]
                 # myTable.add_row(["Pressure hPa", pressure])
                 # myTable.add_row(["Humidity %", humidity])
-
+                print("+++++++++++++++++" + str(len(data)))
                 # <-------------------------------------------------------->
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
