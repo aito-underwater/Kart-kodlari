@@ -57,7 +57,7 @@ def main():
         if len(response) >= 8:
             print("Hello my man")
             data = []
-            permData = struct.unpack('ii', response[0:8])
+            permData = struct.unpack('!ii', response[0:8])
             data.append(permData[0])
             data.append(permData[1])
         print(go_down)
