@@ -144,5 +144,5 @@ def select_vector(power_vector):
         return sign * right_vector
     if index is 2:
         return sign * turn_right_vector
-    if index is 2:
+    if index is 3:
         return True
