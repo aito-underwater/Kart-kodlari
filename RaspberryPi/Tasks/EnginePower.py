@@ -93,8 +93,8 @@ def rotate_random(start_time):
     end_time = start_time + random.randint(1, time_to_turn * 2)
 
     send_data_to_engines(right_vector * random.choice([-1, 1]))
-    while int(time.time()) < end_time:
-        send_data_to_engines(stop_vector)
+    # while int(time.time()) < end_time:
+    #     send_data_to_engines(stop_vector)
 
 
 def go_forward():
