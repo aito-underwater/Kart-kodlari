@@ -41,14 +41,14 @@ def main():
             permData = struct.unpack('ii', response[0:8])
             data.append(permData[0])
             data.append(permData[1])
-
+            print(str(permData) + "\n")
         print("---------------------")
         if go_down is True:
             print("###############")
             EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         else:
-            print("+++++++++++++++++" + str(len(response)))
+            print("+++++++++++++++++" + str(len(data)))
             if len(data) != 0:
 
                 #  temperature, pressure, humidity = Sensor.readBME280All()
