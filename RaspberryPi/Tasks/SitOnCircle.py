@@ -42,12 +42,13 @@ def main():
             data.append(permData[0])
             data.append(permData[1])
 
-
         print("---------------------")
         if go_down is True:
+            print("###############")
             EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         else:
+            print("+++++++++++++++++")
             if len(data) != 0:
 
                 #  temperature, pressure, humidity = Sensor.readBME280All()
