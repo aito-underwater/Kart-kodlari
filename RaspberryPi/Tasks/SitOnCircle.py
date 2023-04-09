@@ -26,12 +26,12 @@ def main():
     timer = time.time() + 4
 
     while timer > time.time():
-        EnginePower.send_data_to_engines(EnginePower.all_vector2)
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
     timer = time.time() + 4
 
-
     while timer > time.time():
-        EnginePower.send_data_to_engines(EnginePower.stop_vector)
+        EnginePower.send_data_to_engines(EnginePower.all_vector2)
 
     count = 0
     go_down = False
@@ -50,6 +50,7 @@ def main():
 
         time.sleep(1)
         if len(response) >= 8:
+            print("Hello my man")
             data = []
             permData = struct.unpack('ii', response[0:8])
             data.append(permData[0])
