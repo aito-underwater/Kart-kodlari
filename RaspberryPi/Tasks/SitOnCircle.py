@@ -98,7 +98,7 @@ def main():
                         EnginePower.select_vector(next_move))
                 # <-------------------------------------------------------->
 
-                engine_data = EnginePower.select_vector(next_move)
+                # engine_data = EnginePower.select_vector(next_move)
                 # if engine_data is not None:
                 #     myTable.add_row(["Engine 1", engine_data[0]])
                 #     myTable.add_row(["Engine 2", engine_data[1]])
