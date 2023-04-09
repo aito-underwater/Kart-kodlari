@@ -6,7 +6,7 @@ import threading
 import time
 import warnings
 
-import keyboard
+# import keyboard
 import psutil
 import serial
 from prettytable import PrettyTable
