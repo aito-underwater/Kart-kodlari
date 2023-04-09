@@ -32,14 +32,15 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with the appropriate serial port
     EnginePower.set_task()
-    print("-------")
+
     timer = time.time()
     task = None
     target = None
     data = []
     while True:
+        print("-------")
         response = ser.read(8)
-
+        print("-------")
         # data_left = ser.inWaiting()  # Get the number of characters ready to be read
         # response += ser.read(data_left)
 
