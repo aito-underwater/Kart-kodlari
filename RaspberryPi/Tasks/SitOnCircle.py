@@ -4,7 +4,6 @@ import struct
 import sys
 import threading
 import time
-import warnings
 
 # import keyboard
 import psutil
@@ -78,8 +77,6 @@ def main():
                 if power_vector is True:
                     go_down = True
 
-                if go_down is True:
-                    EnginePower.send_data_to_engines(EnginePower.down_vector)
                 else:
                     EnginePower.send_data_to_engines(
                         EnginePower.select_vector(power_vector) + EnginePower.stable_vector)
