@@ -26,6 +26,9 @@ def main():
     timer = time.time() + 6
 
     while timer > time.time():
+        EnginePower.send_data_to_engines(EnginePower.all_vector2)
+
+    while timer > time.time():
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
     timer = time.time() + 6
