@@ -210,10 +210,13 @@ class AITONeuralNetwork:
     def inputIsNotValid(self, input_x):
         if type(input_x[0]) is int:
             if self.input_layer_size != len(input_x):
+                print("11111111111111111111")
                 return True
             return False
 
         else:
+
+            print("2222222222222222222222")
             if self.input_layer_size != len(input_x[0]):
                 return True
             return False
