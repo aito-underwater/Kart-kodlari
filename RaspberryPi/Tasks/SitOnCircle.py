@@ -23,12 +23,12 @@ cvs_writer = csv.writer(my_file)
 
 
 def main():
-    timer = time.time() + 4
+    timer = time.time() + 6
 
     while timer > time.time():
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
-    timer = time.time() + 4
+    timer = time.time() + 6
 
     while timer > time.time():
         EnginePower.send_data_to_engines(EnginePower.all_vector2)
@@ -49,6 +49,7 @@ def main():
         # response += ser.read(data_left)
 
         time.sleep(1)
+        print(len(response))
         if len(response) >= 8:
             print("Hello my man")
             data = []
