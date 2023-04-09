@@ -62,7 +62,7 @@ def main():
         print(go_down)
         if go_down is True:
 
-            timer = time.time() + 2
+
 
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
@@ -71,9 +71,8 @@ def main():
             EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         else:
-            print("--sasd")
             if len(data) != 0:
-                print("--sasd")
+
                 #  temperature, pressure, humidity = Sensor.readBME280All()
                 # Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 
@@ -99,6 +98,7 @@ def main():
                 next_move = EnginePower.select_vector(power_vector)
                 if next_move is True:
                     go_down = True
+                    timer = time.time() + 3
 
                 else:
                     EnginePower.send_data_to_engines(
