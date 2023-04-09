@@ -181,7 +181,7 @@ class AITONeuralNetwork:
 
     def predict(self, input_x):
         if self.inputIsNotValid(input_x):
-            print(input_x)
+
             print('\033[1;31m' + "Invalid input, shape of data doesn't fit model.")
             print('\033[1;31m' + "Check predict function.")
             return []
@@ -206,7 +206,7 @@ class AITONeuralNetwork:
         return y
 
     def inputIsNotValid(self, input_x):
-        if type(input_x[0]) is int:
+        if type(input_x[0]) is int or type(input_x[0]) is float:
             if self.input_layer_size != len(input_x):
 
                 return True
