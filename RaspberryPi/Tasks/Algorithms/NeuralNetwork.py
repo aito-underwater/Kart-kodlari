@@ -34,7 +34,6 @@ class AITONeuralNetwork:
             with open('AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
-        print(self.model_path + path)
         with open(path, 'rb') as f:
             self = pickle.load(f)
             return self
@@ -188,8 +187,6 @@ class AITONeuralNetwork:
         y = []
 
         t = 0
-        print(input_x)
-        print(self.network_weight)
 
         y = (np.dot(input_x, self.network_weight[0][0:self.input_layer_size]))
 
@@ -210,13 +207,12 @@ class AITONeuralNetwork:
     def inputIsNotValid(self, input_x):
         if type(input_x[0]) is int:
             if self.input_layer_size != len(input_x):
-                print(len(input_x))
+
                 return True
             return False
 
         else:
 
-            print("2222222222222222222222")
             if self.input_layer_size != len(input_x[0]):
                 return True
             return False
