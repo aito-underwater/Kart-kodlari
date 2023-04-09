@@ -94,9 +94,10 @@ def main():
 
                 print(myTable)
 
-                cvs_writer.writerow([Sensor.getTFminiData2(),
-                                     Sensor.getTFminiData1(),
-                                     Sensor.getTFminiData22(),
+                cvs_writer.writerow([
+                                     # Sensor.getTFminiData2(),
+                                     # Sensor.getTFminiData1(),
+                                     # Sensor.getTFminiData22(),
                                      # Gx, Gy, Gz,
                                      # Ax, Ay, Az,
                                      engine_data[0],
