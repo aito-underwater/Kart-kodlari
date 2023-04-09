@@ -82,6 +82,7 @@ def main():
                     go_down = True
 
                 else:
+                    print( EnginePower.select_vector(power_vector))
                     EnginePower.send_data_to_engines(
                         EnginePower.select_vector(power_vector))
                 # <-------------------------------------------------------->

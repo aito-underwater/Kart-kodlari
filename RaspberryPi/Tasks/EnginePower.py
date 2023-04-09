@@ -119,17 +119,17 @@ def stop_all_functions():
 def set_task():
     global model
     print(model)
-    switcher = {
-        1: "SitOnCircle1.dat",
-        2: "SitOnCircle2.dat",
-        3: "SitOnCircle3.dat",
-        4: "SitOnCircle4.dat",
-        5: "SitOnCircle5.dat",
-        6: "SitOnCircle6.dat"
-    }
+    # switcher = {
+    #     1: "SitOnCircle1.dat",
+    #     2: "SitOnCircle2.dat",
+    #     3: "SitOnCircle3.dat",
+    #     4: "SitOnCircle4.dat",
+    #     5: "SitOnCircle5.dat",
+    #     6: "SitOnCircle6.dat"
+    # }
 
     # model.load_model(switcher.get(argument, "Invalid Task"))
-    model =  model.load_model('Models/AITO.dat')
+    model = model.load_model('Models/AITO.dat')
     # return switcher.get(argument, "Invalid Task")
 
 
