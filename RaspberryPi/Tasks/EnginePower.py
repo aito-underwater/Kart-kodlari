@@ -105,12 +105,7 @@ def calculate_engines_power(input):
     # y = model.predict([162.46283326, 346.14933504, 109.24856128, 41.12214409])
 
     y = model.predict(input)
-    print("Y is : " + str(y))
-    flag = y[len(y) - 1]
-    if flag == 1:
-        return True
-    else:
-        return y
+    return y
 
 
 def stop_all_functions():
@@ -149,3 +144,5 @@ def select_vector(power_vector):
         return sign * right_vector
     if index is 2:
         return sign * turn_right_vector
+    if index is 2:
+        return True

@@ -89,7 +89,8 @@ def main():
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
 
-                if power_vector is True:
+                next_move = EnginePower.select_vector(power_vector)
+                if next_move is True:
                     go_down = True
 
                 else:
