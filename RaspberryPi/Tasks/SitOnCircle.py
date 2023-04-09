@@ -81,12 +81,13 @@ def main():
                 # <-------------------------------------------------------->
 
                 engine_data = EnginePower.select_vector(power_vector)
-                myTable.add_row(["Engine 1", engine_data[0]])
-                myTable.add_row(["Engine 2", engine_data[1]])
-                myTable.add_row(["Engine 3", engine_data[2]])
-                myTable.add_row(["Engine 4", engine_data[3]])
-                myTable.add_row(["Engine 5", engine_data[4]])
-                myTable.add_row(["Engine 6", engine_data[5]])
+                if engine_data is not  None:
+                    myTable.add_row(["Engine 1", engine_data[0]])
+                    myTable.add_row(["Engine 2", engine_data[1]])
+                    myTable.add_row(["Engine 3", engine_data[2]])
+                    myTable.add_row(["Engine 4", engine_data[3]])
+                    myTable.add_row(["Engine 5", engine_data[4]])
+                    myTable.add_row(["Engine 6", engine_data[5]])
 
                 print(myTable)
 
