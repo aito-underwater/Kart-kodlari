@@ -47,6 +47,8 @@ send_binary = ''
 # model = nn.AITONeuralNetwork.load_model()
 def send_data_to_engines(powers):
     global send_binary
+    if powers is None:
+        return 
     for data in powers:
         data = str("{:08b}".format(data, 'b'))
 
