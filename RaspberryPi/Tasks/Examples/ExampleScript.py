@@ -11,7 +11,7 @@ secret_layer_size = 4
 secret_layer_count = 2
 generation_count = 20
 
-df = pd.read_csv('../Datas/test.csv')
+df = pd.read_csv('../Datas/SitOnCircle_3.csv')
 
 x = np.array(pd.DataFrame(df, columns=["X", "Y"]))
 
@@ -32,16 +32,16 @@ y = np.array(pd.DataFrame(df, columns=["forward", "right", "rotate", "down"]))
 
 test_nn = nn(input_layer_size, secret_layer_size, secret_layer_count,
              generation_count)
-# test_nn.set_up()
-#
-# test_nn.fit(input_x=x,
-#             output_y=y, iteration=100, genetic_iteration=10)
-#
-# test_nn.save_model()
+test_nn.set_up()
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=300)
+
+test_nn.save_model('../Models/SitOnCircle27.dat')
 
 # Hangi dosyada çaışıyorsak o dosyanın tolu üzerinden işlem yapmamız gerekiyor
 # test_nn = test_nn.load_model("AITO1.dat")
-test_nn = test_nn.load_model()
+# test_nn = test_nn.load_model()
 
 predict = test_nn.predict(
     [

@@ -38,9 +38,15 @@ class AITONeuralNetwork:
             self = pickle.load(f)
             return self
 
-    def save_model(self):
-        with open('../Models/AITO.dat', 'wb') as f:
-            pickle.dump(self, f)
+    def save_model(self, path=None):
+
+        if path is None:
+            with open('../Models/AITO.dat', 'wb') as f:
+                pickle.dump(self, f)
+
+        else:
+            with open(path, 'wb') as f:
+                pickle.dump(self, f)
 
     def create_network_weight(self):
         for generation in range(self.generation_count):
@@ -164,8 +170,8 @@ class AITONeuralNetwork:
 
         for generation in range(genetic_iteration):
             for rep in range(iteration):
-                print("================================== Iteration : " + str(
-                    int(rep + 1)) + " =======================================")
+                print("================================== Generation: " + str(generation + 1) + " Iteration : " + str(
+                    int(rep + 1)) +  " =======================================")
                 print(
                     "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
                 new_weights = self.create_new_weights()
