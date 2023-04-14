@@ -311,4 +311,6 @@ def BMEData():
         print(myTable)
 
 
-print(getTFminiData22())
+while True:
+    print(getTFminiData22())
+    time.sleep(1)
