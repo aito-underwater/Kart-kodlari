@@ -50,7 +50,7 @@ def main():
         if data is not None:
             print("---------------------")
             if go_down is False:
-
+                print("+++++++++++++++++++++++++")
                 if data is not None:
                     print("Data geliyor kardeş")
                     #  temperature, pressure, humidity = Sensor.readBME280All()
@@ -115,7 +115,7 @@ def main():
                             stacklevel=2)
                         task = None
                 else:
-                    print("+++++++++++++++++++++++++")
+
                     print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
                     if Sensor.getTFminiData2(  ) < 100:
                         print("go_down")
