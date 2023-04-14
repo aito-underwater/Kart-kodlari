@@ -311,4 +311,4 @@ def BMEData():
         print(myTable)
 
 
-getTFminiData22()
+print(getTFminiData22())
