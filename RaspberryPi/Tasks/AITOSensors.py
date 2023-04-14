@@ -312,5 +312,5 @@ def BMEData():
 
 
 while True:
-    print(getTFminiData22())
+    print(getTFminiData2())
     time.sleep(1)
