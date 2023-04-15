@@ -1,2 +1,2 @@
 #! usr/bin/bash
-python3 muticam.py
+python3 SitOnCircle.py
