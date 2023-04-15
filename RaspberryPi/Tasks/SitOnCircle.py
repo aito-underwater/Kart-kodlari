@@ -43,36 +43,27 @@ def main():
     EnginePower.set_task()
 
     timer = time.time()
-    task = None
-    target = None
+
     data = []
     while True:
 
         response = ser.read(8)
-        # data_left = ser.inWaiting()  # Get the number of characters ready to be read
-        # response += ser.read(data_left)
-
         time.sleep(1)
         if len(response) >= 8:
-
             data = []
-            permData = struct.unpack('!ii', response[0:8])
-            data.append(permData[0])
-            data.append(permData[1])
+            perm_data = struct.unpack('!ii', response[0:8])
+            data.append(perm_data[0])
+            data.append(perm_data[1])
         print(go_down)
         if go_down is True:
-
-
 
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-
             EnginePower.send_data_to_engines(EnginePower.down_vector)
-
         else:
-            if len(data) != 0:
 
+            if len(data) != 0:
                 #  temperature, pressure, humidity = Sensor.readBME280All()
                 # Gx, Gy, Gz, Ax, Ay, Az = Sensor.MPUData()
 

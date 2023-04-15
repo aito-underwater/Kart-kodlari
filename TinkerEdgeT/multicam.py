@@ -21,7 +21,7 @@ def send_data(a, b):
 
     # Do nothing for 500 milliseconds (0.5 seconds)
     # time.sleep(0.5)
-
+m
 while True:
 
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1-s1?tcp&subtype=0')
@@ -63,7 +63,7 @@ while True:
                     cv2.putText(frame, "({}, {})".format(int(center[0]), int(center[1])),
                                 (int(center[0]) + 10, int(center[1]) + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-        # cv2.imshow("Frame", frame)
+        cv2.imshow("Frame", frame)
 
         key = cv2.waitKey(1)
         if key == 27:
