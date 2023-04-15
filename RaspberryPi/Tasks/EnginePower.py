@@ -114,7 +114,7 @@ def stop_all_functions():
 
 def set_task():
     global model
-    print(model)
+
     # switcher = {
     #     1: "SitOnCircle1.dat",
     #     2: "SitOnCircle2.dat",
