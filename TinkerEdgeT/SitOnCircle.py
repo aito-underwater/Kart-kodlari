@@ -139,54 +139,57 @@ def main():
     # see read() for details
     cnt = 0
     while True:
-        # test that this really takes NO time
-        # (if it does, the camera is actually slower than this loop and we have to wait!)
-        t0 = time.perf_counter()
-        ret, frame = fresh.read(seqnumber=cnt + 1)
-        dt = time.perf_counter() - t0
-        if dt > 0.010:  # 10 milliseconds
-            print("NOTICE: read() took {dt:.3f} secs".format(dt=dt))
+        try:
+            cnt = cnt + 1
+            # test that this really takes NO time
+            # (if it does, the camera is actually slower than this loop and we have to wait!)
+            t0 = time.perf_counter()
+            ret, frame = fresh.read(seqnumber=cnt)
+            dt = time.perf_counter() - t0
+            if dt > 0.010:  # 10 milliseconds
+                print("NOTICE: read() took {dt:.3f} secs".format(dt=dt))
 
-        # let's pretend we need some time to process this frame
-        print("processing {cnt}...".format(cnt=cnt), end=" ", flush=True)
+            # let's pretend we need some time to process this frame
+            print("processing {cnt}...".format(cnt=cnt), end=" ", flush=True)
 
-        # -----------------------------------------------------------
+            # -----------------------------------------------------------
 
-        # ret, frame = cap.read()
-        frame = cv2.flip(frame, 1)
-        hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+            # ret, frame = cap.read()
+            frame = cv2.flip(frame, 1)
+            hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-        # red
-        lower_red = np.array([136, 87, 111])
-        upper_red = np.array([180, 255, 255])
-        red_mask = cv2.inRange(hsv_frame, lower_red, upper_red)
-        frame = cv2.bitwise_and(frame, frame, mask=red_mask)
+            # red
+            lower_red = np.array([136, 87, 111])
+            upper_red = np.array([180, 255, 255])
+            red_mask = cv2.inRange(hsv_frame, lower_red, upper_red)
+            frame = cv2.bitwise_and(frame, frame, mask=red_mask)
 
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        gray_blurred = cv2.blur(gray, (3, 3))
-        detected_circles = cv2.HoughCircles(gray_blurred,
-                                            cv2.HOUGH_GRADIENT, 10 * 3, 100 * 30, param1=250,
-                                            param2=250, minRadius=1, maxRadius=1000)
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            gray_blurred = cv2.blur(gray, (3, 3))
+            detected_circles = cv2.HoughCircles(gray_blurred,
+                                                cv2.HOUGH_GRADIENT, 10 * 3, 100 * 30, param1=250,
+                                                param2=250, minRadius=1, maxRadius=1000)
 
-        if detected_circles is not None:
-            detected_circles = np.uint16(np.around(detected_circles))
+            if detected_circles is not None:
+                detected_circles = np.uint16(np.around(detected_circles))
 
-            for pt in detected_circles[0, :]:
-                a, b, r = pt[0], pt[1], pt[2]
+                for pt in detected_circles[0, :]:
+                    a, b, r = pt[0], pt[1], pt[2]
 
-                cv2.circle(frame, (a, b), r, (0, 255, 0), 2)
-                cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
+                    cv2.circle(frame, (a, b), r, (0, 255, 0), 2)
+                    cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
 
-                print(a, b)
-                send_data(a,b)
-        # cv2.imshow("Red", frame)
-        key = cv2.waitKey(200)
-        if cv2.waitKey(1) & 0xFF == ord("q"):
-            break
+                    print(a, b)
+                    send_data(a,b)
+            # cv2.imshow("Red", frame)
+            key = cv2.waitKey(200)
+            if cv2.waitKey(1) & 0xFF == ord("q"):
+                break
 
-        # ----------------------------------------------------------------
-        # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
-
+            # ----------------------------------------------------------------
+            # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
+        except:
+            print("<--- Error --->")
         print("done!")
 
     fresh.release()
