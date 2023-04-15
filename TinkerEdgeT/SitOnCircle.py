@@ -22,6 +22,9 @@ import cv2
 import numpy as np
 import serial
 
+
+time.sleep(20)
+
 print("Camera starting...")
 ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
 message = ''
