@@ -14,12 +14,12 @@ Keys:
 # Python 2/3 compatibility
 from __future__ import print_function
 
-
-import time
-import threading
-import numpy as np
-import cv2
 import struct
+import threading
+import time
+
+import cv2
+import numpy as np
 import serial
 
 print("Camera starting...")
@@ -119,12 +119,10 @@ def main():
     # on win32, imshow from another thread to this DOES work
     cv2.namedWindow("realtime")
 
-    print("------")
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
     cap.set(cv2.CAP_PROP_FPS, 60)
 
-    print("------")
     # wrap it
     fresh = FreshestFrame(cap)
 
