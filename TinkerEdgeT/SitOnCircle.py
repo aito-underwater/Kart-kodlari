@@ -25,7 +25,7 @@ import serial
 print("Camera starting...")
 ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
 message = ''
-print("Trying someting")
+
 
 def send_data(a, b):
     # package = b''
@@ -119,10 +119,12 @@ def main():
     # on win32, imshow from another thread to this DOES work
     cv2.namedWindow("realtime")
 
+    print("------")
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
     cap.set(cv2.CAP_PROP_FPS, 60)
 
+    print("------")
     # wrap it
     fresh = FreshestFrame(cap)
 
