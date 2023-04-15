@@ -14,12 +14,31 @@ Keys:
 # Python 2/3 compatibility
 from __future__ import print_function
 
-import os
-import sys
+
 import time
 import threading
 import numpy as np
 import cv2
+import struct
+import serial
+
+print("Camera starting...")
+ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
+message = ''
+
+
+def send_data(a, b):
+    # package = b''
+
+    # for i in cor:
+    package = struct.pack('!ii', a, b)
+    print(package)
+
+    # Sent string value,but if tests shows us it is wrong turn it on btye
+    ser.write(package)
+
+    # Do nothing for 500 milliseconds (0.5 seconds)
+    # time.sleep(0.5)
 
 
 # also acts (partly) like a cv.VideoCapture
@@ -131,10 +150,9 @@ def main():
         # let's pretend we need some time to process this frame
         print("processing {cnt}...".format(cnt=cnt), end=" ", flush=True)
 
-
         # -----------------------------------------------------------
 
-       # ret, frame = cap.read()
+        # ret, frame = cap.read()
         frame = cv2.flip(frame, 1)
         hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
@@ -166,10 +184,8 @@ def main():
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-# ----------------------------------------------------------------
+        # ----------------------------------------------------------------
         # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
-
-
 
         print("done!")
 
