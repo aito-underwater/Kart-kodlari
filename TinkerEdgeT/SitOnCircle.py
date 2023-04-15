@@ -22,9 +22,9 @@ import cv2
 import numpy as np
 import serial
 
-print("Camera starting...")
-ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
-message = ''
+# print("Camera starting...")
+# ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
+# message = ''
 
 
 def send_data(a, b):
@@ -114,10 +114,10 @@ class FreshestFrame(threading.Thread):
 
 
 def main():
-    # these windows belong to the main thread
-    cv2.namedWindow("frame")
-    # on win32, imshow from another thread to this DOES work
-    cv2.namedWindow("realtime")
+    # # these windows belong to the main thread
+    # cv2.namedWindow("frame")
+    # # on win32, imshow from another thread to this DOES work
+    # cv2.namedWindow("realtime")
 
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
