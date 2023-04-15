@@ -178,7 +178,7 @@ def main():
                 cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
 
                 print(a, b)
-
+                send_data(a,b)
         # cv2.imshow("Red", frame)
         key = cv2.waitKey(200)
         if cv2.waitKey(1) & 0xFF == ord("q"):
@@ -191,8 +191,7 @@ def main():
 
     fresh.release()
 
-    cv2.destroyWindow("frame")
-    cv2.destroyWindow("realtime")
+
 
 
 if __name__ == '__main__':
