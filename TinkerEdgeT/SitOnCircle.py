@@ -25,7 +25,7 @@ import serial
 print("Camera starting...")
 ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
 message = ''
-
+print("Trying someting")
 
 def send_data(a, b):
     # package = b''
