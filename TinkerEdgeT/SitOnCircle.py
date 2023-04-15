@@ -22,9 +22,9 @@ import cv2
 import numpy as np
 import serial
 
-# print("Camera starting...")
-# ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
-# message = ''
+print("Camera starting...")
+ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
+message = ''
 
 
 def send_data(a, b):
