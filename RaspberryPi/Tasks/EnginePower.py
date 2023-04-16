@@ -17,7 +17,7 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
 
 #  [sağ arka motor, sol arka motor, sağ orta motor, sol orta motor, sağ ön motor, sol ön motor]
 # Main movement vectors
-forward_vector = [0, 0, 0, 0, -55, -50]
+forward_vector = [0, 0, 0, 0, -50, -55]
 right_vector = [0, 25, 0, 0, 0, 25]
 turn_right_vector = [25, -25, 0, 0, -25, 25]
 down_vector = [0, 0, 20, -20, 0, 0]
