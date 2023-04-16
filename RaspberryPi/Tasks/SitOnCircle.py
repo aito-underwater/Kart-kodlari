@@ -124,6 +124,7 @@ def main():
                 #     EnginePower.stop_all_functions()
 
             else:
+                print("Lidar Verisi : " )
                 print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
                 if Sensor.getTFminiData2() < 100:
                     print("go_down")
