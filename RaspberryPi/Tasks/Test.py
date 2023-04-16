@@ -2,7 +2,9 @@ import EnginePower
 import time
 import numpy as np
 timer = 0
+turn =5
 flag = True
+turntimer = time.time() + EnginePower.time_to_turn
 while True:
     a = int(input("1. Forward_vector \n"
                   "2. Right_vector \n"
@@ -16,19 +18,26 @@ while True:
                   ))
 
     if a == 1:
-        EnginePower.send_data_to_engines(EnginePower.forward_vector)
+        while turntimer > time.time():
+            EnginePower.send_data_to_engines(EnginePower.forward_vector)
     if a == 2:
-        EnginePower.send_data_to_engines(EnginePower.right_vector)
+        while turntimer > time.time():
+            EnginePower.send_data_to_engines(EnginePower.right_vector)
     if a == 3:
-        EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
+        while turntimer > time.time():
+            EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
     if a == 4:
-        EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
+        while turntimer > time.time():
+            EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
     if a == 5:
-        EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
+        while turntimer > time.time():
+            EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
     if a == 6:
-        EnginePower.send_data_to_engines(EnginePower.down_vector)
+        while turntimer > time.time():
+            EnginePower.send_data_to_engines(EnginePower.down_vector)
     if a == 7:
-        EnginePower.send_data_to_engines(EnginePower.stop_vector)
+        while turntimer > time.time():
+            EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 8:
         if flag:
             EnginePower.send_data_to_engines(EnginePower.all_vector)
@@ -38,12 +47,13 @@ while True:
             flag = True
     if a == 9:
         EnginePower.send_data_to_engines(EnginePower.stable_vector)
+
     if a == 0:
         timer = time.time() + 15
 
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.stop_vector)
-        timer = 0
+
         timer = time.time() + 15
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.down_vector)
