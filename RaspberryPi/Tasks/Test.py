@@ -29,15 +29,35 @@ while True:
 
 
     if a == 2:
-        EnginePower.send_data_to_engines(EnginePower.right_vector)
+        timer = time.time() + 5
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(EnginePower.right_vector)
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 3:
-        EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
+        timer = time.time() + 5
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 4:
-        EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
+        timer = time.time() + 5
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 5:
-        EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
+        timer = time.time() + 5
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 6:
-        EnginePower.send_data_to_engines(EnginePower.down_vector)
+        timer = time.time() + 5
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(EnginePower.down_vector)
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 7:
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 8:
