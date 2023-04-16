@@ -5,11 +5,11 @@ from RaspberryPi.Tasks.Algorithms.NeuralNetwork import AITONeuralNetwork as nn
 
 
 input_layer_size = 2
-secret_layer_size = 4
+secret_layer_size = 8
 secret_layer_count = 2
 generation_count = 20
 
-df = pd.read_csv('Datas/SitOnCircle_1.csv')
+df = pd.read_csv('Datas/main_test.csv')
 
 x = np.array(pd.DataFrame(df, columns=["X", "Y"]))
 
@@ -33,9 +33,9 @@ test_nn = nn(input_layer_size, secret_layer_size, secret_layer_count,
 test_nn.set_up()
 
 test_nn.fit(input_x=x,
-            output_y=y, iteration=1, genetic_iteration=3)
+            output_y=y, iteration=10, genetic_iteration=3)
 
-test_nn.save_model('Models/SitOnCircle_mustafa.dat')
+test_nn.save_model('Models/SitOnCircle_mustafa_1.dat')
 
 # Hangi dosyada çaışıyorsak o dosyanın tolu üzerinden işlem yapmamız gerekiyor
 # test_nn = test_nn.load_model("AITO1.dat")
