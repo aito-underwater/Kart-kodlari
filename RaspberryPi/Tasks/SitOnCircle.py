@@ -92,8 +92,7 @@ def main():
                     timer = time.time() + 3
 
                 else:
-                    EnginePower.send_data_to_engines(
-                        EnginePower.select_vector(next_move))
+                    EnginePower.send_data_to_engines(next_move)
                 # <-------------------------------------------------------->
 
                 # engine_data = EnginePower.select_vector(next_move)
