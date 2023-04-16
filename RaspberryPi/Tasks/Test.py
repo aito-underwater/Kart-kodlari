@@ -27,7 +27,7 @@ while True:
 
             EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
     if a == 4:
-        while turntimer > time.time():
+
             EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
     if a == 5:
         while turntimer > time.time():
