@@ -37,7 +37,11 @@ def select_vector():
 
 
 def save_data(x,y):
-    with open('emirhan_test.csv', 'a', newline='') as csvfile:
+<<<<<<< HEAD
+    with open('ismail_test.csv', 'a', newline='') as csvfile:
+=======
+    with open('mustafa_test.csv', 'a', newline='') as csvfile:
+>>>>>>> 54f583ca17d22e02358898dfe988fc5b0819a770
         spamwriter = csv.writer(csvfile, delimiter=' ',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
         vectors = select_vector()
@@ -59,7 +63,11 @@ def send_data(cor):
     # time.sleep(0.5)
 
 
-frame = cv2.imread('./images/(119).png')
+<<<<<<< HEAD
+frame = cv2.imread('./images/(214).png')
+=======
+frame = cv2.imread('./images/(180).png')
+>>>>>>> 54f583ca17d22e02358898dfe988fc5b0819a770
 # frame = cv2.flip(frame, 1)
 hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
