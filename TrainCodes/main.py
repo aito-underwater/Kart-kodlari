@@ -59,7 +59,7 @@ def send_data(cor):
     # time.sleep(0.5)
 
 
-frame = cv2.imread('./images/46.png')
+frame = cv2.imread('./images/1.png')
 # frame = cv2.flip(frame, 1)
 hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
