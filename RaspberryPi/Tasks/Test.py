@@ -20,8 +20,7 @@ while True:
 
     print("dsad")
     if a == 1:
-        while turntimer > time.time():
-            EnginePower.send_data_to_engines(EnginePower.forward_vector)
+        EnginePower.send_data_to_engines(EnginePower.forward_vector)
     if a == 2:
         EnginePower.send_data_to_engines(EnginePower.right_vector)
     if a == 3:
@@ -29,14 +28,11 @@ while True:
     if a == 4:
         EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
     if a == 5:
-        while turntimer > time.time():
-            EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
+        EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
     if a == 6:
-        while turntimer > time.time():
-            EnginePower.send_data_to_engines(EnginePower.down_vector)
+        EnginePower.send_data_to_engines(EnginePower.down_vector)
     if a == 7:
-        while turntimer > time.time():
-            EnginePower.send_data_to_engines(EnginePower.stop_vector)
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 8:
         if flag:
             EnginePower.send_data_to_engines(EnginePower.all_vector)
