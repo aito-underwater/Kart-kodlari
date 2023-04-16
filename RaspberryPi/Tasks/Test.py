@@ -52,6 +52,7 @@ while True:
             EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
     if a == 6:
         timer = time.time() + 5
         while time.time() < timer:
