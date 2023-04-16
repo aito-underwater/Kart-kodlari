@@ -21,7 +21,7 @@ while True:
         while turntimer > time.time():
             EnginePower.send_data_to_engines(EnginePower.forward_vector)
     if a == 2:
-        while turntimer > time.time():
+
             EnginePower.send_data_to_engines(EnginePower.right_vector)
     if a == 3:
         while turntimer > time.time():
