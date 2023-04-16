@@ -1,8 +1,9 @@
 import EnginePower
 import time
 import numpy as np
+
 timer = 0
-turn =5
+turn = 5
 flag = True
 turntimer = time.time() + EnginePower.time_to_turn
 while True:
@@ -17,27 +18,49 @@ while True:
                   "9. Stable_vector \n"
                   ))
 
+    print("dsad")
     if a == 1:
-        while turntimer > time.time():
+        timer = time.time() + 5
+
+        while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
+
     if a == 2:
-        while turntimer > time.time():
+        timer = time.time() + 5
+        while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.right_vector)
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 3:
-        while turntimer > time.time():
+        timer = time.time() + 5
+        while time.time() < timer:
             EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 4:
-        while turntimer > time.time():
+        timer = time.time() + 5
+        while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 5:
-        while turntimer > time.time():
+        timer = time.time() + 5
+        while time.time() < timer:
             EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
     if a == 6:
-        while turntimer > time.time():
+        timer = time.time() + 5
+        while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.down_vector)
+
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 7:
-        while turntimer > time.time():
-            EnginePower.send_data_to_engines(EnginePower.stop_vector)
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 8:
         if flag:
             EnginePower.send_data_to_engines(EnginePower.all_vector)
