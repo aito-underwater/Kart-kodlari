@@ -18,6 +18,7 @@ while True:
                   "9. Stable_vector \n"
                   ))
 
+    print("dsad")
     if a == 1:
         while turntimer > time.time():
             EnginePower.send_data_to_engines(EnginePower.forward_vector)
