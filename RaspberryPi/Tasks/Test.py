@@ -1,8 +1,9 @@
 import EnginePower
 import time
 import numpy as np
+
 timer = 0
-turn =5
+turn = 5
 flag = True
 turntimer = time.time() + EnginePower.time_to_turn
 while True:
@@ -21,14 +22,11 @@ while True:
         while turntimer > time.time():
             EnginePower.send_data_to_engines(EnginePower.forward_vector)
     if a == 2:
-
-            EnginePower.send_data_to_engines(EnginePower.right_vector)
+        EnginePower.send_data_to_engines(EnginePower.right_vector)
     if a == 3:
-
-            EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
+        EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
     if a == 4:
-
-            EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
+        EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
     if a == 5:
         while turntimer > time.time():
             EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
