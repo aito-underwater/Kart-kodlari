@@ -53,7 +53,7 @@ while True:
 
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.stop_vector)
-        timer = 0
+
         timer = time.time() + 15
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.down_vector)
