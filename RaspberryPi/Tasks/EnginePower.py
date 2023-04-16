@@ -136,13 +136,15 @@ def select_vector(power_vector):
         sign = 1
     else:
         sign = - 1
-
-    print("İndex : " + str(index))
     if index is 0:
+        print(str(sign) + " Go Forward")
         return sign * forward_vector
     if index is 1:
+        print(str(sign) + " Go Right")
         return sign * right_vector
     if index is 2:
+        print(str(sign) + " Turn  right")
         return sign * turn_right_vector
     if index is 3:
+        print(" Go Down")
         return True
