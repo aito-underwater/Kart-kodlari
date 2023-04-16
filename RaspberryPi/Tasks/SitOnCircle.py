@@ -23,16 +23,16 @@ cvs_writer = csv.writer(my_file)
 
 
 def main():
-    timer = time.time() + 3
+    timer = time.time() + 4
 
     while timer > time.time():
         EnginePower.send_data_to_engines(EnginePower.all_vector2)
 
-    timer = time.time() + 3
+    timer = time.time() + 4
     while timer > time.time():
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
-    timer = time.time() + 3
+    timer = time.time() + 4
 
     while timer > time.time():
         EnginePower.send_data_to_engines(EnginePower.all_vector2)
