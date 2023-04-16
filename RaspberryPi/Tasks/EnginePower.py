@@ -16,10 +16,10 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
                              generation_count)
 
 # Main movement vectors
-forward_vector = [0, 0, 0, 0, -100, -100]
+forward_vector = [0, 0, 0, 0, -20, -20]
 right_vector = [0, 25, 0, 0, 0, 25]
 turn_right_vector = [25, -25, 0, 0, -25, 25]
-down_vector = [0, 0, 100, -100, 0, 0]
+down_vector = [0, 0, 20, -20, 0, 0]
 up_vector = [0, 0, -30, -30, 0, 0]
 stable_vector = [0, 0, 30, 30, 0, 0]
 stop_vector = [0, 0, 0, 0, 0, 0]
@@ -125,7 +125,7 @@ def set_task():
     # }
 
     # model.load_model(switcher.get(argument, "Invalid Task"))
-    model = model.load_model('Models/SitOnCircle23.dat')
+    model = model.load_model('Models/SitOnCircle24.dat')
     # return switcher.get(argument, "Invalid Task")
 
 
