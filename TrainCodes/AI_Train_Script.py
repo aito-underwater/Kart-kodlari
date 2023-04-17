@@ -33,9 +33,9 @@ test_nn = nn(input_layer_size, secret_layer_size, secret_layer_count,
 test_nn.set_up()
 
 test_nn.fit(input_x=x,
-            output_y=y, iteration=10, genetic_iteration=3)
+            output_y=y, iteration=100, genetic_iteration=1000)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_1.dat')
+test_nn.save_model('Models/SitOnCircle_ismail_13.dat')
 
 # Hangi dosyada çaışıyorsak o dosyanın tolu üzerinden işlem yapmamız gerekiyor
 # test_nn = test_nn.load_model("AITO1.dat")

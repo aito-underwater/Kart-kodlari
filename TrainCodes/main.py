@@ -37,7 +37,7 @@ def select_vector():
 
 
 def save_data(x,y):
-    with open('mustafa_test.csv', 'a', newline='') as csvfile:
+    with open('Datas/mustafa_test.csv', 'a', newline='') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=' ',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
         vectors = select_vector()
