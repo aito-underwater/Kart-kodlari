@@ -20,7 +20,7 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
 forward_vector = [0, 0, 0, 0, -50, -57]
 right_vector = [-19, -19, 0, 0, 25, -25]
 turn_right_vector = [-19, 19, 0, 0, 25, -25]
-down_vector = [0, 0, 20, -20, 0, 0]
+down_vector = [0, 0, 100, -100, 0, 0]
 up_vector = [0, 0, -30, -30, 0, 0]
 stable_vector = [0, 0, 14, -14, 0, 0]
 stop_vector = [0, 0, 0, 0, 0, 0]
@@ -30,7 +30,7 @@ all_vector = [100, 100, 100, 100, 100, 100]
 all_vector2 = [10, 10, 10, 10, 10, 10]
 
 stable_vector2 = [0, 0, 100, -100, 0, 0]
-gsb_vector = [0, 0, 28, -28, -50, -60]
+gsb_vector = [0, 0, 100, -100, -50, -60]
 
 vector_1 = [100, 0, 0, 0, 0, 0]
 vector_2 = [0, 100, 0, 0, 0, 0]
