@@ -11,7 +11,7 @@ flag = True
 timer = time.time() + 5
 
 while time.time() < timer:
-    EnginePower.send_data_to_engines(EnginePower.forward_vector)
+    EnginePower.send_data_to_engines([0,0,0,0,0,0])
 
 EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
