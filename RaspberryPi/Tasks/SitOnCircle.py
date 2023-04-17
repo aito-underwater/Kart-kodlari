@@ -20,7 +20,7 @@ cvs_writer = csv.writer(my_file)
 
 timer = time.time() + 5
 while time.time() < timer:
-    EnginePower.send_data_to_engines([1, 1, 1, 1, 1, 1])
+    EnginePower.send_data_to_engines([5, 5, 5, 5, 5, 5])
 
 timer = time.time() + 5
 while time.time() < timer:
