@@ -5,7 +5,7 @@ from RaspberryPi.Tasks.Algorithms.NeuralNetwork import AITONeuralNetwork as nn
 
 
 input_layer_size = 2
-secret_layer_size = 8
+secret_layer_size = 4
 secret_layer_count = 2
 generation_count = 20
 
@@ -33,9 +33,9 @@ test_nn = nn(input_layer_size, secret_layer_size, secret_layer_count,
 test_nn.set_up()
 
 test_nn.fit(input_x=x,
-            output_y=y, iteration=100, genetic_iteration=1000)
+            output_y=y, iteration=10000, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_ismail_13.dat')
+test_nn.save_model('Models/SitOnCircle_mustafa_5.dat')
 
 # Hangi dosyada çaışıyorsak o dosyanın tolu üzerinden işlem yapmamız gerekiyor
 # test_nn = test_nn.load_model("AITO1.dat")
@@ -45,18 +45,7 @@ predict = test_nn.predict(
     [
         [1635, 375],
         [975, 525],
-        [945, 915],
-        [1215, 975],
-        [465, 1035],
-        [135, 855],
-        [285, 165],
-        [555, 165],
-        [1695, 435],
-        [1695, 915],
-        [1395, 885],
-        [1005, 855],
-        [825, 855],
-        [615, 615]
+
 
     ])
 
