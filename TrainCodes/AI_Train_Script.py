@@ -35,7 +35,53 @@ test_nn.set_up()
 test_nn.fit(input_x=x,
             output_y=y, iteration=1000, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_8.dat')
+test_nn.save_model('Models/SitOnCircle_emirhan_1.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_2.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_3.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_4.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_5.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_6.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_7.dat')
+
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_8.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_9.dat')
+
+
+test_nn.fit(input_x=x,
+            output_y=y, iteration=1000, genetic_iteration=10)
+test_nn.save_model('Models/SitOnCircle_emirhan_10.dat')
 
 # Hangi dosyada çaışıyorsak o dosyanın tolu üzerinden işlem yapmamız gerekiyor
 # test_nn = test_nn.load_model("AITO1.dat")
