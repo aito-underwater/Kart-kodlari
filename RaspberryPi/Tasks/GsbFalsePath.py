@@ -83,9 +83,13 @@ while True:
         timer = time.time() + 5
 
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.stable_vector)
+            EnginePower.send_data_to_engines(EnginePower.stable_vector2)
 
-        timer = time.time() + 15
+        timer = time.time() + 20
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.gsb_vector)
+
+        timer = time.time() + 5
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(EnginePower.up_vector)
         EnginePower.send_data_to_engines(np.negative(EnginePower.stop_vector))
