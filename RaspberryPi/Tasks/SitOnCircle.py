@@ -10,7 +10,6 @@ import psutil
 import serial
 from prettytable import PrettyTable
 
-import AITOSensors as Sensor
 import EnginePower
 
 sys.path.insert(0, '../../')
@@ -19,22 +18,13 @@ my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
+timer = time.time() + 5
+
+while time.time() < timer:
+    EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
+
 
 def main():
-    timer = time.time() + 5
-
-    while timer > time.time():
-        EnginePower.send_data_to_engines(EnginePower.all_vector2)
-
-    timer = time.time() + 5
-    while timer > time.time():
-        EnginePower.send_data_to_engines(EnginePower.stop_vector)
-
-    timer = time.time() + 5
-
-    while timer > time.time():
-        EnginePower.send_data_to_engines(EnginePower.all_vector2)
-
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=1)  # replace ttyAMA0 with the appropriate serial port
@@ -48,7 +38,7 @@ def main():
         response = ser.read(8)
         time.sleep(1)
         if len(response) >= 8:
-            data = []
+
             perm_data = struct.unpack('!ii', response[0:8])
             data.append(perm_data[0])
             data.append(perm_data[1])
@@ -127,8 +117,6 @@ def main():
 
                 # if Sensor.getTFminiData2() < 100:
                 if False:
-
-                    print("going down.")
                     if count < 4:
                         EnginePower.rotate_right(time.time())
                         count = count + 1
@@ -137,7 +125,7 @@ def main():
                 else:
                     print("----------Forward-------------")
                     EnginePower.send_data_to_engines(EnginePower.forward_vector)
-
+        data = []
 
 if __name__ == '__main__':
     try:
