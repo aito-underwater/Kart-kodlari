@@ -19,7 +19,10 @@ my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
 timer = time.time() + 5
+while time.time() < timer:
+    EnginePower.send_data_to_engines([1, 1, 1, 1, 1, 1])
 
+timer = time.time() + 5
 while time.time() < timer:
     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
 
