@@ -7,6 +7,14 @@ import EnginePower
 timer = 0
 turn = 5
 flag = True
+
+timer = time.time() + 5
+
+while time.time() < timer:
+    EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
+EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
 turntimer = time.time() + EnginePower.time_to_turn
 while True:
     a = int(input("1. Forward_vector \n"
