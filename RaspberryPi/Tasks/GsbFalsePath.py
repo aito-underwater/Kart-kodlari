@@ -80,16 +80,13 @@ while True:
         EnginePower.send_data_to_engines(EnginePower.stable_vector)
 
     if a == 0:
-        timer = time.time() + 5
+        timer = time.time() + 10
 
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.stable_vector2)
 
-        timer = time.time() + 20
+        timer = time.time() + 25
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.gsb_vector)
+            EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-        timer = time.time() + 5
-        while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.up_vector)
         EnginePower.send_data_to_engines(np.negative(EnginePower.stop_vector))
