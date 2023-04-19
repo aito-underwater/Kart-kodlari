@@ -158,7 +158,8 @@ def main():
             # -----------------------------------------------------------
 
             # ret, frame = cap.read()
-            frame = cv2.flip(frame, 1)
+            # frame = cv2.flip(frame, 1)
+
             hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
             # red
@@ -184,7 +185,7 @@ def main():
 
                     print(a, b)
                     send_data(a, b)
-            cv2.imshow("Red", frame)
+            cv2.imshow("Red", frame1)
             key = cv2.waitKey(200)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
