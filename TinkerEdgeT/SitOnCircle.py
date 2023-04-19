@@ -184,6 +184,7 @@ def main():
 
                     print(a, b)
                     send_data(a, b)
+
             cv2.imshow("Red", frame)
             key = cv2.waitKey(200)
             if cv2.waitKey(1) & 0xFF == ord("q"):
