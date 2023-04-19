@@ -24,7 +24,7 @@ import numpy as np
 time.sleep(20)
 
 print("Camera starting...")
-ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
+# ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
 message = ''
 
 
@@ -36,7 +36,7 @@ def send_data(a, b):
     print(package)
 
     # Sent string value,but if tests shows us it is wrong turn it on btye
-    ser.write(package)
+    # ser.write(package)
 
     # Do nothing for 500 milliseconds (0.5 seconds)
     # time.sleep(0.5)
@@ -193,7 +193,7 @@ def main():
             # ----------------------------------------------------------------
             # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
         except:
-            ser.write("<------------------Error------------------->")
+            # ser.write("<------------------Error------------------->")
             print("<--- Error --->")
         print("done!")
 
