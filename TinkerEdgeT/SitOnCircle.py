@@ -120,6 +120,7 @@ def main():
     # # on win32, imshow from another thread to this DOES work
     # cv2.namedWindow("realtime")
 
+    print("Kamerayı açtım acıyorum, abicim  1 dakikanı istiyorum ")
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
     # cap = cv2.VideoCapture(0)
@@ -185,7 +186,7 @@ def main():
 
                     print(a, b)
                     send_data(a, b)
-            cv2.imshow("Red", frame)
+            # cv2.imshow("Red", frame)
             key = cv2.waitKey(200)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
