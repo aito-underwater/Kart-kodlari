@@ -17,7 +17,7 @@ from __future__ import print_function
 import struct
 import threading
 import time
-import serial
+# import serial
 import cv2
 import numpy as np
 
