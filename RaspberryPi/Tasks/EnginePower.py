@@ -33,12 +33,12 @@ all_vector2 = [10, 10, 10, 10, 10, 10]
 stable_vector2 = [0, 0, 30, -30, 0, 0]
 gsb_vector = [0, 0, 100, -100, -50, -55]
 
-vector_1 = [100, 0, 0, 0, 0, 0] # sağ arka motor
-vector_2 = [0, 100, 0, 0, 0, 0]# sağ arka motor
-vector_3 = [0, 0, 100, 0, 0, 0]# sağ arka motor
-vector_4 = [0, 0, 0, 100, 0, 0]# sağ arka motor
-vector_5 = [0, 0, 0, 0, 100, 0]# sağ arka motor
-vector_6 = [0, 0, 0, 0, 0, 100]# sağ arka motor
+vector_1 = [50, 0, 0, 0, 0, 0] # sağ arka motor
+vector_2 = [0, 50, 0, 0, 0, 0]# sağ arka motor
+vector_3 = [0, 0, 50, 0, 0, 0]# sağ arka motor
+vector_4 = [0, 0, 0, 50, 0, 0]# sağ arka motor
+vector_5 = [0, 0, 0, 0, 50, 0]# sağ arka motor
+vector_6 = [0, 0, 0, 0, 0, 50]# sağ arka motor
 # /////////////////////////////////////////////
 
 # Needed time to rotate vehicle
