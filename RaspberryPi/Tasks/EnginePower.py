@@ -30,6 +30,9 @@ stop_vector = [0, 0, 0, 0, 0, 0]
 all_vector = [100, 100, 100, 100, 100, 100]
 all_vector2 = [10, 10, 10, 10, 10, 10]
 
+stable_vector2 = [0, 0, 30, -30, 0, 0]
+gsb_vector = [0, 0, 100, -100, -50, -55]
+
 vector_1 = [100, 0, 0, 0, 0, 0]
 vector_2 = [0, 100, 0, 0, 0, 0]
 vector_3 = [0, 0, 100, 0, 0, 0]
@@ -109,6 +112,7 @@ def calculate_engines_power(input):
     # y = model.predict([162.46283326, 346.14933504, 109.24856128, 41.12214409])
 
     y = model.predict(input)
+    print(y)
     return y
 
 
@@ -129,7 +133,7 @@ def set_task():
     # }
 
     # model.load_model(switcher.get(argument, "Invalid Task"))
-    model = model.load_model('Models/SitOnCircle28.dat')
+    model = model.load_model('Models/SitOnCircle_mustafa_3.dat')
     # return switcher.get(argument, "Invalid Task")
 
 

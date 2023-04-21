@@ -17,11 +17,9 @@ from __future__ import print_function
 import struct
 import threading
 import time
-
+import serial
 import cv2
 import numpy as np
-import serial
-
 
 time.sleep(20)
 
@@ -122,8 +120,11 @@ def main():
     # # on win32, imshow from another thread to this DOES work
     # cv2.namedWindow("realtime")
 
+    # print("Kamerayı açtım acıyorum, abicim  1 dakikanı istiyorum ")
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
+    # cap = cv2.VideoCapture(0)
+
     cap.set(cv2.CAP_PROP_FPS, 60)
 
     # wrap it
@@ -158,7 +159,8 @@ def main():
             # -----------------------------------------------------------
 
             # ret, frame = cap.read()
-            frame = cv2.flip(frame, 1)
+            # frame = cv2.flip(frame, 1)
+
             hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
             # red
@@ -183,7 +185,7 @@ def main():
                     cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
 
                     print(a, b)
-                    send_data(a,b)
+                    send_data(a, b)
             # cv2.imshow("Red", frame)
             key = cv2.waitKey(200)
             if cv2.waitKey(1) & 0xFF == ord("q"):
@@ -197,8 +199,6 @@ def main():
         print("done!")
 
     fresh.release()
-
-
 
 
 if __name__ == '__main__':
