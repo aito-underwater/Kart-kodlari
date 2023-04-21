@@ -15,10 +15,10 @@ generation_count = 20
 model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_count,
                              generation_count)
 
-#  [sağ arka motor, sol arka motor, sağ orta motor, sol orta motor, sağ ön motor, sol ön motor]
+#  [motor, motor, motor, motor, motor, motor]
 
 # Main movement vectors
-forward_vector = [0, 0, 0, 0, -50, -57]
+forward_vector = [50, 0, 0, 0, 0, 0]
 right_vector = [-19, 19, 0, 0, 25, -25]
 turn_right_vector = [-19, 19, 0, 0, 25, -25]
 down_vector = [0, 0, 20, -20, 0, 0]
