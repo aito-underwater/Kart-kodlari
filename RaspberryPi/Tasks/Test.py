@@ -18,6 +18,10 @@ while True:
                   "9. Stable_vector \n"
                   ))
 
+    #    EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
+
+
     print("dsad")
     if a == 1:
         timer = time.time() + 5
@@ -81,7 +85,6 @@ while True:
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.down_vector)
         EnginePower.send_data_to_engines(np.negative(EnginePower.stop_vector))
-
     #
     # if a == 1:
     #     EnginePower.send_data_to_engines(EnginePower.forward_vector)

@@ -17,14 +17,14 @@ from __future__ import print_function
 import struct
 import threading
 import time
-# import serial
+import serial
 import cv2
 import numpy as np
 
 time.sleep(20)
 
 print("Camera starting...")
-# ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
+ser = serial.Serial('/dev/ttymxc0', 115200, timeout=None)  # replace ttyS1 with the appropriate serial port
 message = ''
 
 
@@ -36,7 +36,7 @@ def send_data(a, b):
     print(package)
 
     # Sent string value,but if tests shows us it is wrong turn it on btye
-    # ser.write(package)
+    ser.write(package)
 
     # Do nothing for 500 milliseconds (0.5 seconds)
     # time.sleep(0.5)
@@ -120,7 +120,7 @@ def main():
     # # on win32, imshow from another thread to this DOES work
     # cv2.namedWindow("realtime")
 
-    print("Kamerayı açtım acıyorum, abicim  1 dakikanı istiyorum ")
+    # print("Kamerayı açtım acıyorum, abicim  1 dakikanı istiyorum ")
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
     # cap = cv2.VideoCapture(0)
@@ -186,7 +186,7 @@ def main():
 
                     print(a, b)
                     send_data(a, b)
-            cv2.imshow("Red", frame)
+            # cv2.imshow("Red", frame)
             key = cv2.waitKey(200)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
@@ -194,7 +194,7 @@ def main():
             # ----------------------------------------------------------------
             # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
         except:
-            # ser.write("<------------------Error------------------->")
+            ser.write("<------------------Error------------------->")
             print("<--- Error --->")
         print("done!")
 
