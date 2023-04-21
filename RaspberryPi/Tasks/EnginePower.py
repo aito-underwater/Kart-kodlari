@@ -15,10 +15,10 @@ generation_count = 20
 model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_count,
                              generation_count)
 
-#  [motor, motor, motor, motor, motor, motor]
+#  [sağ arka , motor, motor, motor, motor, motor]
 
 # Main movement vectors
-forward_vector = [50, 0, 0, 0, 0, 0]
+forward_vector = [0, 50, 0, 0, 0, 0]
 right_vector = [-19, 19, 0, 0, 25, -25]
 turn_right_vector = [-19, 19, 0, 0, 25, -25]
 down_vector = [0, 0, 20, -20, 0, 0]
@@ -33,12 +33,12 @@ all_vector2 = [10, 10, 10, 10, 10, 10]
 stable_vector2 = [0, 0, 30, -30, 0, 0]
 gsb_vector = [0, 0, 100, -100, -50, -55]
 
-vector_1 = [100, 0, 0, 0, 0, 0]
-vector_2 = [0, 100, 0, 0, 0, 0]
-vector_3 = [0, 0, 100, 0, 0, 0]
-vector_4 = [0, 0, 0, 100, 0, 0]
-vector_5 = [0, 0, 0, 0, 100, 0]
-vector_6 = [0, 0, 0, 0, 0, 100]
+vector_1 = [100, 0, 0, 0, 0, 0] # sağ arka motor
+vector_2 = [0, 100, 0, 0, 0, 0]# sağ arka motor
+vector_3 = [0, 0, 100, 0, 0, 0]# sağ arka motor
+vector_4 = [0, 0, 0, 100, 0, 0]# sağ arka motor
+vector_5 = [0, 0, 0, 0, 100, 0]# sağ arka motor
+vector_6 = [0, 0, 0, 0, 0, 100]# sağ arka motor
 # /////////////////////////////////////////////
 
 # Needed time to rotate vehicle
