@@ -18,121 +18,73 @@ while True:
                   "9. Stable_vector \n"
                   ))
 
+    #    EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
+
+
     print("dsad")
     if a == 1:
         timer = time.time() + 5
 
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.vector_1)
+            EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
+
 
     if a == 2:
         timer = time.time() + 5
-
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.vector_2)
+            EnginePower.send_data_to_engines(EnginePower.right_vector)
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
-
     if a == 3:
         timer = time.time() + 5
-
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.vector_3)
+            EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
-
     if a == 4:
         timer = time.time() + 5
-
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.vector_4)
+            EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
-
     if a == 5:
         timer = time.time() + 5
-
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.vector_5)
+            EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
     if a == 6:
         timer = time.time() + 5
-
         while time.time() < timer:
-            EnginePower.send_data_to_engines(EnginePower.vector_6)
+            EnginePower.send_data_to_engines(EnginePower.down_vector)
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
+    if a == 7:
+        EnginePower.send_data_to_engines(EnginePower.stop_vector)
+    if a == 8:
+        if flag:
+            EnginePower.send_data_to_engines(EnginePower.all_vector)
+            flag = False
+        else:
+            EnginePower.send_data_to_engines(EnginePower.all_vector2)
+            flag = True
+    if a == 9:
+        EnginePower.send_data_to_engines(EnginePower.stable_vector)
 
+    if a == 0:
+        timer = time.time() + 15
 
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(EnginePower.stop_vector)
 
-    # print("dsad")
-    # if a == 1:
-    #     timer = time.time() + 5
-    #
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(EnginePower.forward_vector)
-    #
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    #
-    #
-    # if a == 2:
-    #     timer = time.time() + 5
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(EnginePower.right_vector)
-    #
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    # if a == 3:
-    #     timer = time.time() + 5
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
-    #
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    # if a == 4:
-    #     timer = time.time() + 5
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
-    #
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    # if a == 5:
-    #     timer = time.time() + 5
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(np.negative(EnginePower.turn_right_vector))
-    #
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    #
-    # if a == 6:
-    #     timer = time.time() + 5
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(EnginePower.down_vector)
-    #
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    # if a == 7:
-    #     EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    # if a == 8:
-    #     if flag:
-    #         EnginePower.send_data_to_engines(EnginePower.all_vector)
-    #         flag = False
-    #     else:
-    #         EnginePower.send_data_to_engines(EnginePower.all_vector2)
-    #         flag = True
-    # if a == 9:
-    #     EnginePower.send_data_to_engines(EnginePower.stable_vector)
-    #
-    # if a == 0:
-    #     timer = time.time() + 15
-    #
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(EnginePower.stop_vector)
-    #
-    #     timer = time.time() + 15
-    #     while time.time() < timer:
-    #         EnginePower.send_data_to_engines(EnginePower.down_vector)
-    #     EnginePower.send_data_to_engines(np.negative(EnginePower.stop_vector))
-
+        timer = time.time() + 15
+        while time.time() < timer:
+            EnginePower.send_data_to_engines(EnginePower.down_vector)
+        EnginePower.send_data_to_engines(np.negative(EnginePower.stop_vector))
     #
     # if a == 1:
     #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
