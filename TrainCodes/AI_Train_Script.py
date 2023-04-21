@@ -39,77 +39,77 @@ test_nn.set_up()
 test_nn.fit(input_x=x,
             output_y=y, iteration=1, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_1.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_1.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_2.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_2.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=100, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_2.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_2.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=1000, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_3.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_3.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10000, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_4.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_4.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=1, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_5.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_5.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_6.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_6.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=100, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_7.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_7.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=1000, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_8.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_8.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10, genetic_iteration=100)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_9.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_9.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=100, genetic_iteration=100)
 
-test_nn.save_model('Models/SitOnCircle_mustafa_16_10.dat')
+test_nn.save_model('Models/SitOnCircle_ezgi_8_10.dat')
 
 
 
