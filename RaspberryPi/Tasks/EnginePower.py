@@ -37,8 +37,8 @@ vector_1 = [-50, 0, 0, 0, 0, 0] # sağ arka motor
 vector_2 = [0, 50, 0, 0, 0, 0] # sol arka motor
 vector_3 = [0, 0, 50, 0, 0, 0] # sağ orta motor
 vector_4 = [0, 0, 0, -50, 0, 0] # sol orta motor
-vector_5 = [0, 0, 0, 0, -50, 0] # sağ ön motor
-vector_6 = [0, 0, 0, 0, 0, -50] # sol ön motor
+vector_5 = [0, 0, 0, 0, 50, 0] # sağ ön motor
+vector_6 = [0, 0, 0, 0, 0, 50] # sol ön motor
 # /////////////////////////////////////////////
 
 # Needed time to rotate vehicle
