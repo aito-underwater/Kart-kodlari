@@ -6,7 +6,7 @@ from RaspberryPi.Tasks.Algorithms.NeuralNetwork import AITONeuralNetwork as nn
 
 input_layer_size = 2
 secret_layer_size = 4
-secret_layer_count = 16
+secret_layer_count = 8
 generation_count = 20
 
 
