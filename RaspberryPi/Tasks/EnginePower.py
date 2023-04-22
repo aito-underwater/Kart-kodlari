@@ -19,7 +19,8 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
 ###
 # Main movement vectors
 forward_vector = [-27, 26, 0, 0, -27, -27]
-right_vector = [-32, -26, 0, 0, 35, -20]
+# right_vector = [-32, -26, 0, 0, 37, -20]
+right_vector = [-32, 0, 0, 0, 40, 0]
 left_vector = [32, -32, 0, 0, -40, 40]
 turn_right_vector = [25, 25, 0, 0, 25, -25]
 down_vector = [0, 0, 33, -40, 0, 0]
