@@ -39,7 +39,7 @@ while True:
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 3:
-        timer = time.time() + 5
+        timer = time.time() + 10
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.left_vector)
 
