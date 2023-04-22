@@ -18,8 +18,14 @@ struct __attribute__((packed)) STRUCT {
   int dim;
 }testStruct ;
 
-// <----------- Global Params --------------> //
+struct ServoEngine {
+  Servo engine;
+  int power;
+};
 
+// <----------- Global Params --------------> //
+    static unsigned long start_time
+    unsigned long running_time ;
 // <------------Camera Params ---------------> //
 
 int incomingData;
@@ -51,11 +57,6 @@ int incomingData;
 // Sol ön   motor
 #define MOTOR_PIN6 11
 
-struct ServoEngine {   // Structure declaration
-  Servo engine;           // Member (int variable)
-  int power;       // Member (char variable)
-}; // End the structure with a semicolon
-
 
 // <------------ Functions ------------> //
 void ChangeEngineSpeed( ServoEngine* engine);
@@ -79,7 +80,7 @@ void setup(){
   Serial2.begin(9600);
   Serial.begin(9600);
   myTransfer.begin(Serial2);
-
+  start_time = millis();
 
   engines[0].engine.attach(MOTOR_PIN1);
   engines[1].engine.attach(MOTOR_PIN2);
@@ -96,14 +97,12 @@ void setup(){
   Serial.read();
   testStruct.degree = 180;
 
-
-
-
-
 }
 
 
 void loop(){
+
+  running_time = millis() - start_time;
 
   if(Serial.available() > 0) {
     int rlen = Serial.readBytes(buf, BUFFER_SIZE);
@@ -131,11 +130,15 @@ void loop(){
       value = 0;
       engineIndex++;
     }
-    for(i = 0; i < 6; i++)
-    {
-      ChangeEngineSpeed(&engines[i],enginesPower[i]);
-    }
 
+    if (running_time > targetTime)
+    {
+        for(i = 0; i < 6; i++)
+        {
+          ChangeEngineSpeed(&engines[i],enginesPower[i]);
+        }
+        targetTime = running_time + 1000;
+    }
 
 
    Serial.print("Hi Raspberry Pi! You sent me: ");
@@ -163,6 +166,7 @@ void loop(){
 void ChangeEngineSpeed( ServoEngine* engine, int power)
 {
   // engine->writeMicroseconds(power parameters);
+
   engine->engine.writeMicroseconds(PIDAlgorithmForEngines(engine,power));
 
 }
@@ -171,6 +175,12 @@ void ChangeEngineSpeed( ServoEngine* engine, int power)
 // lerp
 int PIDAlgorithmForEngines( ServoEngine* engine, int power)
 {
+
   int newPower =  engine->power + (engine->power - power) * 0.5;
   return (power);
+}
+
+
+float lerp(float start, float end, float t) {
+    return (1.0 - t) * start + t * end;
 }
