@@ -132,14 +132,13 @@ void loop(){
     }
 
 
-    while (targetTime > millis())
-    {
+
         for(i = 0; i < 6; i++)
         {
           ChangeEngineSpeed(&engines[i],enginesPower[i]);
         }
         targetTime = millis() + 1000;
-    }
+
 
 
 
@@ -167,9 +166,9 @@ void loop(){
 
 void ChangeEngineSpeed( ServoEngine* engine, int power)
 {
-  // engine->writeMicroseconds(power parameters);
+  engine->engine.writeMicroseconds(power);
 
-  engine->engine.writeMicroseconds(PIDAlgorithmForEngines(engine,power));
+//   engine->engine.writeMicroseconds(PIDAlgorithmForEngines(engine,power));
 
 }
 
