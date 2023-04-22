@@ -76,7 +76,7 @@ while True:
         EnginePower.send_data_to_engines(EnginePower.stable_vector)
 
     if a == 0:
-        timer = time.time() + 5
+        timer = time.time() + 2
 
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.down_vector)
