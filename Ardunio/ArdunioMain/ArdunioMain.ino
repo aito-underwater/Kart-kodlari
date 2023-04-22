@@ -58,8 +58,8 @@ struct ServoEngine {   // Structure declaration
 
 
 // <------------ Functions ------------> //
-void ChangeEngineSpeed( Servo* engine);
-int PIDAlgorithmForEngines( Servo* engine, int power);
+void ChangeEngineSpeed( ServoEngine* engine);
+int PIDAlgorithmForEngines( ServoEngine* engine, int power);
 
 // <------------ Communication param ------------> //
 const int BUFFER_SIZE = 48;
@@ -89,7 +89,7 @@ void setup(){
   engines[5].engine.attach(MOTOR_PIN6);
 
   for (int i = 0; i < 6 ; i++){
-    engine[i].power = 1500;
+    engines[i].power = 1500;
   }
   // Wait for input
   while (!Serial.available());
@@ -135,8 +135,8 @@ void loop(){
     {
       ChangeEngineSpeed(&engines[i],enginesPower[i]);
     }
-    
- 
+
+
 
    Serial.print("Hi Raspberry Pi! You sent me: ");
     Serial.print(" 1 : ");
@@ -155,7 +155,7 @@ void loop(){
 
     }
 
-    
+
 
 }
 
@@ -163,15 +163,14 @@ void loop(){
 void ChangeEngineSpeed( ServoEngine* engine, int power)
 {
   // engine->writeMicroseconds(power parameters);
-  engine->writeMicroseconds(PIDAlgorithmForEngines(engine,power));
-  
+  engine->engine.writeMicroseconds(PIDAlgorithmForEngines(engine,power));
+
 }
 
 
 // lerp
 int PIDAlgorithmForEngines( ServoEngine* engine, int power)
 {
-  int power =  engine.power + (engine.power - power) * 0.5
+  int newPower =  engine->power + (engine->power - power) * 0.5;
   return (power);
 }
-
