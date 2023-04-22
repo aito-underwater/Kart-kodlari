@@ -20,9 +20,10 @@ def updt(total, progress):
     block = int(round(barLength * progress))
     text = "\r[{}] {:.0f}% {}".format(
         "#" * block + "-" * (barLength - block), round(progress * 100, 0),
-        status)
+        status) + " {} " + total + " / {}" + progress
     sys.stdout.write(text)
     sys.stdout.flush()
+
 
 def sigmoid_function(x):
     return 1 / (1 + e * (1 / x))
@@ -241,5 +242,3 @@ class AITONeuralNetwork:
             if self.input_layer_size != len(input_x[0]):
                 return True
             return False
-
-
