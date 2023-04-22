@@ -24,7 +24,7 @@ struct ServoEngine {
 };
 
 // <----------- Global Params --------------> //
-    static unsigned long start_time
+    static unsigned long start_time;
     unsigned long running_time ;
 // <------------Camera Params ---------------> //
 
