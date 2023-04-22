@@ -41,7 +41,7 @@ while True:
     if a == 3:
         timer = time.time() + 5
         while time.time() < timer:
-            EnginePower.send_data_to_engines(np.negative(EnginePower.right_vector))
+            EnginePower.send_data_to_engines(EnginePower.left_vector)
 
         EnginePower.send_data_to_engines(EnginePower.stop_vector)
     if a == 4:
