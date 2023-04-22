@@ -24,7 +24,7 @@ while True:
 
     print("dsad")
     if a == 1:
-        timer = time.time() + 5
+        timer = time.time() + 10
 
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.forward_vector)
@@ -33,7 +33,7 @@ while True:
 
 
     if a == 2:
-        timer = time.time() + 5
+        timer = time.time() + 10
         while time.time() < timer:
             EnginePower.send_data_to_engines(EnginePower.right_vector)
 
