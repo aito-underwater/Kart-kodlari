@@ -95,7 +95,7 @@ void setup(){
   while (!Serial.available());
   Serial.read();
   testStruct.degree = 180;
-  printf("sadad");
+
 
 
 
