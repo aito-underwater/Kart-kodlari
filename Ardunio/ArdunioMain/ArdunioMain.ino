@@ -133,14 +133,15 @@ void loop(){
       engineIndex++;
     }
 
-    if (running_time > targetTime)
+    while (running_time < targetTime)
     {
         for(i = 0; i < 6; i++)
         {
           ChangeEngineSpeed(&engines[i],enginesPower[i]);
         }
-        targetTime = running_time + 1000;
+        running_time = millis() - start_time;
     }
+        targetTime = running_time + 1000;
 
 
    Serial.print("Hi Raspberry Pi! You sent me: ");
@@ -178,7 +179,7 @@ void ChangeEngineSpeed( ServoEngine* engine, int power)
 int PIDAlgorithmForEngines( ServoEngine* engine, int power)
 {
 
-  int newPower =  engine->power + (engine->power - power) * 0.5;
+  int newPower =  engine->power + 1000/(targetTime - running_time ) * (engine->power - power) * 0.5;
   return (power);
 }
 
