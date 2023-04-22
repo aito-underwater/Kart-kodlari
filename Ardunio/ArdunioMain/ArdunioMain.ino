@@ -179,7 +179,7 @@ void ChangeEngineSpeed( ServoEngine* engine, int power)
 int PIDAlgorithmForEngines( ServoEngine* engine, int power)
 {
 
-  int newPower =  engine->power + 1000/(targetTime - running_time ) * (engine->power - power) * 0.5;
+     int newPower =  engine->power + 1000/(targetTime - running_time ) * (engine->power - power) * 0.5;
   return (power);
 }
 
