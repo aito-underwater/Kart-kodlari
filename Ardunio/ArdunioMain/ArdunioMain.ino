@@ -97,7 +97,7 @@ void setup(){
   while (!Serial.available());
   Serial.read();
   testStruct.degree = 180;
-
+targetTime = millis() + 1000;
 }
 
 
