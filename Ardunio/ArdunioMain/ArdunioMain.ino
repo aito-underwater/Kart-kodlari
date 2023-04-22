@@ -26,6 +26,8 @@ struct ServoEngine {
 // <----------- Global Params --------------> //
     static unsigned long start_time;
     unsigned long running_time ;
+    unsigned long targetTime ;
+
 // <------------Camera Params ---------------> //
 
 int incomingData;
