@@ -182,7 +182,3 @@ int PIDAlgorithmForEngines( ServoEngine* engine, int power)
   return (power);
 }
 
-
-float lerp(float start, float end, float t) {
-    return (1.0 - t) * start + t * end;
-}
