@@ -25,7 +25,6 @@ struct ServoEngine {
 
 // <----------- Global Params --------------> //
     static unsigned long start_time;
-    unsigned long running_time ;
     unsigned long targetTime ;
 
 // <------------Camera Params ---------------> //
@@ -104,7 +103,6 @@ void setup(){
 
 void loop(){
 
-  running_time = millis() - start_time;
 
   if(Serial.available() > 0) {
     int rlen = Serial.readBytes(buf, BUFFER_SIZE);
@@ -134,15 +132,15 @@ void loop(){
     }
 
 
-    while (targetTime < 1000)
+    while (targetTime > millis())
     {
         for(i = 0; i < 6; i++)
         {
           ChangeEngineSpeed(&engines[i],enginesPower[i]);
         }
-        targetTime = millis() - running_time;
+        targetTime = millis() + 1000;
     }
-        running_time = millis() - start_time;
+
 
 
    Serial.print("Hi Raspberry Pi! You sent me: ");
@@ -180,7 +178,7 @@ void ChangeEngineSpeed( ServoEngine* engine, int power)
 int PIDAlgorithmForEngines( ServoEngine* engine, int power)
 {
 
-  int newPower =  engine->power + (targetTime)/1000 * (engine->power - power) * 0.5;
+  int newPower =  engine->power + (targetTime - millis())/100 * (engine->power - power) * 0.5;
   return (power);
 }
 
