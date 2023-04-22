@@ -85,10 +85,10 @@ void setup(){
 
   engines[2].engine.attach(MOTOR_PIN3);
   engines[3].engine.attach(MOTOR_PIN4);
-  engines[0].engine.attach(MOTOR_PIN1);
-  engines[1].engine.attach(MOTOR_PIN2);
   engines[4].engine.attach(MOTOR_PIN5);
   engines[5].engine.attach(MOTOR_PIN6);
+  engines[0].engine.attach(MOTOR_PIN1);
+  engines[1].engine.attach(MOTOR_PIN2);
 
   for (int i = 0; i < 6 ; i++){
     engines[i].power = 1500;
