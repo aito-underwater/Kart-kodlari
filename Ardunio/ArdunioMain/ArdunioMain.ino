@@ -29,7 +29,7 @@ struct ServoEngine {
 
 // <------------Camera Params ---------------> //
 
-int incomingData;
+    int incomingData;
 
 // <------------ Engines params ------------> //
 #define MAX_SIGNAL 2000
