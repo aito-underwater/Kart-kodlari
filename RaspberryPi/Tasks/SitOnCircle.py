@@ -18,11 +18,11 @@ my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
-timer = time.time() + 5
+timer = time.time() + 6
 while time.time() < timer:
     EnginePower.send_data_to_engines([5, 5, 5, 5, 5, 5])
 
-timer = time.time() + 5
+timer = time.time() + 6
 while time.time() < timer:
     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
 
