@@ -20,7 +20,7 @@ while True:
         data.append(perm_data[1])
         print("aaa")
         print(data)
-        ser.flushInput()
-        ser.flushOutput()
+        ser.reset_input_buffer()
+        ser.reset_output_buffer()
 
 
