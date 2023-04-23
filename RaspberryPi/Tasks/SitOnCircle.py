@@ -30,7 +30,7 @@ while time.time() < timer:
 def main():
     count = 0
     go_down = False
-    ser = serial.Serial('/dev/ttyS0', 115200, timeout=1)  # replace ttyAMA0 with the appropriate serial port
+    ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with the appropriate serial port
     EnginePower.set_task()
 
     timer = time.time()
@@ -41,9 +41,10 @@ def main():
         response = ser.read(8)
         ser.flushInput()
         time.sleep(1)
-        perm_data = struct.unpack('!ii', response)
-        data.append(perm_data[0])
-        data.append(perm_data[1])
+        if len(response) >= 8:
+            perm_data = struct.unpack('!ii', response[0:8])
+            data.append(perm_data[0])
+            data.append(perm_data[1])
         print(go_down)
         if go_down is True:
 
