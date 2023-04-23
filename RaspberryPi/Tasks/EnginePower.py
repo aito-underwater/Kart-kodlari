@@ -133,7 +133,7 @@ def set_task():
     #     5: "SitOnCircle5.dat",
     #     6: "SitOnCircle6.dat"
     # }
-    # print()
+
     # model.load_model(switcher.get(argument, "Invalid Task"))
     model = model.load_model('Models/SitOnCircle_ezgi_8_10.dat')
     # return switcher.get(argument, "Invalid Task")
