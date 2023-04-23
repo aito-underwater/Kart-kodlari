@@ -165,19 +165,15 @@ def main():
             hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
             # red
-            lower_red = np.array([0, 70, 50])
-            upper_red = np.array([10, 255, 255])
-            red_mask1 = cv2.inRange(hsv_frame, lower_red, upper_red)
-            lower_red = np.array([170, 70, 50])
+            lower_red = np.array([136, 87, 111])
             upper_red = np.array([180, 255, 255])
-            red_mask2 = cv2.inRange(hsv_frame, lower_red, upper_red)
-            red_mask = cv2.bitwise_or(red_mask1, red_mask2)
+            red_mask = cv2.inRange(hsv_frame, lower_red, upper_red)
             frame = cv2.bitwise_and(frame, frame, mask=red_mask)
 
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             gray_blurred = cv2.blur(gray, (3, 3))
             detected_circles = cv2.HoughCircles(gray_blurred,
-                                                cv2.HOUGH_GRADIENT, 1 * 3, 100 * 30, param1=250,
+                                                cv2.HOUGH_GRADIENT, 10 * 3, 100 * 30, param1=250,
                                                 param2=250, minRadius=1, maxRadius=1000)
 
             if detected_circles is not None:
@@ -191,13 +187,13 @@ def main():
 
                     print(a, b)
                     send_data(a, b)
-            # cv2.imshow(Red", frame)
+            # cv2.imshow("Red", frame)
             key = cv2.waitKey(200)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
 
             # ----------------------------------------------------------------
-            # this keeeps both imshow windows updated during the wait (in particular the "realtime" one)
+            # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
         except:
             ser.write("<------------------Error------------------->")
             print("<--- Error --->")

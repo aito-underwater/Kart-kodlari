@@ -1,4 +1,4 @@
-import serial
+ b import serial
 import time
 import struct
 
