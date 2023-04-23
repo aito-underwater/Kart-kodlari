@@ -36,6 +36,7 @@ def main():
     timer = time.time()
 
     data = []
+    flag = True
     while True:
 
         response = ser.read(8)
@@ -48,10 +49,13 @@ def main():
         print(go_down)
         if go_down is True:
 
-            while timer > time.time():
-                EnginePower.send_data_to_engines(EnginePower.forward_vector)
-
-            EnginePower.send_data_to_engines(EnginePower.down_vector)
+            # while timer > time.time():
+            #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
+            #
+            timer = time.time() + 5
+            while timer > time.time() and flag :
+                EnginePower.send_data_to_engines(EnginePower.down_vector)
+            flag = False
         else:
 
             if len(data) != 0:
