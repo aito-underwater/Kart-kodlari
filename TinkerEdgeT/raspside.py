@@ -11,7 +11,12 @@ while True:
     # response += ser.read(data_left)
     # print(response)
     # time.sleep(1)
-    data = struct.unpack('!ii', response)
+    data = []
+
+    if len(response) >= 8:
+        perm_data = struct.unpack('!ii', response[0:8])
+        data.append(perm_data[0])
+        data.append(perm_data[1])
     print("aaa")
     print(data)
 
