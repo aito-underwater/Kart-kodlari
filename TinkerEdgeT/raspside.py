@@ -14,6 +14,8 @@ while True:
     data = []
 
     if len(response) >= 8:
+        ser.flushInput()
+        ser.flushOutput()
         perm_data = struct.unpack('!ii', response[0:8])
         data.append(perm_data[0])
         data.append(perm_data[1])
