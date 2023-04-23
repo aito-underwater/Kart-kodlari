@@ -6,7 +6,7 @@ ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with 
 
 while True:
     # ser.flush()
-    response = ser.read(8)
+    response = ser.read()
     # data_left = ser.inWaiting()  # Get the number of characters ready to be read
     # response += ser.read(data_left)
     # print(response)
