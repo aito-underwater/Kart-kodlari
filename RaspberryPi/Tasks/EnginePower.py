@@ -135,7 +135,7 @@ def set_task():
     # }
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
-    model = model.load_model('Models/ezgi_8_6.dat')
+    model = model.load_model('Models/SitOnCircle_ezgi_8_6.dat')
     # return switcher.get(argument, "Invalid Task")
 
 
