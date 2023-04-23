@@ -41,10 +41,9 @@ def main():
         response = ser.read(8)
         ser.flushInput()
         time.sleep(1)
-        if len(response) >= 8:
-            perm_data = struct.unpack('!ii', response[0:8])
-            data.append(perm_data[0])
-            data.append(perm_data[1])
+        perm_data = struct.unpack('!ii', response)
+        data.append(perm_data[0])
+        data.append(perm_data[1])
         print(go_down)
         if go_down is True:
 
