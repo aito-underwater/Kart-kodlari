@@ -2,7 +2,7 @@ import serial
 import time
 import struct
 
-ser = serial.Serial('/dev/ttyS0', 115200, timeout=None)  # replace ttyAMA0 with the appropriate serial port
+ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
 while True:
     #ser.flush()
