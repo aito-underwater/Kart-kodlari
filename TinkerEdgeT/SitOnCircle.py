@@ -197,7 +197,7 @@ def main():
                 break
 
             # ----------------------------------------------------------------
-            # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
+            # this keeeps both imshow windows updated during the wait (in particular the "realtime" one)
         except:
             ser.write("<------------------Error------------------->")
             print("<--- Error --->")
