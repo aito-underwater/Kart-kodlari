@@ -134,7 +134,7 @@ def set_task():
     #     6: "SitOnCircle6.dat"
     # }
 
-    # model.load_model(switcher.get(argument, "Invalid Task"))
+     # model.load_model(switcher.get(argument, "Invalid Task"))
     model = model.load_model('Models/SitOnCircle_mustafa_32_9.dat')
     # return switcher.get(argument, "Invalid Task")
 
