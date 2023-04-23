@@ -55,7 +55,7 @@ def main():
             timer = time.time() + 5
             while timer > time.time() and flag:
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
-                timer = time.time() + 10
+            timer = time.time() + 10
             while timer > time.time() and flag:
                 EnginePower.send_data_to_engines(EnginePower.up_vector)
             EnginePower.send_data_to_engines(EnginePower.stop_vector)
