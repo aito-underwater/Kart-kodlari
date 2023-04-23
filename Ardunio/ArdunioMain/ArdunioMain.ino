@@ -18,11 +18,18 @@ struct __attribute__((packed)) STRUCT {
   int dim;
 }testStruct ;
 
+struct ServoEngine {
+  Servo engine;
+  int power;
+};
+
 // <----------- Global Params --------------> //
+    static unsigned long start_time;
+    unsigned long targetTime ;
 
 // <------------Camera Params ---------------> //
 
-int incomingData;
+    int incomingData;
 
 // <------------ Engines params ------------> //
 #define MAX_SIGNAL 2000
@@ -51,16 +58,19 @@ int incomingData;
 // Sol ön   motor
 #define MOTOR_PIN6 11
 
+
 // <------------ Functions ------------> //
-void ChangeEngineSpeed( Servo* engine);
-int PIDAlgoritmForEngines( Servo* engine, int power);
+void ChangeEngineSpeed( ServoEngine* engine);
+int PIDAlgorithmForEngines( ServoEngine* engine, int power);
 
 // <------------ Communication param ------------> //
 const int BUFFER_SIZE = 48;
 char buf[BUFFER_SIZE];
 
 // <------------ Engine param ------------> //
-Servo engines[6];
+
+ServoEngine engines[6];
+// Servo engines[6];
 int enginesPower[6];
 
 // <------------ Loop params ------------> //
@@ -71,27 +81,28 @@ void setup(){
   Serial2.begin(9600);
   Serial.begin(9600);
   myTransfer.begin(Serial2);
+  start_time = millis();
 
+  engines[2].engine.attach(MOTOR_PIN3);
+  engines[3].engine.attach(MOTOR_PIN4);
+  engines[4].engine.attach(MOTOR_PIN5);
+  engines[5].engine.attach(MOTOR_PIN6);
+  engines[0].engine.attach(MOTOR_PIN1);
+  engines[1].engine.attach(MOTOR_PIN2);
 
-  engines[0].attach(MOTOR_PIN1);
-  engines[1].attach(MOTOR_PIN2);
-  engines[2].attach(MOTOR_PIN3);
-  engines[3].attach(MOTOR_PIN4);
-  engines[4].attach(MOTOR_PIN5);
-  engines[5].attach(MOTOR_PIN6);
-
+  for (int i = 0; i < 6 ; i++){
+    engines[i].power = 1500;
+  }
   // Wait for input
   while (!Serial.available());
   Serial.read();
   testStruct.degree = 180;
-
-
-
-
+targetTime = millis() + 1000;
 }
 
 
 void loop(){
+
 
   if(Serial.available() > 0) {
     int rlen = Serial.readBytes(buf, BUFFER_SIZE);
@@ -119,12 +130,17 @@ void loop(){
       value = 0;
       engineIndex++;
     }
-    for(i = 0; i < 6; i++)
-    {
-      ChangeEngineSpeed(&engines[i],enginesPower[i]);
-    }
-    
- 
+
+
+
+        for(i = 0; i < 6; i++)
+        {
+          ChangeEngineSpeed(&engines[i],enginesPower[i]);
+        }
+        targetTime = millis() + 1000;
+
+
+
 
    Serial.print("Hi Raspberry Pi! You sent me: ");
     Serial.print(" 1 : ");
@@ -143,22 +159,25 @@ void loop(){
 
     }
 
-    
+
 
 }
 
 
-void ChangeEngineSpeed( Servo* engine, int power)
+void ChangeEngineSpeed( ServoEngine* engine, int power)
 {
-  // engine->writeMicroseconds(power parameters);
-  engine->writeMicroseconds(PIDAlgoritmForEngines(engine,power));
-  
+  engine->engine.writeMicroseconds(power);
+
+//   engine->engine.writeMicroseconds(PIDAlgorithmForEngines(engine,power));
+
 }
 
 
 // lerp
-int PIDAlgoritmForEngines( Servo* engine, int power)
+int PIDAlgorithmForEngines( ServoEngine* engine, int power)
 {
-  return (engine->read() + (engine->read() - power) * 0.5);
+
+  int newPower =  engine->power + (targetTime - millis())/100 * (engine->power - power) * 0.5;
+  return (power);
 }
 

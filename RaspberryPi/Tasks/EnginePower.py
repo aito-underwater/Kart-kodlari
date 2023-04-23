@@ -16,10 +16,12 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
                              generation_count)
 
 #  [-sağ arka , sol arka, sağ orta, -sol orta, -sağ ön, -sol ön]
-
+###
 # Main movement vectors
-forward_vector = [-28, 25, 0, 0, -28, -25]
-right_vector = [-28, -28, 0, 0, 25, -25]
+forward_vector = [-27, 26, 0, 0, -27, -27]
+# right_vector = [-32, -26, 0, 0, 37, -20]
+right_vector = [-32, 0, 0, 0, 40, 0]
+left_vector = [0, 27, 0, 0, 0, 39]
 turn_right_vector = [25, 25, 0, 0, 25, -25]
 down_vector = [0, 0, 33, -40, 0, 0]
 up_vector = [0, 0, -30, -30, 0, 0]
