@@ -6,7 +6,7 @@ from RaspberryPi.Tasks.Algorithms.NeuralNetwork import AITONeuralNetwork as nn
 
 input_layer_size = 2
 secret_layer_size = 4
-secret_layer_count = 8
+secret_layer_count = 64
 generation_count = 20
 
 
@@ -39,77 +39,77 @@ test_nn.set_up()
 test_nn.fit(input_x=x,
             output_y=y, iteration=1, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_1.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_1.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_2.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_2.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=100, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_2.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_3.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=1000, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_3.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_4.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10000, genetic_iteration=1)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_4.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_5.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=1, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_5.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_6.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_6.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_7.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=100, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_7.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_8.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=1000, genetic_iteration=10)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_8.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_9.dat')
 
 
 
 test_nn.fit(input_x=x,
-            output_y=y, iteration=10, genetic_iteration=100)
+                output_y=y, iteration=10, genetic_iteration=100)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_9.dat')
+    test_nn.save_model('Models/SitOnCircle_sefa_64_10.dat')
 
 
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=100, genetic_iteration=100)
 
-test_nn.save_model('Models/SitOnCircle_ezgi_8_10.dat')
+test_nn.save_model('Models/SitOnCircle_sefa_64_11.dat')
 
 
 
