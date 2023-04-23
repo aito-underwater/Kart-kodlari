@@ -30,7 +30,7 @@ while time.time() < timer:
 def main():
     count = 0
     go_down = False
-    ser = serial.Serial('/dev/ttyS0', 115200, timeout=1)  # replace ttyAMA0 with the appropriate serial port
+    ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
     EnginePower.set_task()
 
     timer = time.time()
