@@ -29,16 +29,15 @@ message = ''
 
 
 def send_data(a, b):
-#    # package = b''
-#    ser.flush()
+    # package = b''
+    ser.flush()
     # for i in cor:
     package = struct.pack('!ii', a, b)
-    print(struct.unpack('!ii',package))
+    print()
 
     # Sent string value,but if tests shows us it is wrong turn it on btye
     ser.write(package)
-    ser.reset_input_buffer()
-    ser.reset_output_buffer()
+
     # Do nothing for 500 milliseconds (0.5 seconds)
     # time.sleep(0.5)
 
