@@ -17,7 +17,7 @@ while True:
         perm_data = struct.unpack('!ii', response[0:8])
         data.append(perm_data[0])
         data.append(perm_data[1])
-    print("aaa")
-    print(data)
+        print("aaa")
+        print(data)
 
 
