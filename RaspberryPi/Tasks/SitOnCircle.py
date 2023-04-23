@@ -85,7 +85,7 @@ def main():
                 next_move = EnginePower.select_vector(power_vector)
                 if next_move is True:
                     go_down = True
-                    timer = time.time() + 1
+                    timer = time.time()
 
                 else:
                     EnginePower.send_data_to_engines(next_move)
