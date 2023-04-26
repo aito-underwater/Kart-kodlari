@@ -14,6 +14,7 @@ from prettytable import PrettyTable
 
 import EnginePower
 
+time.sleep(10)
 sys.path.insert(0, '../../')
 
 my_file = open("data.csv", "a")
