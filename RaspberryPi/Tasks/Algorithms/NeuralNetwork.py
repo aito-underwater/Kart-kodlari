@@ -47,12 +47,12 @@ class AITONeuralNetwork:
         self.split_data()
 
     def load_model(self, path=None):
-
+        SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
         if path is None:
             with open('AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
-        with open(path, 'rb') as f:
+        with open(SCRIPT_DIR +path, 'rb') as f:
             self = pickle.load(f)
             return self
 
