@@ -122,24 +122,36 @@ def stop_all_functions():
     return stop_vector
 
 
-def set_task():
+def set_task(path):
     global model
 
-    # switcher = {
-    #     1: "SitOnCircle1.dat",
-    #     2: "SitOnCircle2.dat",
-    #     3: "SitOnCircle3.dat",
-    #     4: "SitOnCircle4.dat",
-    #     5: "SitOnCircle5.dat",
-    #     6: "SitOnCircle6.dat"
-    # }
+    model = model.load_model(path)
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
-    model = model.load_model('Models/SitOnCircle_sefa_64_9.dat')
+    model = model.load_model('Models/SitOnCircle_ezgi_8_6.dat')
     # return switcher.get(argument, "Invalid Task")
 
+def select_vector_for_sit(power_vector):
 
-def select_vector(power_vector):
+    index = abs(list(power_vector).index(max(power_vector)))
+    if power_vector[index] > 0:
+        sign = 1
+    else:
+        sign = - 1
+    if index is 0:
+        print(str(sign) + " Go Forward")
+        return sign * forward_vector
+    if index is 1:
+        print(str(sign) + " Go Right")
+        return sign * right_vector
+    if index is 2:
+        print(str(sign) + " Turn  right")
+        return sign * turn_right_vector
+    if index is 3:
+        print(" Go Down")
+        return True
+
+def select_vector_for_others(power_vector):
 
     index = abs(list(power_vector).index(max(power_vector)))
     if power_vector[index] > 0:
