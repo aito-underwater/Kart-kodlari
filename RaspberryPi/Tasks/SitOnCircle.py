@@ -14,7 +14,6 @@ from prettytable import PrettyTable
 
 import EnginePower
 
-time.sleep(10)
 sys.path.insert(0, '../../')
 
 my_file = open("data.csv", "a")
@@ -31,7 +30,7 @@ while time.time() < timer:
 
 
 def main():
-    print("----------")
+    print()
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port

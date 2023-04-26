@@ -116,6 +116,11 @@ class FreshestFrame(threading.Thread):
 
 
 def main():
+    model = tensorflow.keras.models.load_model('/Models/model_pinger.h5')
+
+    frameWidth = 1280
+    frameHeight = 720
+
 
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
@@ -148,42 +153,59 @@ def main():
             # let's pretend we need some time to process this frame
             print("processing {cnt}...".format(cnt=cnt), end=" ", flush=True)
 
-            # -----------------------------------------------------------
 
-            # ret, frame = cap.read()
-            # frame = cv2.flip(frame, 1)
+            # -------------------------- Sarı tanıma ----------------------------------
+            _, imageFrame = cap.read()
 
-            hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+            hsvFrame = cv2.cvtColor(imageFrame, cv2.COLOR_BGR2HSV)
 
-            # red
-            lower_red = np.array([136, 87, 111])
-            upper_red = np.array([180, 255, 255])
-            red_mask = cv2.inRange(hsv_frame, lower_red, upper_red)
-            frame = cv2.bitwise_and(frame, frame, mask=red_mask)
+            yellow_lower = np.array([22, 60, 200], np.uint8)
+            yellow_upper = np.array([60, 255, 255], np.uint8)
+            yellow_mask = cv2.inRange(hsvFrame, yellow_lower, yellow_upper)
 
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            gray_blurred = cv2.blur(gray, (3, 3))
-            detected_circles = cv2.HoughCircles(gray_blurred,
-                                                cv2.HOUGH_GRADIENT, 10 * 3, 100 * 30, param1=250,
-                                                param2=250, minRadius=1, maxRadius=1000)
+            kernal = np.ones((5, 5), "uint8")
 
-            if detected_circles is not None:
-                detected_circles = np.uint16(np.around(detected_circles))
+            yellow_mask = cv2.dilate(yellow_mask, kernal)
+            res_yellow = cv2.bitwise_and(imageFrame, imageFrame, mask=yellow_mask)
 
-                for pt in detected_circles[0, :]:
-                    a, b, r = pt[0], pt[1], pt[2]
+            contours, hierarchy = cv2.findContours(yellow_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-                    cv2.circle(frame, (a, b), r, (0, 255, 0), 2)
-                    cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
+            for pic, contour in enumerate(contours):
+                area = cv2.contourArea(contour)
+                if (area > 300):
+                    x, y, w, h = cv2.boundingRect(contour)
+                    imageFrame = cv2.rectangle(imageFrame, (x, y), (x + w, y + h), (40, 100, 120), 2)
 
-                    print(a, b)
-                    send_data(a, b)
-            # cv2.imshow("Red", frame)
-            key = cv2.waitKey(200)
-            if cv2.waitKey(1) & 0xFF == ord("q"):
+                    center = ((x + w) // 2, (y + h) // 2)
+
+                    cv2.putText(imageFrame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
+                                (40, 100, 120),
+                                2)
+
+            cv2.imshow("Yellow Detection in Real- Time", imageFrame)
+
+            if cv2.waitKey(10) & 0xFF == ord('q'):
+                cap.relase()
+                cv2.destroyAllWindows()
                 break
 
-            # ----------------------------------------------------------------
+            # ------------------------- Sarı tanıma ------------------------------------
+
+            # ------------------------ Pinger tanıma -----------------------------------
+
+            test_image = cv2.resize(frame, (frameWidth, frameHeight))
+            test_image = np.expand_dims(test_image, axis=0)
+            result = model.predict(test_image)
+
+            # ------------------------ Pinger tanıma -------------------------------------
+
+            # ------------------------ Yapay zekanın çalıştığı kısım --------------------
+
+            if result[0][0] == 1 and (x is not None and y is not None):
+                    pass
+
+            # ------------------------ Yapay zekanın çalıştığı kısım --------------------
+
             # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
         except:
             ser.write("<------------------Error------------------->")
