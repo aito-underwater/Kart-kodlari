@@ -16,11 +16,11 @@ import EnginePower
 
 
 current_path = os.getcwd()
-print("Current Path:", current_path)
+
 
 time.sleep(10)
 sys.path.insert(0, '../../')
-
+print("Current Path:", current_path)
 my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
