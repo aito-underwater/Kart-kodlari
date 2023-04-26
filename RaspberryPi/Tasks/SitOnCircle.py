@@ -40,7 +40,7 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
     # EnginePower.set_task('Models/SitOnCircle_ezgi_8_1.dat')
-    EnginePower.set_task('./Codes/Kart-kodlari/RaspberryPi/Tasks/Models/SitOnCircle_ezgi_8_1.dat')
+    EnginePower.set_task('/Codes/Kart-kodlari/RaspberryPi/Tasks/Models/SitOnCircle_ezgi_8_1.dat')
 
     timer = time.time()
 
