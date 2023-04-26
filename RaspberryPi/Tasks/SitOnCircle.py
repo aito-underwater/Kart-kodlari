@@ -30,6 +30,7 @@ while time.time() < timer:
 
 
 def main():
+    print("----------")
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
