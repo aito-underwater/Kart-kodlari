@@ -31,7 +31,7 @@ def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
-    EnginePower.set_task('Models/SitOnCircle_ezgi_8_1.dat')
+    EnginePower.set_task()
 
     timer = time.time()
 
@@ -85,13 +85,8 @@ def main():
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
 
-                next_move = EnginePower.select_vector_for_sit(power_vector)
-                if next_move is True:
-                    go_down = True
-                    timer = time.time()
-
-                else:
-                    EnginePower.send_data_to_engines(next_move)
+                next_move = EnginePower.select_vector_for_others(power_vector)
+                EnginePower.send_data_to_engines(next_move)
                 # <-------------------------------------------------------->
 
                 # engine_data = EnginePower.select_vector(next_move)
