@@ -14,6 +14,10 @@ from prettytable import PrettyTable
 
 import EnginePower
 
+
+current_path = os.getcwd()
+print("Current Path:", current_path)
+
 time.sleep(10)
 sys.path.insert(0, '../../')
 
