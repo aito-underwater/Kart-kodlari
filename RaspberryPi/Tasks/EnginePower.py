@@ -5,7 +5,6 @@ import numpy as np
 import serial  # Module needed for serial communication
 
 from Algorithms import NeuralNetwork as nn
-import pickle
 input_layer_size = 2
 secret_layer_size = 4
 secret_layer_count = 2
@@ -125,7 +124,6 @@ def stop_all_functions():
 def set_task(path):
     global model
 
-    model = pickle.load('Models/SitOnCircle_ezgi_8_6.dat')
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
     model = model.load_model()

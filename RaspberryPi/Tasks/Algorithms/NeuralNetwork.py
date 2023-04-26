@@ -18,9 +18,9 @@ def updt(total, progress):
     if progress >= 1.:
         progress, status = 1, "\r\n"
     block = int(round(barLength * progress))
-    text = "\r[{}] {:.0f}% {}".format(
+    text = "\r[{}] {:.0f}% {} {} {}".format(
         "#" * block + "-" * (barLength - block), round(progress * 100, 0),
-        status) + " {} " + total + " / {}" + progress
+        status, total, progress)
     sys.stdout.write(text)
     sys.stdout.flush()
 
@@ -47,12 +47,11 @@ class AITONeuralNetwork:
         self.split_data()
 
     def load_model(self, path=None):
-        SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
         if path is None:
             with open('AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
-        with open(SCRIPT_DIR +path, 'rb') as f:
+        with open(path, 'rb') as f:
             self = pickle.load(f)
             return self
 
