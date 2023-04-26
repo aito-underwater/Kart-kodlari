@@ -1,3 +1,4 @@
+
 import csv
 import os
 import struct
@@ -18,21 +19,25 @@ my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
-timer = time.time() + 6
-while time.time() < timer:
-    EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
-
-timer = time.time() + 6
-while time.time() < timer:
-    EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
-
+# timer = time.time() + 6
+# while time.time() < timer:
+#     EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
+#
+# timer = time.time() + 6
+# while time.time() < timer:
+#     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
+#
 
 def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
-    EnginePower.set_task()
 
+    current_path = os.getcwd()
+    print("Current Path:", current_path)
+
+    EnginePower.set_task('/Tasks/Models/SitOnCircle_ezgi_8_1.dat')
+    print("sdasd")
     timer = time.time()
 
     data = []
@@ -85,7 +90,7 @@ def main():
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
 
-                next_move = EnginePower.select_vector(power_vector)
+                next_move = EnginePower.select_vector_for_sit(power_vector)
                 if next_move is True:
                     go_down = True
                     timer = time.time()
