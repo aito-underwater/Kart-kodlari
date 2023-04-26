@@ -125,10 +125,10 @@ def stop_all_functions():
 def set_task(path):
     global model
 
-    model = model.load_model(path)
+    # model = model.load_model(path)
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
-    # model = model.load_model('Models/SitOnCircle_ezgi_8_6.dat')
+    model = model.load_model('Models/SitOnCircle_ezgi_8_6.dat')
     # return switcher.get(argument, "Invalid Task")
 
 def select_vector_for_sit(power_vector):
