@@ -14,13 +14,9 @@ from prettytable import PrettyTable
 
 import EnginePower
 
-
-current_path = os.getcwd()
-
-
 time.sleep(10)
 sys.path.insert(0, '../../')
-print("Current Path:", current_path)
+
 my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
@@ -39,8 +35,7 @@ def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
-    # EnginePower.set_task('Models/SitOnCircle_ezgi_8_1.dat')
-    EnginePower.set_task('/Codes/Kart-kodlari/RaspberryPi/Tasks/Models/SitOnCircle_ezgi_8_1.dat')
+    EnginePower.set_task('Models/SitOnCircle_ezgi_8_1.dat')
 
     timer = time.time()
 
