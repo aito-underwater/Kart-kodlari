@@ -36,7 +36,7 @@ def main():
     current_path = os.getcwd()
     print("Current Path:", current_path)
 
-    EnginePower.set_task('Models/sitCircle/SitOnCircle_ezgi_8_1.dat')
+    EnginePower.set_task('Models/sitCircle/SitOnCircle_ezgi_8_2.dat')
     print("sdasd")
     timer = time.time()
     print("asdasd")
