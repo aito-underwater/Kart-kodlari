@@ -1,11 +1,6 @@
 import cv2
 
 import numpy as np
-<<<<<<< HEAD
-import tensorflow
-import csv
-
-=======
 from sklearn import preprocessing
 import csv
 
@@ -15,7 +10,6 @@ def NormalizeData(data):
     for i in data:
         returnArr.append(i/sumOfData)
     return returnArr
->>>>>>> origin/main
 
 def select_vector():
     forward_vector = [0, 0, 100, 100, 100, 100]
@@ -57,26 +51,6 @@ def save_data(x, y):
         spamwriter.writerow(formater)
 
 
-<<<<<<< HEAD
-
-
-frame = cv2.imread('images/t1.png')
-
-model=tensorflow.keras.models.load_model('Models/model_pinger_50_5.h5')
-# ------------------------ Pinger tanıma -----------------------------------
-
-test_image = cv2.resize(frame, (720,1280))
-test_image = np.expand_dims(test_image, axis=0)
-result = model.predict(test_image)
-print(result[0][0])
-# ------------------------ Pinger tanıma -------------------------------------
-
-
-hsvFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-yellow_lower = np.array([22, 60, 200], np.uint8)
-yellow_upper = np.array([60, 255, 255], np.uint8)
-=======
 frame = cv2.imread('pingerTrain/pinger/train/pinger/(183).png')
 
 # model=tensorflow.keras.models.load_model('Models/model_pinger_50_5.h5')
@@ -94,7 +68,6 @@ hsvFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 yellow_lower = np.array([22, 60, 0])  # Hue value of 30 corresponds to 1A9400 color
 yellow_upper = np.array([70, 255, 255])
 
->>>>>>> origin/main
 yellow_mask = cv2.inRange(hsvFrame, yellow_lower, yellow_upper)
 
 kernal = np.ones((5, 5), "uint8")
@@ -103,11 +76,7 @@ yellow_mask = cv2.dilate(yellow_mask, kernal)
 res_yellow = cv2.bitwise_and(frame, frame, mask=yellow_mask)
 
 contours, hierarchy = cv2.findContours(yellow_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-<<<<<<< HEAD
-
-=======
 centerCorr = [[], [],[]]
->>>>>>> origin/main
 for pic, contour in enumerate(contours):
     area = cv2.contourArea(contour)
     if (area > 100):
@@ -115,17 +84,6 @@ for pic, contour in enumerate(contours):
         frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (40, 100, 120), 2)
 
         center = ((x + w) // 2, (y + h) // 2)
-<<<<<<< HEAD
-        if result[0][0] > result[0][1] :
-            print(x,y)
-            save_data(x,y)
-        # cv2.putText(frame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
-        #             (40, 100, 120),
-        #             2)
-
-cv2.imshow("Yellow Detection in Real- Time", frame)
-cv2.waitKey(5000)
-=======
         centerHeight = h
 
         # if result[0][0] > result[0][1] :1
@@ -155,15 +113,8 @@ if len(contours) > 1:
 
     save_data(int(totalCoor[0]),int(totalCoor[1]))
 
->>>>>>> origin/main
 if cv2.waitKey(10) & 0xFF == ord('q'):
     cap.relase()
     cv2.destroyAllWindows()
 
-<<<<<<< HEAD
-
 # ------------------------- Sarı tanıma ------------------------------------
-
-=======
-# ------------------------- Sarı tanıma ------------------------------------
->>>>>>> origin/main

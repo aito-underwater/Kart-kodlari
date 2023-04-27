@@ -124,16 +124,9 @@ def stop_all_functions():
 def set_task(path):
     global model
 
-<<<<<<< HEAD
-    model = model.load_model(path)
-
-    # model.load_model(switcher.get(argument, "Invalid Task"))
-    # model = model.load_model('Models/SitOnCircle_ezgi_8_6.dat')
-=======
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
     model = model.load_model()
->>>>>>> origin/main
     # return switcher.get(argument, "Invalid Task")
 
 def select_vector_for_sit(power_vector):
@@ -143,18 +136,6 @@ def select_vector_for_sit(power_vector):
         sign = 1
     else:
         sign = - 1
-<<<<<<< HEAD
-    if index is 0:
-        print(str(sign) + " Go Forward")
-        return sign * forward_vector
-    if index is 1:
-        print(str(sign) + " Go Right")
-        return sign * right_vector
-    if index is 2:
-        print(str(sign) + " Turn  right")
-        return sign * turn_right_vector
-    if index is 3:
-=======
     if index == 0:
         print(str(sign) + "<====== Go Forward ======>")
         return sign * forward_vector
@@ -166,7 +147,6 @@ def select_vector_for_sit(power_vector):
         # return sign * turn_right_vector
         return True
     if index == 3:
->>>>>>> origin/main
         print(" Go Down")
         return True
 

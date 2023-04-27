@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main
 import csv
 import os
 import struct
@@ -22,16 +19,6 @@ my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
-<<<<<<< HEAD
-timer = time.time() + 6
-while time.time() < timer:
-    EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
-
-timer = time.time() + 6
-while time.time() < timer:
-    EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
-
-=======
 # timer = time.time() + 6
 # while time.time() < timer:
 #     EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
@@ -40,25 +27,17 @@ while time.time() < timer:
 # while time.time() < timer:
 #     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
 #
->>>>>>> origin/main
 
 def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
-<<<<<<< HEAD
-    EnginePower.set_task()
-
-    timer = time.time()
-
-=======
 
     current_path = os.getcwd()
     print("Current Path:", current_path)
 
     EnginePower.set_task('Models/pinger.dat')
     timer = time.time()
->>>>>>> origin/main
     data = []
     flag = True
     while True:
@@ -109,10 +88,6 @@ def main():
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
 
-<<<<<<< HEAD
-                next_move = EnginePower.select_vector_for_others(power_vector)
-                EnginePower.send_data_to_engines(next_move)
-=======
                 next_move = EnginePower.select_vector_for_sit(power_vector)
                 if next_move is True:
                     go_down = True
@@ -120,7 +95,6 @@ def main():
 
                 else:
                     EnginePower.send_data_to_engines(next_move)
->>>>>>> origin/main
                 # <-------------------------------------------------------->
 
                 # engine_data = EnginePower.select_vector(next_move)
