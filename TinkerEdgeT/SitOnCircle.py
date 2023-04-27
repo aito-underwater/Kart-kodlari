@@ -182,7 +182,7 @@ def main():
                 for pt in detected_circles[0, :]:
                     a, b, r = pt[0], pt[1], pt[2]
 
-                    cv2.circle(frame, (a, b), r, (0, 255, 0), 2)
+                    cv2.circle(frame, (a, b), r, (0, 255, 0), 2)x
                     cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
 
                     print(a, b)
