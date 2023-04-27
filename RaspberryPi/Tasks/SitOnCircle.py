@@ -10,6 +10,7 @@ import numpy as np
 import psutil
 import serial
 from prettytable import PrettyTable
+import AITOSensors as Sensor
 
 import EnginePower
 
@@ -33,7 +34,7 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
-    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_10_8.dat')
+    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_10_9.dat')
     timer = time.time()
     data = []
     flag = True
@@ -49,13 +50,15 @@ def main():
         print(go_down)
         if go_down is True:
 
-            while timer > time.time():
-                EnginePower.send_data_to_engines(EnginePower.forward_vector)
+            if flag:
+                flag = False
+                while timer > time.time():
+                    EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-            # timer = time.time() + 5
-            # while timer > time.time() :
-            #     EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
-            timer = time.time() + 10
+                # timer = time.time() + 5
+                # while timer > time.time():
+                #     EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
+            timer = time.time() + 100
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
         else:
@@ -86,7 +89,7 @@ def main():
                 next_move = EnginePower.select_vector_for_sit(power_vector)
                 if next_move is True:
                     go_down = True
-                    timer = time.time() + 7
+                    timer = time.time()
 
                 else:
                     EnginePower.send_data_to_engines(next_move)
@@ -123,7 +126,7 @@ def main():
             else:
 
                 # print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
-
+                #
                 # if Sensor.getTFminiData2() < 100:
                 if False:
                     if count < 4:
@@ -141,7 +144,7 @@ if __name__ == '__main__':
     try:
         print("--------------------------------------------")
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
-        # t2 = threading.Thread(target=Sensor.getTFminiData2)
+        t2 = threading.Thread(target=Sensor.getTFminiData2)
         # t22 = threading.Thread(target=Sensor.getTFminiData22)
         # tWPS = threading.Thread(target=Sensor.WPSData)
         # # tMPU = threading.Thread(target=Sensor.MPUData)
@@ -151,7 +154,7 @@ if __name__ == '__main__':
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
 
         # t1.start()
-        # t2.start()
+        t2.start()
         # t22.start()
         #   tWPS.start()
         # #  tMPU.start()
@@ -159,7 +162,7 @@ if __name__ == '__main__':
 
         test.start()
         # t1.join()
-        # t2.join()
+        t2.join()
         # t22.join()
         # test.start()
         #    tWPS.join()
