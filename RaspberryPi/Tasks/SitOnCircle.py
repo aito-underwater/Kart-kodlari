@@ -10,6 +10,7 @@ import numpy as np
 import psutil
 import serial
 from prettytable import PrettyTable
+import AITOSensors as Sensor
 
 import EnginePower
 
@@ -54,10 +55,10 @@ def main():
                 while timer > time.time():
                     EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-                timer = time.time() + 5
-                while timer > time.time():
-                    EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
-            timer = time.time() + 10
+                # timer = time.time() + 5
+                # while timer > time.time():
+                #     EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
+            timer = time.time() + 100
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
         else:
@@ -124,9 +125,9 @@ def main():
 
             else:
 
-                # print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
+                print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
 
-                # if Sensor.getTFminiData2() < 100:
+                if Sensor.getTFminiData2() < 100:
                 if False:
                     if count < 4:
                         EnginePower.rotate_right(time.time())
@@ -143,7 +144,7 @@ if __name__ == '__main__':
     try:
         print("--------------------------------------------")
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
-        # t2 = threading.Thread(target=Sensor.getTFminiData2)
+        t2 = threading.Thread(target=Sensor.getTFminiData2)
         # t22 = threading.Thread(target=Sensor.getTFminiData22)
         # tWPS = threading.Thread(target=Sensor.WPSData)
         # # tMPU = threading.Thread(target=Sensor.MPUData)
@@ -153,7 +154,7 @@ if __name__ == '__main__':
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
 
         # t1.start()
-        # t2.start()
+        t2.start()
         # t22.start()
         #   tWPS.start()
         # #  tMPU.start()
@@ -161,7 +162,7 @@ if __name__ == '__main__':
 
         test.start()
         # t1.join()
-        # t2.join()
+        t2.join()
         # t22.join()
         # test.start()
         #    tWPS.join()
