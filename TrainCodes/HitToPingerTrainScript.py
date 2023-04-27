@@ -136,7 +136,7 @@ test_nn.fit(input_x=x,
 test_nn.save_model('Models/HitToPinger_mustafa_8_8.dat')
 
 test_nn.fit(input_x=x,
-            output_y=y, iteration=10 0, genetic_iteration=100)
+            output_y=y, iteration=100, genetic_iteration=100)
 
 test_nn.save_model('Models/HitToPinger_mustafa_8_9.dat')
 
