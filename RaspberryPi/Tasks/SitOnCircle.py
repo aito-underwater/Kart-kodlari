@@ -1,4 +1,3 @@
-
 import csv
 import os
 import struct
@@ -34,7 +33,6 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
-
     EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_10_8.dat')
     timer = time.time()
     data = []
@@ -51,15 +49,15 @@ def main():
         print(go_down)
         if go_down is True:
 
-            # while timer > time.time():
-            #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
-            #
+            while timer > time.time():
+                EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
             # timer = time.time() + 5
             # while timer > time.time() :
             #     EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
-            # timer = time.time() + 10
-            # while timer > time.time() :
-            EnginePower.send_data_to_engines(EnginePower.down_vector)
+            timer = time.time() + 10
+            while timer > time.time():
+                EnginePower.send_data_to_engines(EnginePower.down_vector)
         else:
 
             if len(data) != 0:
@@ -137,6 +135,7 @@ def main():
                     print("----------Forward-------------")
                     EnginePower.send_data_to_engines(EnginePower.forward_vector)
         data = []
+
 
 if __name__ == '__main__':
     try:
