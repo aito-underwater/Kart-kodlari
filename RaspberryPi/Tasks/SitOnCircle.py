@@ -19,13 +19,13 @@ my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
-# timer = time.time() + 6
-# while time.time() < timer:
-#     EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
-#
-# timer = time.time() + 6
-# while time.time() < timer:
-#     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
+timer = time.time() + 6
+while time.time() < timer:
+    EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
+
+timer = time.time() + 6
+while time.time() < timer:
+    EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
 
 
 def main():
@@ -50,9 +50,9 @@ def main():
         print(go_down)
         if go_down is True:
 
-            # while timer > time.time():
-            #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
-            #
+            while timer > time.time():
+                EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
             timer = time.time() + 5
             while timer > time.time() and flag:
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
@@ -92,8 +92,7 @@ def main():
                     timer = time.time()
 
                 else:
-                    pass
-                    # EnginePower.send_data_to_engines(next_move)
+                    EnginePower.send_data_to_engines(next_move)
                 # <-------------------------------------------------------->
 
                 # engine_data = EnginePower.select_vector(next_move)
@@ -137,7 +136,7 @@ def main():
                         EnginePower.rotate_random(time.time())
                 else:
                     print("----------Forward-------------")
-                    # EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    EnginePower.send_data_to_engines(EnginePower.forward_vector)
         data = []
 
 if __name__ == '__main__':
