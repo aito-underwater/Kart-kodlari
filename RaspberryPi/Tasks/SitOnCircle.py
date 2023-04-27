@@ -53,11 +53,11 @@ def main():
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-            timer = time.time() + 5
-            while timer > time.time() and flag:
+            timer = time.time() + 10
+            while timer > time.time() :
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
             timer = time.time() + 10
-            while timer > time.time() and flag:
+            while timer > time.time() :
                 EnginePower.send_data_to_engines(EnginePower.up_vector)
             EnginePower.send_data_to_engines(EnginePower.stop_vector)
             flag = False
@@ -89,7 +89,7 @@ def main():
                 next_move = EnginePower.select_vector_for_sit(power_vector)
                 if next_move is True:
                     go_down = True
-                    timer = time.time() +3
+                    timer = time.time() + 3
 
                 else:
                     EnginePower.send_data_to_engines(next_move)
