@@ -52,9 +52,9 @@ def main():
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-            # timer = time.time() + 5
-            # while timer > time.time() :
-            #     EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
+            timer = time.time() + 5
+            while timer > time.time() :
+                EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
             timer = time.time() + 10
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
