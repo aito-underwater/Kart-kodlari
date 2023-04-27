@@ -96,7 +96,8 @@ def main():
                     timer = time.time()
 
                 else:
-                    EnginePower.send_data_to_engines(next_move)
+                    pass
+                    # EnginePower.send_data_to_engines(next_move)
                 # <-------------------------------------------------------->
 
                 # engine_data = EnginePower.select_vector(next_move)
@@ -140,7 +141,7 @@ def main():
                         EnginePower.rotate_random(time.time())
                 else:
                     print("----------Forward-------------")
-                    EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    # EnginePower.send_data_to_engines(EnginePower.forward_vector)
         data = []
 
 if __name__ == '__main__':
