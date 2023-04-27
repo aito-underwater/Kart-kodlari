@@ -7,6 +7,7 @@ import threading
 import time
 
 # import keyboard
+import numpy as np
 import psutil
 import serial
 from prettytable import PrettyTable
@@ -53,14 +54,12 @@ def main():
             while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
+            timer = time.time() + 5
+            while timer > time.time() :
+                EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector)
             timer = time.time() + 10
             while timer > time.time() :
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
-            timer = time.time() + 10
-            while timer > time.time() :
-                EnginePower.send_data_to_engines(EnginePower.up_vector)
-            EnginePower.send_data_to_engines(EnginePower.stop_vector)
-            flag = False
         else:
 
             if len(data) != 0:
