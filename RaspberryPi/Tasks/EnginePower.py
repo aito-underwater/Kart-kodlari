@@ -141,10 +141,11 @@ def select_vector_for_sit(power_vector):
         return sign * forward_vector
     if index == 1:
         print(str(sign) + "<====== Go Right ======>")
-        return True
+        return sign * right_vector
     if index == 2:
         print(str(sign) + "<====== Turn  right ======>")
-        return sign * turn_right_vector
+        # return sign * turn_right_vector
+        return True
     if index == 3:
         print(" Go Down")
         return True
