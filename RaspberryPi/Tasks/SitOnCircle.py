@@ -36,7 +36,7 @@ def main():
     current_path = os.getcwd()
     print("Current Path:", current_path)
 
-    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_7.dat')
+    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_32_9.dat')
     print("sdasd")
     timer = time.time()
     print("asdasd")
