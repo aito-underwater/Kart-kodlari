@@ -34,7 +34,7 @@ def main():
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
 
-    EnginePower.set_task('Models/sitCircle/SitOnCircle_ezgi_8_1.dat')
+    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_10_7.dat')
     timer = time.time()
     data = []
     flag = True
