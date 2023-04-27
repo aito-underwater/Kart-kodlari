@@ -128,7 +128,7 @@ def main():
                 print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
 
                 if Sensor.getTFminiData2() < 100:
-                if False:
+                # if False:
                     if count < 4:
                         EnginePower.rotate_right(time.time())
                         count = count + 1
