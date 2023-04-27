@@ -19,14 +19,14 @@ my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
-timer = time.time() + 6
-while time.time() < timer:
-    EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
-
-timer = time.time() + 6
-while time.time() < timer:
-    EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
-
+# timer = time.time() + 6
+# while time.time() < timer:
+#     EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
+#
+# timer = time.time() + 6
+# while time.time() < timer:
+#     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
+#
 
 def main():
     count = 0
@@ -36,10 +36,8 @@ def main():
     current_path = os.getcwd()
     print("Current Path:", current_path)
 
-    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_32_7.dat')
-    print("sdasd")
+    EnginePower.set_task('Models/pinger.dat')
     timer = time.time()
-    print("asdasd")
     data = []
     flag = True
     while True:

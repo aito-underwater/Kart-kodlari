@@ -1,9 +1,15 @@
 import cv2
 
 import numpy as np
-import tensorflow
+from sklearn import preprocessing
 import csv
 
+def NormalizeData(data):
+    sumOfData = sum(data)
+    returnArr = []
+    for i in data:
+        returnArr.append(i/sumOfData)
+    return returnArr
 
 def select_vector():
     forward_vector = [0, 0, 100, 100, 100, 100]
@@ -45,9 +51,7 @@ def save_data(x, y):
         spamwriter.writerow(formater)
 
 
-
-
-frame = cv2.imread('images/t1.png')
+frame = cv2.imread('pingerTrain/pinger/train/pinger/(183).png')
 
 # model=tensorflow.keras.models.load_model('Models/model_pinger_50_5.h5')
 # ------------------------ Pinger tanıma -----------------------------------
@@ -60,9 +64,10 @@ frame = cv2.imread('images/t1.png')
 
 
 hsvFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+# [22, 60, 200]
+yellow_lower = np.array([22, 60, 0])  # Hue value of 30 corresponds to 1A9400 color
+yellow_upper = np.array([70, 255, 255])
 
-yellow_lower = np.array([22, 60, 200], np.uint8)
-yellow_upper = np.array([60, 255, 255], np.uint8)
 yellow_mask = cv2.inRange(hsvFrame, yellow_lower, yellow_upper)
 
 kernal = np.ones((5, 5), "uint8")
@@ -71,7 +76,7 @@ yellow_mask = cv2.dilate(yellow_mask, kernal)
 res_yellow = cv2.bitwise_and(frame, frame, mask=yellow_mask)
 
 contours, hierarchy = cv2.findContours(yellow_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-centerCorr = []
+centerCorr = [[], [],[]]
 for pic, contour in enumerate(contours):
     area = cv2.contourArea(contour)
     if (area > 100):
@@ -79,19 +84,37 @@ for pic, contour in enumerate(contours):
         frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (40, 100, 120), 2)
 
         center = ((x + w) // 2, (y + h) // 2)
-        # if result[0][0] > result[0][1] :
-        centerCorr = [x,y]
+        centerHeight = h
+
+        # if result[0][0] > result[0][1] :1
+        centerCorr[0].append(x)
+        centerCorr[1].append(y)
+        centerCorr[2].append(area)
         # cv2.putText(frame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
         #             (40, 100, 120),
         #             2)
-save_data(sum(centerCorr[0,:]),sum(centerCorr[1,:]))
+# center = [[1,5],[1,5]]
+# center[1][:]
+centerCorr[2] = NormalizeData(centerCorr[2])
 
-cv2.imshow("Yellow Detection in Real- Time", frame)
-cv2.waitKey(5000)
+totalCoor = [0,0]
+for i in range(len(centerCorr[0])):
+
+    totalCoor[0] += (centerCorr[0][i] * centerCorr[2][i])
+    totalCoor[1] += (centerCorr[1][i] * centerCorr[2][i])
+
+if len(contours) > 1:
+    print(len(contours))
+    print(totalCoor[0],totalCoor[1])
+    # su=[sum(i) for i in square]
+
+    cv2.imshow("Yellow Detection in Real- Time", frame)
+    cv2.waitKey(5000)
+
+    save_data(int(totalCoor[0]),int(totalCoor[1]))
+
 if cv2.waitKey(10) & 0xFF == ord('q'):
     cap.relase()
     cv2.destroyAllWindows()
 
-
 # ------------------------- Sarı tanıma ------------------------------------
-
