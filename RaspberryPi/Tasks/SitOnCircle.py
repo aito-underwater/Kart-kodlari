@@ -8,6 +8,7 @@ import threading
 import time
 
 # import keyboard
+import numpy as np
 import psutil
 import serial
 from prettytable import PrettyTable
@@ -34,10 +35,13 @@ def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
+<<<<<<< HEAD
     EnginePower.set_task('Models/SitOnCircle_ezgi_8_1.dat')
+=======
+>>>>>>> origin/main
 
+    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_10_8.dat')
     timer = time.time()
-
     data = []
     flag = True
     while True:
@@ -52,17 +56,15 @@ def main():
         print(go_down)
         if go_down is True:
 
-            # while timer > time.time():
-            #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
-            #
-            timer = time.time() + 5
-            while timer > time.time() and flag:
-                EnginePower.send_data_to_engines(EnginePower.down_vector)
+            while timer > time.time():
+                EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
+            # timer = time.time() + 5
+            # while timer > time.time() :
+            #     EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
             timer = time.time() + 10
-            while timer > time.time() and flag:
-                EnginePower.send_data_to_engines(EnginePower.up_vector)
-            EnginePower.send_data_to_engines(EnginePower.stop_vector)
-            flag = False
+            while timer > time.time():
+                EnginePower.send_data_to_engines(EnginePower.down_vector)
         else:
 
             if len(data) != 0:
@@ -91,7 +93,7 @@ def main():
                 next_move = EnginePower.select_vector_for_sit(power_vector)
                 if next_move is True:
                     go_down = True
-                    timer = time.time()
+                    timer = time.time() + 7
 
                 else:
                     EnginePower.send_data_to_engines(next_move)
@@ -140,6 +142,7 @@ def main():
                     print("----------Forward-------------")
                     EnginePower.send_data_to_engines(EnginePower.forward_vector)
         data = []
+
 
 if __name__ == '__main__':
     try:

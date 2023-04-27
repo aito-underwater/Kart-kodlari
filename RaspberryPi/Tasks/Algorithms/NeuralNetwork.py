@@ -18,9 +18,9 @@ def updt(total, progress):
     if progress >= 1.:
         progress, status = 1, "\r\n"
     block = int(round(barLength * progress))
-    text = "\r[{}] {:.0f}% {}".format(
+    text = "\r[{}] {:.0f}% {} {} / {}".format(
         "#" * block + "-" * (barLength - block), round(progress * 100, 0),
-        status) + " {} " + total + " / {}" + progress
+        status, total, progress)
     sys.stdout.write(text)
     sys.stdout.flush()
 
@@ -47,7 +47,6 @@ class AITONeuralNetwork:
         self.split_data()
 
     def load_model(self, path=None):
-
         if path is None:
             with open('AITO.dat', 'rb') as f:
                 self = pickle.load(f)
@@ -71,7 +70,7 @@ class AITONeuralNetwork:
             self.network_weight.append([])
             for i in range(self.generation_weight):
                 self.network_weight[generation].append(round(random.uniform(-1.0, 1.0),
-                                                             5) / 50)
+                                                             5) / 1000)
 
     def split_data(self):
         for generation in range(self.generation_count):
@@ -91,7 +90,7 @@ class AITONeuralNetwork:
                 new_data[i].append([])
                 for t in range(len(self.network_weight[i][j])):
                     new_data[i][j].append(self.network_weight[i][j][t] + round(random.uniform(-1.0, 1.0),
-                                                                               5) / 100)
+                                                                               5) / 1000)
 
         return new_data
 
@@ -102,16 +101,16 @@ class AITONeuralNetwork:
             for x in input_x:
                 if len(current_y[i]) < len(input_x):
                     current_y[i].append([])
-                current_y[i][t] = (np.dot(x, self.network_weight[i][0:self.input_layer_size]))
+                current_y[i][t] = sigmoid_function(np.dot(x, self.network_weight[i][0:self.input_layer_size]))
 
                 index = 0
                 for j in range(len(self.network_weight[i])):
                     if j == self.input_layer_size + index * self.secret_layer_size:
-                        current_y[i][t] = (
+                        current_y[i][t] = sigmoid_function((
                             np.dot(
                                 current_y[i][t],
                                 self.network_weight[i][
-                                self.input_layer_size + self.secret_layer_size * index: self.input_layer_size + self.secret_layer_size * index + self.secret_layer_size]))
+                                self.input_layer_size + self.secret_layer_size * index: self.input_layer_size + self.secret_layer_size * index + self.secret_layer_size])))
                         index = index + 1
                 t = t + 1
         return current_y
@@ -125,12 +124,12 @@ class AITONeuralNetwork:
             for x in input_x:
                 if len(new_y[i]) < len(input_x):
                     new_y[i].append([])
-                new_y[i][t] = (np.dot(x, new_weights[i][0:self.input_layer_size]))
+                new_y[i][t] = sigmoid_function(np.dot(x, new_weights[i][0:self.input_layer_size]))
 
                 index = 0
                 for j in range(len(new_weights[i])):
                     if j == self.input_layer_size + index * self.secret_layer_size:
-                        new_y[i][t] = (
+                        new_y[i][t] = sigmoid_function(
                             np.dot(
                                 new_y[i][t],
                                 new_weights[i][
@@ -214,13 +213,13 @@ class AITONeuralNetwork:
 
         t = 0
 
-        y = (np.dot(input_x, self.network_weight[0][0:self.input_layer_size]))
+        y = sigmoid_function(np.dot(input_x, self.network_weight[0][0:self.input_layer_size]))
 
         index = 0
         for j in range(len(self.network_weight[0])):
 
             if j == self.input_layer_size + index * self.secret_layer_size:
-                y = (
+                y = sigmoid_function(
                     np.dot(
                         y,
                         self.network_weight[0][
