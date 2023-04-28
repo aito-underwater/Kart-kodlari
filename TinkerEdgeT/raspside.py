@@ -23,5 +23,6 @@ while True:
         print(data)
         ser.reset_input_buffer()
         ser.reset_output_buffer()
+        time.sleep(0.5)
 
 
