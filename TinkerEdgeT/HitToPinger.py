@@ -171,9 +171,10 @@ def main():
 
             for pic, contour in enumerate(contours):
 
-                area = cv2.contourArea(contour)
+                # area = cv2.contourArea(contour)
                 print("asdasd")
-                if (area > 300):
+                # if (area > 300):
+                if True:
                     x, y, w, h = cv2.boundingRect(contour)
                     frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (40, 100, 120), 2)
 
