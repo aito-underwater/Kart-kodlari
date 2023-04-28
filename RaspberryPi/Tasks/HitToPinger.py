@@ -37,6 +37,7 @@ def main():
     timer = time.time()
     data = []
     flag = True
+    print("adsad")
     while True:
 
         response = ser.read(8)
