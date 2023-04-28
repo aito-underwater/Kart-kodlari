@@ -33,9 +33,6 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
-    current_path = os.getcwd()
-    print("Current Path:", current_path)
-
     EnginePower.set_task('Models/HitToPinger_mustafa_2_1.dat')
     timer = time.time()
     data = []
