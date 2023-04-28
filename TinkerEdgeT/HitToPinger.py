@@ -178,11 +178,12 @@ def main():
 
                     center = ((x + w) // 2, (y + h) // 2)
 
-                    cv2.putText(imageFrame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
-                                (40, 100, 120),
-                                2)
+                    send_data(center)
+                    # cv2.putText(imageFrame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
+                    #             (40, 100, 120),
+                    #             2)
 
-            cv2.imshow("Yellow Detection in Real- Time", imageFrame)
+            # cv2.imshow("Yellow Detection in Real- Time", imageFrame)
 
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 cap.relase()
