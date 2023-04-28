@@ -122,7 +122,7 @@ def stop_all_functions():
     return stop_vector
 
 
-def set_task():
+def set_task(path):
     global model
 
     # switcher = {
@@ -135,7 +135,7 @@ def set_task():
     # }
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
-    model = model.load_model('Models/SitOnCircle_sefa_64_9.dat')
+    model = model.load_model(path)
     # return switcher.get(argument, "Invalid Task")
 
 
