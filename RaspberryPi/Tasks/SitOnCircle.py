@@ -140,7 +140,7 @@ def main():
                     if time.time() < searchTimer:
                         print("----------Forward-------------")
                         EnginePower.send_data_to_engines(EnginePower.forward_vector)
-                    if time.time() < searchTimer + 2:
+                     elif time.time() < searchTimer + 2:
                         print("----------Forward-------------")
                         EnginePower.send_data_to_engines(EnginePower.right_vector)
                     else:
