@@ -30,12 +30,12 @@ while True:
 
     if a == 1:
         while True:
-            timer = time.time() + 40
+            timer = time.time() + 20
 
             while time.time() < timer:
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-            timer = time.time() + 4
+            timer = time.time() + 6
 
             while time.time() < timer:
                 EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
@@ -45,7 +45,7 @@ while True:
             while time.time() < timer:
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
-            timer = time.time() + 2
+            timer = time.time() + 6
 
             while time.time() < timer:
                 EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
