@@ -36,7 +36,7 @@ def main():
     current_path = os.getcwd()
     print("Current Path:", current_path)
 
-    EnginePower.set_task('Models/pinger.dat')
+    EnginePower.set_task('Models/test/SitOnCircle3.dat')
     timer = time.time()
     data = []
     flag = True
