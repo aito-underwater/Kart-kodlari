@@ -6,9 +6,11 @@ import threading
 import time
 
 # import keyboard
+import numpy as np
 import psutil
 import serial
 from prettytable import PrettyTable
+import AITOSensors as Sensor
 
 import EnginePower
 
@@ -31,17 +33,17 @@ def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
-    EnginePower.set_task()
 
+    EnginePower.set_task('Models/PassThroughCircle.dat')
     timer = time.time()
-
+    searchTimer = time.time() +20
     data = []
     flag = True
     while True:
 
         response = ser.read(8)
         ser.flushInput()
-        time.sleep(1)
+        time.sleep(0.1)
         if len(response) >= 8:
             perm_data = struct.unpack('!ii', response[0:8])
             data.append(perm_data[0])
@@ -49,17 +51,17 @@ def main():
         print(go_down)
         if go_down is True:
 
-            # while timer > time.time():
-            #     EnginePower.send_data_to_engines(EnginePower.forward_vector)
-            #
-            timer = time.time() + 5
-            while timer > time.time() and flag:
+            if flag:
+                flag = False
+                while timer > time.time():
+                    EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
+                # timer = time.time() + 5
+                # while timer > time.time():
+                #     EnginePower.send_data_to_engines(np.multiply(EnginePower.down_vector, EnginePower.right_vector))
+            timer = time.time() + 100
+            while timer > time.time():
                 EnginePower.send_data_to_engines(EnginePower.down_vector)
-            timer = time.time() + 10
-            while timer > time.time() and flag:
-                EnginePower.send_data_to_engines(EnginePower.up_vector)
-            EnginePower.send_data_to_engines(EnginePower.stop_vector)
-            flag = False
         else:
 
             if len(data) != 0:
@@ -85,10 +87,11 @@ def main():
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
 
-                next_move = EnginePower.select_vector(power_vector)
+                next_move = EnginePower.select_vector_for_sit(power_vector)
                 if next_move is True:
                     go_down = True
                     timer = time.time()
+
 
                 else:
                     EnginePower.send_data_to_engines(next_move)
@@ -125,7 +128,7 @@ def main():
             else:
 
                 # print("Lidar Verisi : " + str(Sensor.getTFminiData2()))
-
+                #
                 # if Sensor.getTFminiData2() < 100:
                 if False:
                     if count < 4:
@@ -134,9 +137,17 @@ def main():
                     else:
                         EnginePower.rotate_random(time.time())
                 else:
-                    print("----------Forward-------------")
-                    EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    if time.time() < searchTimer:
+                        print("----------Forward-------------")
+                        EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    if time.time() < searchTimer + 2:
+                        print("----------Forward-------------")
+                        EnginePower.send_data_to_engines(EnginePower.right_vector)
+                    else:
+                        searchTimer = time.time() + 20
+
         data = []
+
 
 if __name__ == '__main__':
     try:
