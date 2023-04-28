@@ -52,7 +52,7 @@ class AITONeuralNetwork:
                 self = pickle.load(f)
                 return self
         with  open(path, 'rb') as f:
-            self = pickle.load(f)
+            self = pickle.loads(f)
             return self
 
     def save_model(self, path=None):
