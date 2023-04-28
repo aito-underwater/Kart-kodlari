@@ -14,14 +14,8 @@ import EnginePower
 
 sys.path.insert(0, '../../')
 
-import os
 
-directory_list = list()
-for root, dirs, files in os.walk("", topdown=False):
-    for name in dirs:
-        directory_list.append(os.path.join(root, name))
 
-print (directory_list)
 my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)

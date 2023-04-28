@@ -126,7 +126,7 @@ def set_task(path):
 
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
-    model = model.load_model()
+    model = model.load_model(path)
     # return switcher.get(argument, "Invalid Task")
 
 def select_vector_for_sit(power_vector):

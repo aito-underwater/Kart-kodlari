@@ -1,5 +1,5 @@
 import os
-import pickle
+import gzip, pickle
 import random
 import sys
 from math import e
@@ -51,7 +51,7 @@ class AITONeuralNetwork:
             with open('./AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
-        with open(path, 'rb') as f:
+        with  gzip.open(path, 'rb') as f:
             self = pickle.load(f)
             return self
 
