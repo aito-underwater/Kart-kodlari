@@ -213,7 +213,7 @@ def main():
             # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
         except  Exception as e:
             # ser.write("<------------------Error------------------->")
-
+            print(e)
             print("<--- Error --->")
         print("done!")
 
