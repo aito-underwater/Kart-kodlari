@@ -155,9 +155,8 @@ def main():
             print("processing {cnt}...".format(cnt=cnt), end=" ", flush=True)
 
             # -------------------------- Sarı tanıma ----------------------------------
-            _, imageFrame = cap.read()
 
-            hsvFrame = cv2.cvtColor(imageFrame, cv2.COLOR_BGR2HSV)
+            hsvFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
             yellow_lower = np.array([22, 60, 200], np.uint8)
             yellow_upper = np.array([60, 255, 255], np.uint8)
@@ -166,7 +165,7 @@ def main():
             kernal = np.ones((5, 5), "uint8")
 
             yellow_mask = cv2.dilate(yellow_mask, kernal)
-            res_yellow = cv2.bitwise_and(imageFrame, imageFrame, mask=yellow_mask)
+            res_yellow = cv2.bitwise_and(frame, frame, mask=yellow_mask)
 
             contours, hierarchy = cv2.findContours(yellow_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -174,7 +173,7 @@ def main():
                 area = cv2.contourArea(contour)
                 if (area > 300):
                     x, y, w, h = cv2.boundingRect(contour)
-                    imageFrame = cv2.rectangle(imageFrame, (x, y), (x + w, y + h), (40, 100, 120), 2)
+                    frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (40, 100, 120), 2)
 
                     center = ((x + w) // 2, (y + h) // 2)
 
