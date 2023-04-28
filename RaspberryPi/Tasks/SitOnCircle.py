@@ -34,7 +34,7 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
-    EnginePower.set_task('Models/SitOnCircle_mustafa_32_7.dat')
+    EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_32_7.dat')
     timer = time.time()
     data = []
     flag = True
@@ -42,7 +42,7 @@ def main():
 
         response = ser.read(8)
         ser.flushInput()
-        time.sleep(1)
+        time.sleep(0.1)
         if len(response) >= 8:
             perm_data = struct.unpack('!ii', response[0:8])
             data.append(perm_data[0])
@@ -91,6 +91,7 @@ def main():
                     go_down = True
                     timer = time.time()
 
+
                 else:
                     EnginePower.send_data_to_engines(next_move)
                 # <-------------------------------------------------------->
@@ -135,8 +136,15 @@ def main():
                     else:
                         EnginePower.rotate_random(time.time())
                 else:
-                    print("----------Forward-------------")
-                    EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    if time.time() < searchTimer:
+                        print("----------Forward-------------")
+                        EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    if time.time() < searchTimer + 2:
+                        print("----------Forward-------------")
+                        EnginePower.send_data_to_engines(EnginePower.right_vector)
+                    else:
+                        searchTimer = time.time() + 20
+
         data = []
 
 
@@ -144,7 +152,7 @@ if __name__ == '__main__':
     try:
         print("--------------------------------------------")
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
-        # t2 = threading.Thread(target=Sensor.getTFminiData2)
+        t2 = threading.Thread(target=Sensor.getTFminiData2)
         # t22 = threading.Thread(target=Sensor.getTFminiData22)
         # tWPS = threading.Thread(target=Sensor.WPSData)
         # # tMPU = threading.Thread(target=Sensor.MPUData)
@@ -154,7 +162,7 @@ if __name__ == '__main__':
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
 
         # t1.start()
-        # t2.start()
+        t2.start()
         # t22.start()
         #   tWPS.start()
         # #  tMPU.start()
