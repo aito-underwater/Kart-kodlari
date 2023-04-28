@@ -51,7 +51,7 @@ class AITONeuralNetwork:
             with open('./AITO.dat', 'rb') as f:
                 self = pickle.load(f)
                 return self
-        with  gzip.open(path, 'rb') as f:
+        with  open(path, 'rb') as f:
             self = pickle.load(f)
             return self
 
