@@ -211,9 +211,8 @@ def main():
             # ------------------------ Yapay zekanın çalıştığı kısım --------------------
 
             # this keeps both imshow windows updated during the wait (in particular the "realtime" one)
-        except  Exception as e:
+        except:
             # ser.write("<------------------Error------------------->")
-            print(e)
             print("<--- Error --->")
         print("done!")
 
