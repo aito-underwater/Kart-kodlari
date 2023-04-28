@@ -42,7 +42,7 @@ def main():
     while True:
 
         response = ser.read(8)
-        ser.flushInput()
+     ser.flushInput()
         time.sleep(0.1)
         if len(response) >= 8:
             perm_data = struct.unpack('!ii', response[0:8])
