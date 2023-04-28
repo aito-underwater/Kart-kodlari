@@ -143,7 +143,7 @@ def main():
 
                     elif time.time() < searchTimer + 2:
                         print("----------Forward-------------")
-                        EnginePower.send_data_to_engines(EnginePower.right_vector)
+                        EnginePower.send_data_to_engines(EnginePower.turn_right_vector)
                     else:
                         searchTimer = time.time() + 20
 
