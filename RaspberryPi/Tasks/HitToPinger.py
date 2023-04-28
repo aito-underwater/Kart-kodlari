@@ -19,14 +19,14 @@ my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
 
-# timer = time.time() + 6
-# while time.time() < timer:
-#     EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
-#
-# timer = time.time() + 6
-# while time.time() < timer:
-#     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
-#
+timer = time.time() + 6
+while time.time() < timer:
+    EnginePower.send_data_to_engines([20, 20, 20, 20, 20, 20])
+
+timer = time.time() + 6
+while time.time() < timer:
+    EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
+
 
 def main():
     count = 0
@@ -36,7 +36,7 @@ def main():
     current_path = os.getcwd()
     print("Current Path:", current_path)
 
-    EnginePower.set_task('Models/test/SitOnCircle3.dat')
+    EnginePower.set_task('Models/HitToPinger_mustafa_2_1.dat')
     timer = time.time()
     data = []
     flag = True
@@ -88,7 +88,7 @@ def main():
                 # !!! Yapay zeka kodu burası !!!
                 power_vector = EnginePower.calculate_engines_power(data)
 
-                next_move = EnginePower.select_vector_for_sit(power_vector)
+                next_move = EnginePower.select_vector_for_others(power_vector)
                 if next_move is True:
                     go_down = True
                     timer = time.time()
@@ -165,6 +165,7 @@ if __name__ == '__main__':
         # t1.join()
         # t2.join()
         # t22.join()
+
         # test.start()
         #    tWPS.join()
         # #   tMPU.join()
