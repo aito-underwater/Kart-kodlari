@@ -179,6 +179,7 @@ def main():
                     center = ((x + w) // 2, (y + h) // 2)
 
                     send_data(center)
+                    print(center)
                     # cv2.putText(imageFrame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
                     #             (40, 100, 120),
                     #             2)
