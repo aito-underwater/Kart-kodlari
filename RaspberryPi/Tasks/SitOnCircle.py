@@ -152,7 +152,7 @@ if __name__ == '__main__':
     try:
         print("--------------------------------------------")
         # t1 = threading.Thread(target=Sensor.getTFminiData1)
-        t2 = threading.Thread(target=Sensor.getTFminiData2)
+        # t2 = threading.Thread(target=Sensor.getTFminiData2)
         # t22 = threading.Thread(target=Sensor.getTFminiData22)
         # tWPS = threading.Thread(target=Sensor.WPSData)
         # # tMPU = threading.Thread(target=Sensor.MPUData)
@@ -162,7 +162,7 @@ if __name__ == '__main__':
         # allOfData = threading.Thread(target=Sensor.getAllSensorData)
 
         # t1.start()
-        t2.start()
+        # t2.start()
         # t22.start()
         #   tWPS.start()
         # #  tMPU.start()
