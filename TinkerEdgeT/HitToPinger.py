@@ -166,11 +166,12 @@ def main():
 
             yellow_mask = cv2.dilate(yellow_mask, kernal)
             res_yellow = cv2.bitwise_and(frame, frame, mask=yellow_mask)
-            print("ADS")
+
             contours, hierarchy = cv2.findContours(yellow_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
             for pic, contour in enumerate(contours):
                 area = cv2.contourArea(contour)
+                print("asdasd")
                 if (area > 300):
                     x, y, w, h = cv2.boundingRect(contour)
                     frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (40, 100, 120), 2)
