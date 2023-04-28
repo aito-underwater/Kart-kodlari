@@ -40,7 +40,7 @@ def send_data(a, b):
     ser.reset_input_buffer()
     ser.reset_output_buffer()
     # Do nothing for 500 milliseconds (0.5 seconds)
-    time.sleep(0.5)
+    # time.sleep(0.5)
 
 
 # also acts (partly) like a cv.VideoCapture
