@@ -116,7 +116,7 @@ class FreshestFrame(threading.Thread):
 
 
 def main():
-    model = tensorflow.keras.models.load_model('/Models/model_pinger.h5')
+    # model = tensorflow.keras.models.load_model('/Models/model_pinger.h5')
 
     frameWidth = 1280
     frameHeight = 720
@@ -195,16 +195,16 @@ def main():
 
             # ------------------------ Pinger tanıma -----------------------------------
 
-            test_image = cv2.resize(frame, (frameWidth, frameHeight))
-            test_image = np.expand_dims(test_image, axis=0)
-            result = model.predict(test_image)
+            # test_image = cv2.resize(frame, (frameWidth, frameHeight))
+            # test_image = np.expand_dims(test_image, axis=0)
+            # result = model.predict(test_image)
 
             # ------------------------ Pinger tanıma -------------------------------------
 
             # ------------------------ Yapay zekanın çalıştığı kısım --------------------
 
-            if result[0][0] == 1 and (x is not None and y is not None):
-                    pass
+            # if result[0][0] == 1 and (x is not None and y is not None):
+            #         pass
 
             # ------------------------ Yapay zekanın çalıştığı kısım --------------------
 
