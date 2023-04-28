@@ -29,11 +29,11 @@ message = ''
 
 
 def send_data(a, b):
-#    # package = b''
-#    ser.flush()
+    #    # package = b''
+    #    ser.flush()
     # for i in cor:
     package = struct.pack('!ii', a, b)
-    print(struct.unpack('!ii',package))
+    print(struct.unpack('!ii', package))
 
     # Sent string value,but if tests shows us it is wrong turn it on btye
     ser.write(package)
@@ -121,16 +121,17 @@ def main():
     frameWidth = 1280
     frameHeight = 720
 
-
     # open some camera
     cap = cv2.VideoCapture('rtsp://admin:123456@192.168.1.237/H264?ch=1&subtype=0')
     # cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FPS, 60)
     # wrap it
     fresh = FreshestFrame(cap)
+
     # a way to watch the camera unthrottled
     def callback(img):
         pass
+
     # main thread owns windows, does waitkey
 
     fresh.callback = callback
@@ -152,7 +153,6 @@ def main():
 
             # let's pretend we need some time to process this frame
             print("processing {cnt}...".format(cnt=cnt), end=" ", flush=True)
-
 
             # -------------------------- Sarı tanıma ----------------------------------
             _, imageFrame = cap.read()
@@ -179,7 +179,7 @@ def main():
                     center = ((x + w) // 2, (y + h) // 2)
 
                     send_data(center)
-                    print(center)
+                    print((x + w) // 2, (y + h) // 2)
                     # cv2.putText(imageFrame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
                     #             (40, 100, 120),
                     #             2)
