@@ -17,7 +17,7 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
 #  [-sağ arka , sol arka, sağ orta, -sol orta, -sağ ön, -sol ön]
 ###
 # Main movement vectors
-forward_vector = [0, 0, 0, 0, -30,-35]
+forward_vector = [0, 0, 0, 0, 50,55]
 # right_vector = [-32, -26, 0, 0, 37, -20]
 right_vector = [-32, 0, 0, 0, 40, 0]
 left_vector = [0, 27, 0, 0, 0, 39]
@@ -71,7 +71,7 @@ def send_data_to_engines(powers):
 
     send_binary = ''
     # Do nothing for 500 milliseconds (0.5 seconds)
-    # time.sleep(0.5)
+    time.sleep(0.5)
 
     # Receive data from the Arduino
     receive_string = ser.readline().decode('utf-8').rstrip()
