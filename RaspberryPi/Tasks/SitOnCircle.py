@@ -34,7 +34,7 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
-    EnginePower.set_task('Models/test/SitOnCircle_mustafa_32_7.dat')
+    EnginePower.set_task('Models/test/SitOnCircle_mustafa_7.dat')
     timer = time.time()
     searchTimer = time.time() +20
     data = []
