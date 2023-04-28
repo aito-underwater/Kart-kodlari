@@ -32,7 +32,7 @@ def main():
     count = 0
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
-
+    searchTimer = time.time() + 20
     EnginePower.set_task('Models/HitToPinger_mustafa_2_1.dat')
     timer = time.time()
     data = []
@@ -134,8 +134,15 @@ def main():
                     else:
                         EnginePower.rotate_random(time.time())
                 else:
-                    print("----------Forward-------------")
-                    EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    if time.time() < searchTimer:
+                        print("----------Forward-------------")
+                        EnginePower.send_data_to_engines(EnginePower.forward_vector)
+                    if time.time() < searchTimer + 2:
+                        print("----------Forward-------------")
+                        EnginePower.send_data_to_engines(EnginePower.right_vector)
+                    else:
+                        searchTimer = time.time() + 20
+
         data = []
 
 if __name__ == '__main__':
