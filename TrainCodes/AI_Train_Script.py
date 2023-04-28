@@ -57,10 +57,6 @@ test_nn.fit(input_x=x,
 
 test_nn.save_model('Models/SitOnCircle_mustafa_10_4.dat')
 
-test_nn.fit(input_x=x,
-            output_y=y, iteration=1, genetic_iteration=10)
-
-test_nn.save_model('Models/SitOnCircle_mustafpu
 
 test_nn.fit(input_x=x,
             output_y=y, iteration=10, genetic_iteration=10)
