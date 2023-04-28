@@ -14,6 +14,14 @@ import EnginePower
 
 sys.path.insert(0, '../../')
 
+import os
+
+directory_list = list()
+for root, dirs, files in os.walk("", topdown=False):
+    for name in dirs:
+        directory_list.append(os.path.join(root, name))
+
+print (directory_list)
 my_file = open("data.csv", "a")
 my_file.seek(0, os.SEEK_END)
 cvs_writer = csv.writer(my_file)
@@ -26,14 +34,7 @@ timer = time.time() + 6
 while time.time() < timer:
     EnginePower.send_data_to_engines([0, 0, 0, 0, 0, 0])
 
-import os
 
-directory_list = list()
-for root, dirs, files in os.walk("/path/to/your/dir", topdown=False):
-    for name in dirs:
-        directory_list.append(os.path.join(root, name))
-
-print (directory_list)
 def main():
     count = 0
     go_down = False
