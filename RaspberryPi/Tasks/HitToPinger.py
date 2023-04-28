@@ -33,7 +33,7 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
     searchTimer = time.time() + 20
-    EnginePower.set_task('Models/HitToPinger_mustafa_2_1.dat')
+    EnginePower.set_task('Models/SitOnCircle_mustafa_10_1.dat')
     timer = time.time()
     data = []
     flag = True
