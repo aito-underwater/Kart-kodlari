@@ -169,22 +169,22 @@ def main():
 
             contours, hierarchy = cv2.findContours(yellow_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-            for pic, contour in enumerate(contours):
+            if len(contours) > 0:
+                for pic, contour in enumerate(contours):
 
-                # area = cv2.contourArea(contour)
-                print("asdasd")
-                # if (area > 300):
-                if True:
-                    x, y, w, h = cv2.boundingRect(contour)
-                    frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (40, 100, 120), 2)
+                    area = cv2.contourArea(contour)
+                    print("asdasd")
+                    if (area > 300):
+                        x, y, w, h = cv2.boundingRect(contour)
+                        frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (40, 100, 120), 2)
 
-                    center = ((x + w) // 2, (y + h) // 2)
+                        center = ((x + w) // 2, (y + h) // 2)
 
-                    send_data((x + w) // 2, (y + h) // 2)
-                    print((x + w) // 2, (y + h) // 2)
-                    # cv2.putText(imageFrame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
-                    #             (40, 100, 120),
-                    #             2)
+                        send_data((x + w) // 2, (y + h) // 2)
+                        print((x + w) // 2, (y + h) // 2)
+                        # cv2.putText(imageFrame, "Yellow Colour" + str(center), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1,
+                        #             (40, 100, 120),
+                        #             2)
 
             # cv2.imshow("Yellow Detection in Real- Time", imageFrame)
 
