@@ -5,7 +5,6 @@ import numpy as np
 import serial  # Module needed for serial communication
 
 from Algorithms import NeuralNetwork as nn
-
 input_layer_size = 2
 secret_layer_size = 4
 secret_layer_count = 2
@@ -18,12 +17,12 @@ model = nn.AITONeuralNetwork(input_layer_size, secret_layer_size, secret_layer_c
 #  [-sağ arka , sol arka, sağ orta, -sol orta, -sağ ön, -sol ön]
 ###
 # Main movement vectors
-forward_vector = [-26, 26, 0, 0, -27, -27]
+forward_vector = [0, 0, 0, 0, -50, -55]
 # right_vector = [-32, -26, 0, 0, 37, -20]
 right_vector = [-32, 0, 0, 0, 40, 0]
 left_vector = [0, 27, 0, 0, 0, 39]
 turn_right_vector = [25, 25, 0, 0, 25, -25]
-down_vector = [0, 0, 51, -60, 0, 0]
+down_vector = [0, 0, 81, -90, 0, 0]
 up_vector = [0, 0, -30, 30, 0, 0]
 stable_vector = [0, 0, 14, -14, 0, 0]
 stop_vector = [0, 0, 0, 0, 0, 0]
@@ -125,21 +124,33 @@ def stop_all_functions():
 def set_task(path):
     global model
 
-    # switcher = {
-    #     1: "SitOnCircle1.dat",
-    #     2: "SitOnCircle2.dat",
-    #     3: "SitOnCircle3.dat",
-    #     4: "SitOnCircle4.dat",
-    #     5: "SitOnCircle5.dat",
-    #     6: "SitOnCircle6.dat"
-    # }
 
      # model.load_model(switcher.get(argument, "Invalid Task"))
     model = model.load_model(path)
     # return switcher.get(argument, "Invalid Task")
 
+def select_vector_for_sit(power_vector):
 
-def select_vector(power_vector):
+    index = abs(list(power_vector).index(max(power_vector)))
+    if power_vector[index] > 0:
+        sign = 1
+    else:
+        sign = - 1
+    if index == 0:
+        print(str(sign) + "<====== Go Forward ======>")
+        return sign * forward_vector
+    if index == 1:
+        print(str(sign) + "<====== Go Right ======>")
+        return sign * right_vector
+    if index == 2:
+        print(str(sign) + "<====== Turn  right ======>")
+        return sign * turn_right_vector
+        # return True
+    if index == 3:
+        print(" Go Down")
+        return True
+
+def select_vector_for_others(power_vector):
 
     index = abs(list(power_vector).index(max(power_vector)))
     if power_vector[index] > 0:
