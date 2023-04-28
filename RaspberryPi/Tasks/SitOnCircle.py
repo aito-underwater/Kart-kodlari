@@ -34,7 +34,7 @@ def main():
     go_down = False
     ser = serial.Serial('/dev/ttyS0', 115200, timeout=0)  # replace ttyAMA0 with the appropriate serial port
 
-    EnginePower.set_task('Models/SitOnCircle_ezgi_8_2.dat')
+    EnginePower.set_task('Models/SitOnCircle_ezgi_8_9.dat')
     timer = time.time()
     searchTimer = time.time() +20
     data = []
