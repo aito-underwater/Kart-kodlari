@@ -71,7 +71,7 @@ def send_data_to_engines(powers):
 
     send_binary = ''
     # Do nothing for 500 milliseconds (0.5 seconds)
-    time.sleep(0.5)
+    # time.sleep(0.5)
 
     # Receive data from the Arduino
     receive_string = ser.readline().decode('utf-8').rstrip()
