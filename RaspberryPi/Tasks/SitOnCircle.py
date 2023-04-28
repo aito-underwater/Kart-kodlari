@@ -36,6 +36,7 @@ def main():
 
     EnginePower.set_task('Models/sitCircle/SitOnCircle_mustafa_32_7.dat')
     timer = time.time()
+    searchTimer = time.time() +20
     data = []
     flag = True
     while True:
