@@ -38,7 +38,7 @@ while True:
 
             timer = time.time() + 15
 
-            while time.time() < timer:""
+            while time.time() < timer:
                 EnginePower.send_data_to_engines(EnginePower.forward_vector)
 
             timer = time.time() + 3
