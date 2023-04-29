@@ -38,7 +38,12 @@ def main():
     data = []
     flag = True
     print("adsad")
+    timer = time.time() + 6
+    while time.time() < timer:
+        EnginePower.send_data_to_engines(EnginePower.forward_vector)
+
     while True:
+
 
         response = ser.read(8)
         ser.flushInput()
